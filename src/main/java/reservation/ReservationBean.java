@@ -18,6 +18,7 @@ public class ReservationBean {
 	private int dry;
 	private int care;
 	private int totalprice;
+	private int condition;
 	
 	
 	public int getNum() {
@@ -121,5 +122,11 @@ public class ReservationBean {
 	}
 	public void setTotalprice(int totalprice) {
 		this.totalprice = totalprice;
+	}
+	public int getCondition() {
+		return condition;
+	}
+	public void setCondition(int condition) {
+		this.condition = condition;
 	}
 }

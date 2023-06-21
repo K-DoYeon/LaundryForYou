@@ -21,4 +21,16 @@
   	<servlet-name>LevelUpdate</servlet-name>
 	<url-pattern>/LevelUpdate</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>ConditionUpdate</servlet-name>
+  	<display-name>ConditionUpdate</display-name>
+  	<description></description>
+  	<servlet-class>ConditionUpdate</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>ConditionUpdate</servlet-name>
+	<url-pattern>/ConditionUpdate</url-pattern>
+  </servlet-mapping>
 </web-app>
