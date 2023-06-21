@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import ="review.ReviewBean, review.ReviewDAO" %>
-<%@page import="java.util.*"%>
+<%@ page import ="review.ReviewBean, review.ReviewDAO, review.RCommentBean" %>
+<%@ page import="java.util.*"%>
+<%@ page import = "java.io.*" %>
 <%
 ReviewDAO rdao = new ReviewDAO();
 ArrayList<ReviewBean> reviewlist = null;
@@ -19,6 +20,7 @@ reviewlist = rdao.getReviewList();
 		$("#form").submit();
 	});
 
+	
 
 </script>
 <!-- Bootstrap CSS -->
@@ -37,6 +39,7 @@ reviewlist = rdao.getReviewList();
 %>
 <%
 	String subject = bean.getSubject();
+	String uid = bean.getUid();
 %>
 <style>
 @font-face {
@@ -70,6 +73,7 @@ button a{
 	background-color : #58A3BC;
 	color : #fff;
 	font-family:  'SUITE-Regular';
+	text-align : right;
 }
 .choi-qna-btn:hover{
 	background-color : #3E83A8;
@@ -83,6 +87,15 @@ button a{
 .review textarea{
 	resize : none;
 }
+.review-img img{
+	width : 100%;
+	height : auto;
+	margin : 0 auto;
+	padding : 0 auto;
+}
+input:read-only {
+    background-color: #fff;
+}
 </style>
 </head>
 <body>
@@ -91,7 +104,6 @@ button a{
 	<article>
 		<div class="container">
 			<h2 class = "text-center">Review</h2>
-			<form action="reviewWriteProc.jsp" id = "form" name = "form" method="post"  encType = "multipart/form-data">
 				<div class="mb-3 mt-4">
 					<label for="title">제목</label>
 					<input type="text" class="form-control" name="subject" id="subject" placeholder="<%=bean.getSubject()%>" readonly>
@@ -110,14 +122,16 @@ button a{
             
 				<div class="mb-3 mt-4 review">
 					<label for="content">내용</label>
-					<textarea class="form-control" rows="5" name="content" id="content" readonly><%=bean.getImg()%> <%=bean.getContent() %></textarea>
-					<input type = "file" name = "img" id = "img" class = "img mt-4"/>
+					<div class = "mb-3 mt-4 review-img">
+					<img src = "../imgs/<%=bean.getImg()%>" alt = "">
+            	    <textarea class="form-control mt-3" rows="5" name="content" id="content" readonly><%=bean.getContent() %></textarea>
+            	    </div>
 				</div>
 					
-					
-			</form>									
+							
 			<div class ="choi-qna">
 					<input type = "hidden" name = "level" id="level" />
+					<input type = "hidden" name = "img" id="img" />
 					<input type = "hidden" name = "readcount" id="readcount" />
 					<input type = "hidden" name = "replycount" id="replycount"/>
 					<input type = "hidden" name = "like" id="like" />
@@ -129,8 +143,44 @@ button a{
 				<button type="submit" onclick="return confirm('추천하시겠습니까?')" class="btn btn-sm choi-qna-btn">좋아요</button>
 				</form>
 			</div>
+		
 
-		</div>
+<!-- comment -->
+		
+<%
+	int commentnum = 0;
+	if(request.getParameter("commentnum") != null)
+		commentnum = Integer.parseInt(request.getParameter("commentnum"));
+		
+		
+%>
+<div class="card mb-2">
+	<div class="card-header bg-light">
+	        <i class="fa fa-comment fa"></i> COMMENT
+	</div>
+	
+	<div class="card-body">
+		<ul class="list-group list-group-flush">
+		    <li class="list-group-item">
+			<div class="form-inline mb-2">
+			<%
+				ArrayList<RCommentBean> list = dao.getList(num);
+				for(int i = 0; i<list.size(); i++){
+							
+			%>
+				<label for="replyId"><i class="fa fa-user-circle-o fa-2x"></i></label>
+				<input type="text" class="form-control ml-2" placeholder="<%=list.get(i).getUid() %>" id="replyId">
+				<label for="replyPassword" class="ml-4"><i class="fa fa-unlock-alt fa-2x"></i></label>
+				<input type="password" class="form-control ml-2" placeholder="<%=list.get(i).getUpass()%>" id="replyPassword">
+			<% } %>
+			<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+			</div>
+			<button type="button" class="btn choi-qna-btn mt-3" onClick="javascript:addReply();">댓글 등록</button>
+		    </li>
+		</ul>
+	</div>
+
+</div>
 	</article>
 </body>
 </html>
