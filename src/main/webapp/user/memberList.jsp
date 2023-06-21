@@ -161,3 +161,5 @@ for(int i=0; i < size; i++){
 </div>
 
 <script src="../js/memberlist.js"></script>
+
+<jsp:include page="../include/footer.jsp"></jsp:include>
