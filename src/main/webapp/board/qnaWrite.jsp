@@ -9,14 +9,14 @@
 <meta charset="UTF-8">
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script>
+<!-- <script>
 	$(document).on('click', '#btnSave', function(e){
 		e.preventDefault();	
 		$("#form").submit();
 	});
 
 
-</script>
+</script> -->
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" 
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" 
@@ -76,7 +76,7 @@ button a{
 	<article>
 		<div class="container">
 			<h2 class = "text-center">QnA</h2>
-			<form action="qnaWriteProc.jsp" id = "form" name = "form" method="post">
+			<form action="qnaWriteProc.jsp" id = "form" name = "form" method="post" accept-charset="UTF-8">
 				<div class="mb-3 mt-4">
 					<label for="title">제목</label>
 					<input type="text" class="form-control" name="subject" id="subject" placeholder="제목을 입력해 주세요">
@@ -98,16 +98,16 @@ button a{
 				</div>
 				<!--1. int 값들과 level input type hidden으로 해서 넣기 
 				2. pass 넣기 -->
-			</form>									
+											
 			<div class ="choi-qna">
 					<input type = "hidden" name = "level" id="level" />
 					<input type = "hidden" name = "readcount" id="readcount" />
 					<input type = "hidden" name = "replycount" id="replycount"/>
 					<input type = "hidden" name = "like" id="like" />
-				<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" value ="submit">저장</button>
+				<button type="submit" class="btn btn-sm choi-qna-btn" id="btnSave" value ="submit">저장</button>
 				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList"><a href = "boardlist.jsp">목록</a></button>
 			</div>
-			
+			</form>	
 		</div>
 	</article>
 </body>
