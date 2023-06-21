@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+<Resource
+	name="jdbc/laundry"
+	auth="Container"
+	type="javax.sql.DataSource"
+	username="root"
+	password="!+La:m6V;t"
+	driverClassName="com.mysql.cj.jdbc.Driver"
+	url="jdbc:mysql://3.35.8.147:3306/laundry?useUnicode=true&amp;characterEncoding=UTF-8"
+	maxActive="80"
+	maxWait="1000"
+	removeAbandoned="true"
+/>
+</Context>
+

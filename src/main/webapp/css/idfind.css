@@ -1,0 +1,110 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'IM_Hyemin-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Bold.woff2') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+*{box-sizing:border-box;}
+
+
+/*idFind.jsp*/
+
+
+#idfind_h3_jeon{
+	font-family: 'TheJamsil5Bold'; 
+	letter-spacing: 2px;
+	text-align: center;
+	background: #28527A;
+	font-size: 24px;
+	color: #fff;
+	padding: 20px 0;
+	margin: 0;
+	margin-bottom: 20px;
+}
+
+#idfind_label_jeon{
+	display: inline-block;
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background: #ededed;
+	margin: 10px;
+	margin-left: 50px;
+	border-radius: 5px;
+	
+}
+
+#idfind_input_jeon{
+	width: 250px;
+	height: 40px;
+	padding-left: 20px;
+}
+
+#idfind_button_jeon{
+	width: 100px;
+	height: 40px;
+	border: none;
+	border-radius: 5px;
+	background: #58A3BC;
+	color: #fff;
+}
+
+#idfind_button_jeon:hover{
+	background: #3E83A8;
+}
+
+.center_jeon{
+	margin-top: 20px;
+	text-align: center;
+}
+
+
+
+/*idFindResult.jsp*/
+
+#idfindresult_p_jeon{
+	font-size: 16px;
+	text-align: center;
+}
+
+#idfindresult_p_jeon>span{
+	font-size: 18px;
+	font-weight: bold;
+	color: #28527A;
+}
+
+.idfindresult_button_jeon{
+	font-size: 14px;
+	color: #fff;
+	background: #58A3BC;
+	border: none;
+	border-radius: 5px;
+	padding: 5px 20px;
+	margin-top:10px;
+	margin-bottom: 10px;
+}
+
+.idfindresult_button_jeon:hover{
+	background: #3E83A8;
+}
+
+.apply_jeon{
+	font-size: 16px;
+	background: #8AC4D0;
+	padding: 10px 25px;
+	margin-bottom: 20px;
+}
+
+.mt50_jeon{
+	margin-top: 50px;
+	margin-bottom: 50px;
+}

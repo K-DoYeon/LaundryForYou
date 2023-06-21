@@ -1,0 +1,172 @@
+@charset "UTF-8";
+.container-my {
+	width: 1300px;
+	margin: 0 auto;
+}
+.userInfo-my {
+	height: 350px;
+	background: #F7F7F7;
+	display: flex;
+	align-items: center;
+}
+.userInfo-my p {
+	margin: 0;
+}
+.userInfoBox-my {
+	margin: 0 auto;
+	width: 1300px;
+	height: 240px;
+	display: flex;
+    justify-content: space-between;
+}
+.userImg-my {
+    display: flex;
+    width: 410px;
+    background: #fff;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 30px;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: space-around;
+}
+.stamp-my,
+.coupon-my {
+	width: 310px;
+	background: #fff;
+	padding: 40px;
+	position: relative;
+}
+.vip-my {
+	width: 250px;
+	background: #fff;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	padding: 30px;
+}
+.userImgTop-my {
+	display: flex;
+	align-items: center;
+}
+.userImgScale-my {
+	width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.userName-my {
+	font-size: 22px;
+	margin-left: 20px;
+}
+.userName-my span {
+	font-weight: bold;
+	font-family: "TheJamsil";
+}
+.userBtn-my a {
+	display: inline-block;
+    width: 150px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 0 10px;
+}
+.userBtn-my a.updatePw-my {
+    border: 1px solid #58A3BC;
+    background: #fff;
+    color: #58A3BC;
+}
+.userBtn-my a.updateUser-my {
+    background: #58A3BC;
+    color: #fff;
+}
+.Title-my {
+	display: flex;
+    align-items: center;
+}
+.Title-my i {
+	margin-left: 4px;
+	font-size: 26px;
+}
+.Count-my {
+	font-size: 28px;
+	font-weight: 900;
+}
+.stamp-my p, 
+.coupon-my p {
+	font-size: 28px;
+	color: #58A3BC;
+	margin-top: 8px;
+}
+.Count-my {
+	font-size: 36px;	
+	font-weight: bold;
+}
+.userInfo-my h2 {
+	margin: 0;
+}
+.stampImg-my {
+	position: absolute;
+    right: 25px;
+    bottom: 52px;
+    rotate: 30deg;
+    scale: 120%;
+}
+.couponImg-my {
+	position: absolute;
+    right: 25px;
+    bottom: 52px;
+    rotate: -30deg;
+    scale: 110%;
+}
+.vipImg-my {
+	scale: 78%;
+	margin-left: -18px;
+}
+.point-my {
+	font-size: 40px;
+	font-weight: 900;
+}
+.vip-my p {
+	color: #58A3BC;
+    font-size: 32px;
+    margin-top: -30px;
+}
+
+/***** STAMP *****/
+.couponBox-my {
+	height: 330px;
+	background: #F7F7F7;
+	border-radius: 20px;
+	margin: 50px 0;
+}
+.stampTitle-my {
+	font-size: 30px;
+	font-weight: 900;
+	margin: 0;
+    padding: 27px 40px;
+}
+.bubble-my,
+.bubbleMono-my {
+	display: flex;
+    flex-wrap: nowrap;
+    width: 93px;
+    justify-content: space-around;
+    margin: 12px auto 0;
+}
+.banner-my {
+	height: 200px;
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+	margin: 30px 0 100px;
+}
+.reviewTitle-my {
+	font-size: 30px;
+	font-weight: 900;
+}
+.bubbleImg-my {
+	width: 145px;
+}

@@ -1,0 +1,318 @@
+*{
+	box-sizing: border-box;
+}
+
+p{
+	margin: 0;
+	padding: 0;
+}
+
+.main-container{
+	width: auto;
+    height: 2000px;
+
+} 
+
+.main-banner{
+	width: auto;
+	height: 600px;
+	background-image: url("../img/main-banner.jpg");
+	background-repeat: no-repeat;
+  	background-size: cover;
+}
+
+.banner-inside{
+	width: 1250px;
+	height: 350px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: row;
+}
+
+.main-delivery, .main-reservation{
+	width: 600px;
+	height: 350px;
+	background: #fff;
+	border-radius: 30px;
+	margin-top: 120px;
+}
+
+.main-delivery{
+	border-right: 1px dashed #ddd;
+}
+
+.delivery-p,.reservation-p{
+	font-family: "TheJamsil";
+	font-size: 40px;
+	font-weight: bold;
+	color: #000;
+	text-align: center;
+	margin-top: 50px;
+}
+
+.delivery-p>span,.reservation-p>span{
+	color: #58A3BC;
+}
+
+.delivery-p-s{
+	font-size: 14px;
+	font-weight: normal;
+	color: #555;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.delivery-search{
+	display:inline-block;
+	width: 500px;
+	height: 60px;
+	background: #eee;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	padding-left: 20px;
+	margin-left: 50px;
+	margin-top: 20px;
+}
+
+.delevery-search-btn{
+	position:relative;
+}
+
+.ri-search-line{
+	position: absolute;
+	font-size: 28px;
+	top: -3px;
+	left: -48px;
+	cursor: pointer;
+}
+
+/*input에 x 없앰*/
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
+
+.delivery-hashtag{
+	font-size: 18px;
+	text-align: center;
+	margin-top: 30px;
+	color: #555;
+	font-weight: 500;
+}
+
+.delivery-hashtag>span{
+	font-family: "TheJamsil";
+	font-size: 30px;
+	font-weight: bold;
+	color: #8AC4D0;
+}
+.main-reservation {
+	position: relative;
+}
+i.ri-arrow-right-s-line.sBannerBtn-main {
+	position: absolute;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background: #58a3bc;
+    color: #fff;
+    font-size: 35px;
+    border-radius: 50%;
+    line-height: 50px;
+    text-align: center;
+    right: 193px;
+    bottom: 88px;
+}
+
+.reservation-name,
+.reservation-tel,
+.reservation-addr{
+	background: #eee;
+	display:inline-block;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	padding-left: 20px;
+}
+
+.reservation-name, .reservation-tel{
+	width: 244px;
+	height: 40px;
+	margin-top: 12px;
+}
+
+.reservation-addr{
+	width: 500px;
+	height: 50px;
+	margin-left: 50px;
+	margin-top: 10px;
+}
+
+.reservation-submit{
+	width: 150px;
+	height: 50px;
+	display: inline-block;
+	border: none;
+	border-radius: 5px;
+	background: #8AC4D0;
+	color: #fff;
+	margin-top: 20px;
+	font-size: 16px;
+	font-family: "TheJamsil";
+}
+.userInfoBox-main label {
+	display: inline-block;
+    width: 70px;
+}
+.reservation-submit:hover{
+	background: #3E83A8;
+}
+
+.main-review{
+	width: 1300px;
+	height: 600px;
+	margin: 0 auto;
+	margin-top: 100px;
+	display: flex;
+	flex-direction: row;
+}
+
+.review-left{
+	padding-top: 150px;
+}
+.review-left,.review-right{
+	width: 650px;
+	height: 600px;
+	padding-top: 50px;
+}
+
+.review-left-header{
+	position: relative;
+}
+
+.review-left-header>img{
+	position: absolute;
+	top: -40px;
+	left: 125px;
+}
+
+.review-left-header>p{
+	font-size: 30px;
+	font-weight: bold;
+	text-align: center;
+	margin-left: 60px;
+	margin-top: 25px;
+}
+
+.review-left-header>p>span{
+	color:#58A3BC;
+}
+
+.main-clothes{
+	width: 400px;
+	height: 300px;
+	border-radius: 5px;
+	margin-left: 130px;
+	margin-top: 30px;
+}
+
+.review-left-bottom{
+	position: relative;
+	margin-top: 40px;
+	margin-left: 175px;
+}
+
+.review-span{
+	background: #fae57c;
+	border-radius: 15px;
+}
+
+.review-woman{
+	position: absolute;
+	left: -65px;
+	top: 5px;
+}
+
+.review-right-top{
+	font-size: 36px;
+	text-align: center;
+	font-weight: 500;	
+}
+
+.review-right-top>span{
+	font-family: "TheJamsil";
+	font-weight: bold;
+}
+
+.review-right-top>span>span{
+	color: #58A3BC;
+}
+
+.review-right-bottom{
+	text-align: center;
+	color: #999;
+	font-size: 18px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	border-bottom: 5px solid #8AC4D0;
+}
+
+.review-for{
+	width: 400px;
+	margin: 0 auto;
+	margin-top: 25px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.review-for-for{
+	width: 600px;
+	border-bottom: 1px dashed #ccc;
+	margin: 0 auto;
+}
+
+/* .main-pr-slide{
+	width: 1500px;
+	overflow: hidden;
+	display: flex;
+	margin: 0 auto;
+}
+.main-pr-slide>div{
+	width: 500px;
+	height: 300px;
+	margin-top: 150px;
+	flex: 0 0 100%;
+    transition: transform 0.8s ease-in-out;
+} */
+
+
+  .s-container {
+  width: 1200px;
+  overflow: hidden;
+  margin: 0 auto;
+  margin-top: 100px;
+  border-radius: 15px;
+}
+
+.slide-container {
+  width: 7200px;
+  display: flex;
+  transition: transform 1s ease-in-out;
+}
+
+.slide {
+  width: 1200px;
+}
+
+.slide img {
+  width: 100%;
+}
+
+ .delivery-search:hover {
+        cursor: pointer;
+    }
+

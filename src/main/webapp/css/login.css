@@ -1,0 +1,75 @@
+@charset "UTF-8";
+a, a:hover {
+	color: #000;
+	text-decoration: none;
+}
+.container-login {
+	margin: 0 auto;
+	margin-top: 50px;
+	width: 500px;
+}
+h1.title-login {
+	font-family: 'TheJamsil';
+	text-align: center;
+	font-weight: 400;
+	padding-bottom: 50px;
+}
+.Box-login {
+	height: 60px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #000;
+}
+.Title-login {
+	display: inline-block;
+	width: 85px;
+}
+#uid, #upass {
+	width: 100%;
+    height: 45px;
+    padding-left: 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.03);
+}
+.findIdPw-login {
+	margin-top: 22px;
+	margin-bottom: 35px;
+    display: flex;
+    justify-content: flex-end; 
+}
+.find-login {
+	padding: 0 5px;
+}
+.submitBtnBox-login {
+	display: flex;
+	justify-content: center;
+}
+.submitBtn-login {
+	width: 100%;
+    height: 56px;
+    border: none;
+    border-radius: 5px;
+    background: #58A3BC;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+}
+.regiBox-login {
+	margin-top: 15px;
+	display: flex;
+	justify-content: center;
+}
+a.register-login {
+	width: 100%;
+    height: 56px;
+    border: 2px solid #58A3BC;
+    border-radius: 5px;
+    background: #fff;
+    color: #58A3BC;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 56px;
+}

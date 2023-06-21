@@ -1,0 +1,110 @@
+@charset "UTF-8";
+article{
+	margin: 50px 0px;
+}
+.text-center{
+	font-size: 45px;
+	padding-bottom: 20px;
+}
+.choi-body {
+  padding-top: 70px;
+  padding-bottom: 30px;
+}
+
+button a{
+	color : #fff;
+	border : none;
+}
+button a:hover{
+	color : #fff;
+	text-decoration:none;
+}
+.choi-qna{
+	text-align : right;
+}
+.choi-qna-btn{
+	background-color : #58A3BC;
+	color : #fff;
+}
+.choi-qna-btn:hover{
+	background-color : #3E83A8;
+	color : #fff;
+}
+.choi-menu{
+	justify-content : space-between;
+}
+/***********************reply********************************/
+.do-reply-con{
+	margin-bottom: 30px;
+}
+.do-reply{
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+.edit{
+	margin-right: 10px;
+}
+.edit:hover{
+	color: blue;
+}
+.delete:hover{
+	color: red;
+}
+.do-reply-item{
+	border-bottom: 1px solid #aaa;
+}
+
+
+/***********************comment********************************/
+
+.do-comment{
+	border-bottom: 1px solid #8AC4D0; 
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+	font-weight: bold;
+}
+.do-commentbox{
+	display: flex;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #888; 
+	margin-top: 30px;
+}
+.do-left{
+	border-right: 1px solid #888;
+	padding: 20px 20px 0px 0px;
+}
+.do-left p{
+	margin: 5px 0;
+	
+}
+.id{
+	display: inline-block;
+	border-bottom: 1px solid #888;
+	padding: 1px 1px 1px 2px;
+	margin-left: 10px;
+	color: #555;
+}
+.pw{
+	display: inline-block;
+	border-bottom: 1px solid #888;
+	padding: 1px 1px 1px 2px;
+	margin-left: 3px;
+	color: #555;
+}
+.do-right{
+	width: 900px;
+	margin: 5px 2px 5px 5px;
+}
+.do-right textarea{
+	border: none;
+}
+.choi-qna{
+	margin-top: 20px;
+}
+.doco{
+	margin-bottom: 50px;
+}
+.do-reply-item{
+	padding-bottom: 20px;
+}
