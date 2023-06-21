@@ -1,22 +1,22 @@
 @charset "UTF-8";
 .container-my {
-	width: 1300px;
-	margin: 0 auto;
+   width: 1300px;
+   margin: 0 auto;
 }
 .userInfo-my {
-	height: 350px;
-	background: #F7F7F7;
-	display: flex;
-	align-items: center;
+   height: 350px;
+   background: #F7F7F7;
+   display: flex;
+   align-items: center;
 }
 .userInfo-my p {
-	margin: 0;
+   margin: 0;
 }
 .userInfoBox-my {
-	margin: 0 auto;
-	width: 1300px;
-	height: 240px;
-	display: flex;
+   margin: 0 auto;
+   width: 1300px;
+   height: 240px;
+   display: flex;
     justify-content: space-between;
 }
 .userImg-my {
@@ -32,38 +32,39 @@
 }
 .stamp-my,
 .coupon-my {
-	width: 310px;
-	background: #fff;
-	padding: 40px;
-	position: relative;
+   width: 310px;
+   background: #fff;
+   padding: 40px;
+   position: relative;
 }
 .vip-my {
-	width: 250px;
-	background: #fff;
-	border-top-right-radius: 10px;
-	border-bottom-right-radius: 10px;
-	padding: 30px;
+   width: 250px;
+   background: #fff;
+   border-top-right-radius: 10px;
+   border-bottom-right-radius: 10px;
+   padding: 30px;
 }
 .userImgTop-my {
-	display: flex;
-	align-items: center;
+   display: flex;
+   align-items: center;
+   padding-bottom: 20px;
 }
 .userImgScale-my {
-	width: 100px;
+   width: 100px;
     height: 100px;
     object-fit: cover;
     border-radius: 50%;
 }
 .userName-my {
-	font-size: 22px;
-	margin-left: 20px;
+   font-size: 22px;
+   margin-left: 20px;
 }
 .userName-my span {
-	font-weight: bold;
-	font-family: "TheJamsil";
+   font-weight: bold;
+   font-family: "TheJamsil";
 }
 .userBtn-my a {
-	display: inline-block;
+   display: inline-block;
     width: 150px;
     height: 35px;
     line-height: 35px;
@@ -83,90 +84,90 @@
     color: #fff;
 }
 .Title-my {
-	display: flex;
+   display: flex;
     align-items: center;
 }
 .Title-my i {
-	margin-left: 4px;
-	font-size: 26px;
+   margin-left: 4px;
+   font-size: 26px;
 }
 .Count-my {
-	font-size: 28px;
-	font-weight: 900;
+   font-size: 28px;
+   font-weight: 900;
 }
 .stamp-my p, 
 .coupon-my p {
-	font-size: 28px;
-	color: #58A3BC;
-	margin-top: 8px;
+   font-size: 28px;
+   color: #58A3BC;
+   margin-top: 8px;
 }
 .Count-my {
-	font-size: 36px;	
-	font-weight: bold;
+   font-size: 36px;   
+   font-weight: bold;
 }
 .userInfo-my h2 {
-	margin: 0;
+   margin: 0;
 }
 .stampImg-my {
-	position: absolute;
+   position: absolute;
     right: 25px;
     bottom: 52px;
     rotate: 30deg;
     scale: 120%;
 }
 .couponImg-my {
-	position: absolute;
+   position: absolute;
     right: 25px;
     bottom: 52px;
     rotate: -30deg;
     scale: 110%;
 }
 .vipImg-my {
-	scale: 78%;
-	margin-left: -18px;
+   scale: 78%;
+   margin-left: -18px;
 }
 .point-my {
-	font-size: 40px;
-	font-weight: 900;
+   font-size: 40px;
+   font-weight: 900;
 }
 .vip-my p {
-	color: #58A3BC;
+   color: #58A3BC;
     font-size: 32px;
     margin-top: -30px;
 }
 
 /***** STAMP *****/
 .couponBox-my {
-	height: 330px;
-	background: #F7F7F7;
-	border-radius: 20px;
-	margin: 50px 0;
+   height: 330px;
+   background: #F7F7F7;
+   border-radius: 20px;
+   margin: 50px 0;
 }
 .stampTitle-my {
-	font-size: 30px;
-	font-weight: 900;
-	margin: 0;
+   font-size: 30px;
+   font-weight: 900;
+   margin: 0;
     padding: 27px 40px;
 }
 .bubble-my,
 .bubbleMono-my {
-	display: flex;
+   display: flex;
     flex-wrap: nowrap;
     width: 93px;
     justify-content: space-around;
     margin: 12px auto 0;
 }
 .banner-my {
-	height: 200px;
-	display: flex;
-	align-items: center;
-	overflow: hidden;
-	margin: 30px 0 100px;
+   height: 200px;
+   display: flex;
+   align-items: center;
+   overflow: hidden;
+   margin: 30px 0 100px;
 }
 .reviewTitle-my {
-	font-size: 30px;
-	font-weight: 900;
+   font-size: 30px;
+   font-weight: 900;
 }
 .bubbleImg-my {
-	width: 145px;
+   width: 145px;
 }
