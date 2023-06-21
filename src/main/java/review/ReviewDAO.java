@@ -34,18 +34,18 @@ public class ReviewDAO {
 	   }
 	   
 	   //게시들 데베로 저장되는 메소드
-	   public void insertReview(ReviewBean bean) {
+	   public void insertReview(ReviewBean bean, String uid, String upass, String subject, String content, String img) {
 		   getCon();
 		   try {
-			String sql = "insert into review values(num, ?, ?, ?, ?, 0, sysdate(), 0, 0)";
+			String sql = "insert into review values(num, ?, ?, ?, ?, ?, sysdate(), 0, 0, 0)";
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setString(1, bean.getUid());
-			pstmt.setString(2, bean.getUpass());
-			pstmt.setString(3, bean.getSubject());
-			pstmt.setString(4, bean.getContent());
-//			pstmt.setString(5, bean.getImg());
-			
+			pstmt.setString(1, uid);
+			pstmt.setString(2, upass);
+			pstmt.setString(3, subject);
+			pstmt.setString(4, content);
+			pstmt.setString(5, img);
+			System.out.println(pstmt);
 			pstmt.executeUpdate();
 			
 			
@@ -55,6 +55,8 @@ public class ReviewDAO {
 			System.out.println("데베연결실패");
 		}
 	   }
+	   
+	   
 	// 모든 게시글을 리턴해주는 메소드 작성
 		public Vector<ReviewBean> getAllBoard() {
 			// 리턴할 객체 선언
@@ -225,6 +227,130 @@ public class ReviewDAO {
 				}
 				return -1;
 			}
-			 
+	
+			
+	/********************** 리뷰 댓글 ***********************/
+			
+			public int getNext() {
+				getCon();
+				try {
+					String sql = "select num from board order by num desc";
+					pstmt=con.prepareStatement(sql);
+					rs = pstmt.executeQuery();
+					
+					if(rs.next()) {
+						System.out.println(rs.getInt(1)); //select문에서 첫번쨰 값
+						return rs.getInt(1)+1;	//현재 게시글 갯수 +1 반환
+					}
+					return 1;
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				return -1;
+			}
+		//게시글 
+			
+			public RCommentBean getRCommentnum(int commentnum) {
+				getCon();
+				try {
+					String sql = "select*from review_comment where commentnum=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, commentnum);
+					rs = pstmt.executeQuery();
+					
+					while(rs.next()) {
+						RCommentBean bean = new RCommentBean();
+						bean.setCommentnum(rs.getInt(1));
+						bean.setUid(rs.getString(2));
+						bean.setUpass(rs.getString(3));
+						bean.setContent(rs.getString(4));
+						bean.setWdate(rs.getString(5));
+						bean.setRef(rs.getInt(6));
+						bean.setCommentAvailable(rs.getString(7));
+						
+						return bean;
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				return null;
+			}
+			
+			public int write(String content, String uid, String upass, int ref) {
+				getCon();
+				try {
+					String sql = "insert into review_comment values(commentid,?,?,?,sysdate(),0, ?)";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, uid);
+					pstmt.setString(2, upass);
+					pstmt.setString(3, content);
+					pstmt.setInt(4, ref);
+					System.out.println(pstmt);
+					return pstmt.executeUpdate();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				return -1;
+			}
+			
+			public ArrayList<RCommentBean> getList(int num){
+				getCon();
+				String sql = "select*from review_comment where num=? and commentAvailable=1 order by num desc limit 10";
+				ArrayList<RCommentBean> list = new ArrayList<RCommentBean>();
+				try {
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, num);
+					rs = pstmt.executeQuery();
+					
+					while(rs.next()) {
+						RCommentBean bean = new RCommentBean();
+						bean.setCommentnum(rs.getInt(1));
+						bean.setUid(rs.getString(2));
+						bean.setUpass(rs.getString(3));
+						bean.setContent(rs.getString(4));
+						bean.setWdate(rs.getString(5));
+						bean.setRef(rs.getInt(6));
+						bean.setCommentAvailable(rs.getString(7));
+						list.add(bean);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				return list;
+			}
+		
+			
+			public RCommentBean getRComment(int commentnum) {
+				getCon();
+				try {
+					String sql = "select*from review_comment where num = ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, commentnum);
+					rs = pstmt.executeQuery();
+					
+					System.out.println(pstmt);
+					
+					while(rs.next()) {
+						RCommentBean rcomment = new RCommentBean();
+						rcomment.setCommentnum(rs.getInt(1));
+						rcomment.setUid(rs.getString(2));
+						rcomment.setUpass(rs.getString(3));
+						rcomment.setContent(rs.getString(4));
+						rcomment.setWdate(rs.getString(5));
+						rcomment.setRef(rs.getInt(6));
+						rcomment.setCommentAvailable(rs.getString(7));
+						
+						return rcomment;
+					}
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				return null;
+			}
+				
+			
+			
+			
 	}
 
