@@ -74,12 +74,20 @@ button a{
 </style>
 </head>
 <body>
+<%
+	String uid = (String)session.getAttribute("uid");
+	String upass = (String)session.getAttribute("upass");
+	int num = 0;
+	if (request.getParameter("num") != null){
+		num = Integer.parseInt(request.getParameter("num"));
+	}
+%>
 <jsp:include page="../include/header.jsp"></jsp:include>
 
 	<article>
 		<div class="container">
 			<h2 class = "text-center">Review</h2>
-			<form action="reviewWriteProc.jsp" id = "form" name = "form" method="post">
+			<form action="reviewWriteProc.jsp" id = "form" name = "form" method="post"  encType = "multipart/form-data">
 				<div class="mb-3 mt-4">
 					<label for="title">제목</label>
 					<input type="text" class="form-control" name="subject" id="subject" placeholder="제목을 입력해 주세요">
@@ -87,11 +95,11 @@ button a{
 				<div class="mb-3 d-flex justify">
 					<div>
 						<label for="uid">작성자</label>
-						<input type="text" class="form-control" name="uid" id="uid" placeholder="아이디를 입력하세요" />
+						<input type="text" class="form-control" name="uid" id="uid" value="<%=uid %>" readonly />
 					</div>
 					<div>
 						<label for="upass">비밀번호</label>
-						<input type="password" class="form-control" name="upass" id="upass" placeholder="비밀번호를 입력하세요"  />
+						<input type="password" class="form-control" name="upass" id="upass" value="<%=upass %>" readonly  />
 					</div>
 				
 				</div>			
@@ -108,6 +116,7 @@ button a{
 					<input type = "hidden" name = "readcount" id="readcount" />
 					<input type = "hidden" name = "replycount" id="replycount"/>
 					<input type = "hidden" name = "like" id="like" />
+				
 				<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" value ="submit">저장</button>
 				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList"><a href = "review.jsp">목록</a></button>
 			</div>
