@@ -25,7 +25,7 @@ Integer totalprice = (Integer) session.getAttribute("totalprice");
 </head>
 <body>
     <script>
-    $(function(){
+	 $(function(){
         var IMP = window.IMP; // 생략가능
         IMP.init('imp87531823'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
         var msg;
@@ -70,7 +70,7 @@ Integer totalprice = (Integer) session.getAttribute("totalprice");
                 msg = '결제에 실패하였습니다.';
                 msg += '에러내용 : ' + rsp.error_msg;
                 //실패시 이동할 페이지
-                location.href="<%=request.getContextPath()%>/main/main.jsp";
+                <%-- ocation.href="<%=request.getContextPath()%>/main/main.jsp"; --%>
                 alert(msg);
             }
         });
