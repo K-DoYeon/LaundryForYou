@@ -37,10 +37,37 @@
    int startNum = (nowBlock - 1) * pageNum + 1;
    int endNum = nowBlock * pageNum;
    if (endNum > totalPage) endNum = totalPage;
+   
+	// 예약 삭제 처리
+	String deleteNum = request.getParameter("delete");
+	if (deleteNum != null) {
+	   int reservationNum = Integer.parseInt(deleteNum);
+	   boolean deleteResult = rdao.deleteReservation(reservationNum);
+	   if (deleteResult) {
+	      out.println("<script>alert('예약이 취소되었습니다.'); location.href='MyReservation.jsp';</script>");
+	   } else {
+	      out.println("<script>alert('예약 취소에 실패했습니다.');</script>");
+	   }
+	}
 
 %>   
 
 <link rel="stylesheet" href="../css/bootstrap.css" />
+<style>
+	input[type=text] {
+		border: 0;
+		outline: none;
+		width: 100px;
+	}
+	
+	td {
+		width: 100px;
+	}
+	
+	a {
+		
+	}
+</style>
 <jsp:include page="../include/header.jsp"></jsp:include>
 <div class="container lmember">
    <h1 class="mt-3 mb-3 text-center">예약목록</h1>
@@ -52,15 +79,16 @@
          <thead>
             <tr>
                <th>예약번호</th>
-               <th>아이디</th>
                <th>생활빨래</th>
                <th>이불빨래</th>
                <th>셔츠</th>
                <th>드라이</th>
                <th>개별빨래</th>
                <th>총 가격</th>
+               <th>상세보기</th>
                <th>결제 상태</th>
                <th>결제</th>
+               <th>예약취소</th>
             </tr>
          </thead>
          <tbody>
@@ -82,20 +110,21 @@ for(int i=0; i < size; i++){
     int condition = rbean.getCondition();
  
 %>
-
+<form action="">
    <tr>
    	  <td>
-      <a href="DetailReservation.jsp?num=<%=num %>">
-      	<%=num %>
-      </a>
+ 
+      	 <input type="text" name="num" value="<%=num %>" readonly/>
+
       </td>
-      <td><%=uid %></td>
-      <td><%=daily %>개</td>
-      <td><%=blanket %>개</td>
-      <td><%=shirt %>개</td>
-      <td><%=dry %>개</td>
-      <td><%=care %>개</td>
-      <td><%=totalprice %>원</td>
+      <td><input type="text" name="daily" value="<%=daily %>개" readonly /> </td>
+      <td><input type="text" name="blanket" value="<%=blanket %>개" readonly/> </td>
+      <td><input type="text" name="shirt" value="<%=shirt %>개" readonly/> </td>
+      <td><input type="text" name="dry" value="<%=dry %>개" readonly/> </td>
+      <td><input type="text" name="care" value="<%=care %>개" readonly/> </td>
+      <td><input type="text" name="totalprice" value="<%=totalprice %>원" readonly/> </td>
+
+        <td><button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='DetailReservation.jsp?num=<%=num %>'">상세보기</button></td>
       <td>
       <%
       	if (condition == 1) {
@@ -110,11 +139,21 @@ for(int i=0; i < size; i++){
       %>
       </td>
       <td><button type="button" class="btn btn-outline-secondary btn-sm">결제하기</button></td>
+      <td>
+      	<form method="post" action="">
+         <input type="hidden" name="delete" value="<%=num %>">
+         <button type="submit" class="btn btn-outline-danger btn-sm">예약취소</button>
+      </form>
+      </td>
+      
       
    </tr>
+</form>
    
 <%
 }
+
+
 %>
          </tbody>
          
