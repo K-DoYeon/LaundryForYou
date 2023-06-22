@@ -38,6 +38,19 @@
 	int startNum = (nowBlock - 1) * pageNum + 1;
 	int endNum = nowBlock * pageNum;
 	if (endNum > totalPage) endNum = totalPage;
+	
+	
+	// 예약 삭제 처리
+	String deleteNum = request.getParameter("delete");
+	if (deleteNum != null) {
+	   int reservationNum = Integer.parseInt(deleteNum);
+	   boolean deleteResult = rdao.deleteReservation(reservationNum);
+	   if (deleteResult) {
+	      out.println("<script>alert('예약이 취소되었습니다.'); location.href='reservationList.jsp';</script>");
+	   } else {
+	      out.println("<script>alert('예약 취소에 실패했습니다.');</script>");
+	   }
+	}
 
 %>   
 
@@ -64,6 +77,7 @@
                     <th>개별빨래</th>
                     <th>총 금액</th>
                     <th>예약상태</th>
+                    <th>예약취소</th>
                 </tr>
             </thead>
             <tbody>
@@ -103,6 +117,12 @@
                                 <option value="3" <%= condition == 3 ? "selected" : "" %>>수거완료</option>
                                 <option value="4" <%= condition == 4 ? "selected" : "" %>>배송완료</option>
                             </select>
+                        </td>
+                        <td>
+                        	<form method="post" action="">
+						         <input type="hidden" name="delete" value="<%=num %>">
+						         <button type="submit" class="btn btn-outline-danger btn-sm">예약취소</button>
+      						</form>
                         </td>
                     </tr>
                 <% } %>

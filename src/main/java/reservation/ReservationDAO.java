@@ -314,6 +314,32 @@ public class ReservationDAO {
 	        return reservation;
 	    }
 	    
+	    //예약 삭제
+	    public boolean deleteReservation(int reservationNum) {
+	    	   getCon();
+	    	   boolean success = false;
+	    	   
+	    	   try {
+	    	      
+	    	      // 예약 정보 삭제 SQL 쿼리 작성
+	    	      String query = "DELETE FROM reservation WHERE num = ?";
+	    	      
+	    	      pstmt = con.prepareStatement(query);
+	    	      pstmt.setInt(1, reservationNum);
+	    	      
+	    	      int rowCount = pstmt.executeUpdate();
+	    	      
+	    	      if (rowCount > 0) {
+	    	         // 예약 정보 삭제 성공
+	    	         success = true;
+	    	      }
+	    	   } catch (SQLException e) {
+	    	      e.printStackTrace();
+	    	   } 
+	    	   
+	    	   return success;
+	    	}
+	    
 	  
 	}
 		
