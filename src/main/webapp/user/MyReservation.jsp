@@ -51,16 +51,16 @@
       <table class="table  memberstbl">
          <thead>
             <tr>
-               <th>번호</th>
+               <th>예약번호</th>
                <th>아이디</th>
-               <th>전화번호</th>
-               <th>주소</th>
                <th>생활빨래</th>
                <th>이불빨래</th>
                <th>셔츠</th>
                <th>드라이</th>
                <th>개별빨래</th>
                <th>총 가격</th>
+               <th>결제 상태</th>
+               <th>결제</th>
             </tr>
          </thead>
          <tbody>
@@ -79,25 +79,37 @@ for(int i=0; i < size; i++){
     int dry = rbean.getDry();
     int care = rbean.getCare();
     int totalprice = rbean.getTotalprice();
+    int condition = rbean.getCondition();
  
 %>
 
    <tr>
-   
-      <td><%=num %></td>
-      <td><%=uid %></td>
-      <td><%=tel %></td>
-      <td>
+   	  <td>
       <a href="DetailReservation.jsp?num=<%=num %>">
-      [<%=postcode %>] <%=addr %> <%=detailaddr %>
+      	<%=num %>
       </a>
       </td>
+      <td><%=uid %></td>
       <td><%=daily %>개</td>
       <td><%=blanket %>개</td>
       <td><%=shirt %>개</td>
       <td><%=dry %>개</td>
       <td><%=care %>개</td>
       <td><%=totalprice %>원</td>
+      <td>
+      <%
+      	if (condition == 1) {
+      %>
+      	<p>결제완료</p>
+      <%
+      	} else {
+      %>
+      	<p>결제대기</p>
+      <%
+      	}
+      %>
+      </td>
+      <td><button type="button" class="btn btn-outline-secondary btn-sm">결제하기</button></td>
       
    </tr>
    
