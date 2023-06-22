@@ -40,12 +40,14 @@ public class ReservationDAO {
 	
 	
 	// 회원가입 메소드
-		public void insert(ReservationBean bean) {
+		public int insert(ReservationBean bean) {
+			int mynum = 0;
+			
 			getCon();
 			try {
 				
 				String sql = "insert into reservation values (num, ?, ? ,? ,?, ?, ?, ?, ?, 0, sysdate(), ?, ?, ?, ?, ?, ?, 0)";
-				pstmt = con.prepareStatement(sql);
+				pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 				pstmt.setString(1, bean.getUid());
 				pstmt.setString(2, bean.getUname());
 				pstmt.setString(3, bean.getTel());
@@ -61,11 +63,20 @@ public class ReservationDAO {
 				pstmt.setInt(13, bean.getCare());
 				pstmt.setInt(14, bean.getTotalprice());
 				pstmt.executeUpdate();
+				rs = pstmt.getGeneratedKeys();
+				
+				if(rs.next()) {
+					mynum = rs.getInt(1);
+					System.out.println(mynum);
+				}
+				
 				System.out.println(pstmt);
+				
 				con.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			return mynum;
 		}
 		
 		
@@ -191,7 +202,25 @@ public class ReservationDAO {
 			return res;
 		}
 		
-		
+		//session 저장
+		public int Total(String uid, int num) {
+			int totalprice = 0;
+			try {
+				getCon();
+				String sql = "select totalprice from reservation where uid = ? and num = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, uid);
+				pstmt.setInt(2, num);
+				rs = pstmt.executeQuery();
+				System.out.println(pstmt);
+				if(rs.next()) {
+					totalprice = rs.getInt("totalprice");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return totalprice;
+		}
 		
 		
 		

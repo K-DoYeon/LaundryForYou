@@ -27,6 +27,7 @@
 		Integer postcode = (Integer) session.getAttribute("postcode");
 		String addr = (String) session.getAttribute("addr");
 		String detailaddr = (String) session.getAttribute("detailaddr");
+		
 	%>
 	<div class="container-reser">
 		<form class="reservation-reser" name="reservaionForm" action="reservationProc.jsp" method="post">
