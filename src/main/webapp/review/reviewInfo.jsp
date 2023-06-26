@@ -162,8 +162,8 @@ i.fa-heart:hover{
 					<input type = "hidden" name = "readcount" id="readcount" />
 					<input type = "hidden" name = "replycount" id="replycount"/>
 					<input type = "hidden" name = "like" id="like" />
-				<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" value ="submit">수정</button>
-				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList" value = "submit">삭제</a></button>
+				<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" onclick="location.href='reviewUpdate.jsp?num=<%=bean.getNum() %>'">수정</button>
+				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList" onclick="location.href='reviewDelete.jsp?num=<%=bean.getNum() %>'">삭제</button>
 				<%
 					if(lresult){
 				%>
