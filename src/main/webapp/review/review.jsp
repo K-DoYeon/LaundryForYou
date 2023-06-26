@@ -64,6 +64,7 @@
                     <th scope="col" class="th-num">번호</th>
                     <th scope="col" class="th-title">제목</th>
                     <th scope="col" class="th-date">등록일</th>
+                    <th scope="col" class="th-date">추천 수</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -75,12 +76,57 @@
                     <td><%=bean.getNum() %></td>
                     <th><a href="reviewInfo.jsp?num=<%=bean.getNum()%>"><%=bean.getSubject() %></a></th>
                     <td><%=bean.getWdate() %></td>
+                    <td><%=bean.getLike_this() %></td>
                 </tr>
  <%
   		}
  %>
                 </tbody>
             </table>
+<%
+        if(cnt != 0){
+		int pageCount = cnt / pageSize + (cnt % pageSize == 0? 0:1);
+		int pageBlock = 5;
+		int startPage = ((currentPage - 1) / pageBlock) * pageBlock + 1;
+		int endPage = startPage + pageBlock - 1;
+		if(endPage > pageCount){
+			endPage = pageCount;
+		}
+%>
+	<div class="page txt-align active">
+		<div class="btn">
+		<%
+			if(startPage > pageBlock){
+		%>
+			<a href="review.jsp?pageNum=<%= startPage - pageBlock %>">
+				<span class="prv"><i class="fa-solid fa-angle-left"></i></span>
+			</a>
+		<%
+			}
+		%>
+			<div class="number">
+		<%
+			for(int i = startPage; i <= endPage; i++){
+		%>
+			<a class="number" href="review.jsp?pageNum=<%= i %>"><span><%= i %></span></a>
+		<%
+			}
+		%>
+		</div>
+		<%
+			if(endPage < pageCount){
+		%>
+			<a href="review.jsp?pageNum=<%= startPage + pageBlock %>">
+				<span class="nxt"><i class="fa-solid fa-angle-right"></i></span>
+			</a>
+		<%
+			}
+		%>
+	</div>
+	</div>
+<%
+	}
+%>
             <a href="reviewWrite.jsp" class="write-review">글쓰기</a>
         </div>
     </div>
