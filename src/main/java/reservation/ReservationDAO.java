@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
+import board.BoardBean;
+
 
 
 
@@ -368,6 +370,58 @@ public class ReservationDAO {
 	    	   
 	    	   return success;
 	    	}
+	    
+	    
+	 // search
+	    public ArrayList<ReservationBean> getSearch(String searchField, String searchText){
+			
+			ArrayList<ReservationBean> search = new ArrayList<ReservationBean>();
+			String sql = "select * from reservation where "+searchField.trim();
+			try {
+				if(searchText != null && !searchText.equals("")) {
+					sql +=" like '%"+searchText.trim()+ "%' order by num desc";
+				}
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					ReservationBean bean = new ReservationBean();
+					bean.setNum(rs.getInt(1));
+					bean.setUid(rs.getString(2));
+					bean.setUname(rs.getString(3));
+					bean.setTel(rs.getString(4));
+					bean.setPostcode(rs.getInt(5));
+					bean.setAddr(rs.getString(6));
+					bean.setDetailaddr(rs.getString(7));
+					bean.setComment(rs.getString(8));
+					bean.setSelectdate(rs.getString(9));
+					bean.setCount(rs.getInt(10));
+					bean.setWdate(rs.getString(11));
+					bean.setDaily(rs.getInt(12));
+					bean.setBlanket(rs.getInt(13));
+					bean.setShirt(rs.getInt(14));
+					bean.setDry(rs.getInt(15));
+					bean.setCare(rs.getInt(16));
+					bean.setTotalprice(rs.getInt(17));
+					bean.setCondition(rs.getInt(18));
+					
+					
+					search.add(bean);
+					//System.out.println(pstmt);
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return search;
+		}
+	    
+	    
+	  
+
+	    
+	 
+	    
+	    
 	    
 	  
 	}

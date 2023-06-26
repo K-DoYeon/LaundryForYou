@@ -1,7 +1,11 @@
+<%@page import="java.io.PrintWriter"%>
 <%@page import="reservation.ReservationBean"%>
 <%@page import="reservation.ReservationDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*, reservation.ReservationDAO " %>   
+    pageEncoding="UTF-8" import="java.util.*, reservation.ReservationDAO " %>  
+<%
+	request.setCharacterEncoding("UTF-8");
+%> 
 
 <jsp:useBean id="bean" class="reservation.ReservationBean" scope="page" />
 <jsp:useBean id="rdao" class="reservation.ReservationDAO" scope="page" />
@@ -100,8 +104,30 @@
                 </tr>
             </thead>
             <tbody>
-                <% for (int i = 0; i < size; i++) {
-                    ReservationBean rbean = (ReservationBean) data.elementAt(i);
+                <% 
+                String searchField = request.getParameter("searchField");
+                String searchText = request.getParameter("searchText");
+                ArrayList<ReservationBean> list = new ArrayList<ReservationBean>();
+                if (searchField != null && searchText != null) {
+                    list = rdao.getSearch(searchField.trim(), searchText.trim());
+                }
+                
+                if (list.size() == 0) {
+                    PrintWriter script = response.getWriter();
+                    script.println("<script>");
+                    script.println("alert('검색결과가 없습니다.')");
+                    script.println("history.back()");
+                    script.println("</script>");
+                }else{
+                	PrintWriter script = response.getWriter();
+                	script.println("<script>");
+                    script.println("alert('검색됨.')");
+                    script.println("</script>");
+                }
+				
+                
+                for (int i = 0; i < list.size(); i++) {
+                    ReservationBean rbean = list.get(i);
 
                     int num = rbean.getNum();
                     String username = rbean.getUname();

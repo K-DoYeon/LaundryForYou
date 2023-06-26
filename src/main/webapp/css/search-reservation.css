@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+.search-box{
+	width: 1300px;
+}
+
+.flex-select{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	height: 40px;
+}
+
+.search-submit{
+	width:50px;
+	border-radius: 5px;
+	border: none;
+	background: #58A3BC;
+	color: #fff;
+}
+
+.search-submit:hover{
+	background: #8ac4d0;
+}
+
+.w100{
+	width: 100px;
+	margin-right: 5px;
+}
+
+.w200{
+	width: 200px;
+	margin-right: 5px;
+}
+
