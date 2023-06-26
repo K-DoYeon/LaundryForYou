@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import ="review.ReviewBean, review.ReviewDAO, review.RCommentBean" %>
+<%@ page import ="review.ReviewBean, review.ReviewDAO, review.RCommentBean, likey.LikeyDAO, likey.LikeyDTO" %>
 <%@ page import="java.util.*"%>
 <%@ page import = "java.io.*" %>
 <%
@@ -29,7 +29,7 @@ reviewlist = rdao.getReviewList();
 	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" 
 	crossorigin="anonymous" />
 
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <title>Review Page</title>
 <%
 	int num = Integer.parseInt(request.getParameter("num").trim());
@@ -40,6 +40,11 @@ reviewlist = rdao.getReviewList();
 <%
 	String subject = bean.getSubject();
 	String uid = bean.getUid();
+	String loginid = (String) session.getAttribute("uid");
+	
+	LikeyDAO ldao = new LikeyDAO();
+	boolean lresult = ldao.countLike(loginid, subject);
+	System.out.println(lresult);
 %>
 <style>
 @font-face {
@@ -96,6 +101,27 @@ button a{
 input:read-only {
     background-color: #fff;
 }
+.mj-btn{
+	margin-top: 15px;
+	margin-bottom: 15px;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	
+}
+.mj-btn:focus{
+	outline: none;
+}
+.heart-emo{
+	font-color: 30px;
+}
+i.fa-heart{
+	color: #bc2222;
+}
+i.fa-heart:hover{
+	color: #fe3434;
+	transition: all 300ms;
+}
 </style>
 </head>
 <body>
@@ -113,6 +139,7 @@ input:read-only {
                <div>
                   <label for="reg_num"><%=bean.getNum() %> /</label>
                   <label for="reg_id"><%=bean.getUid() %></label>
+                  <input type="hidden" name="upass" value="<%=bean.getUpass() %>" />
                </div>
                <div>
                   <label for="reg_wdate"><%=bean.getWdate() %> /</label>
@@ -135,13 +162,28 @@ input:read-only {
 					<input type = "hidden" name = "readcount" id="readcount" />
 					<input type = "hidden" name = "replycount" id="replycount"/>
 					<input type = "hidden" name = "like" id="like" />
-				<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" value ="submit">수정</button>
-				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList" value = "submit">삭제</a></button>
+				<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" onclick="location.href='reviewUpdate.jsp?num=<%=bean.getNum() %>'">수정</button>
+				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList" onclick="location.href='reviewDelete.jsp?num=<%=bean.getNum() %>'">삭제</button>
+				<%
+					if(lresult){
+				%>
+				<form action="LikeCancel.jsp?num=<%= bean.getNum()%>" method="post">
+				<input type="hidden" name="subject" value="<%=bean.getSubject() %>" />
+				<input type="hidden" name="num" value="<%=bean.getNum() %>" />
+				<button type="submit" class="mj-btn"><span class="heart-emo"><i class="fa-solid fa-heart fa-xl"></i></span></button>
+				</form>
+				<%
+					}else{
+				%>
 				<form action="LikeAction.jsp?num=<%= bean.getNum()%>" method="post">
 				<input type="hidden" name="subject" value="<%=bean.getSubject() %>" />
 				<input type="hidden" name="num" value="<%=bean.getNum() %>" />
-				<button type="submit" onclick="return confirm('추천하시겠습니까?')" class="btn btn-sm choi-qna-btn">좋아요</button>
+				<button type="submit" class="mj-btn"><span class="heart-emo"><i class="fa-regular fa-heart fa-xl"></i></span></button>
 				</form>
+			</div>
+			<%
+					}
+			%>
 			</div>
 		
 

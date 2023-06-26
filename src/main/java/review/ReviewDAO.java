@@ -56,6 +56,71 @@ public class ReviewDAO {
 		}
 	   }
 	   
+	 //게시글 삭제
+	   public int deleteReview(int num, String upass) {
+			int result = -1;
+			getCon();
+			try {
+				String sql = "select upass from review where num=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, num);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					if(upass.equals(rs.getString("upass"))) {
+						String query = "delete from review where num=?";
+						pstmt=con.prepareStatement(query);
+						pstmt.setInt(1, num);
+						result = pstmt.executeUpdate();
+					}else {
+						//비밀번호 오류 시
+						result = 0;
+					}
+				}else {
+					//게시글 없을 시
+					return -1;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return result;
+		}
+	   
+	 //게시글 수정
+	   public int reviewUpdate (ReviewBean bean) {
+			int result = 0;
+			getCon();
+			try {
+				String sql = "select upass from review where num=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, bean.getNum());
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					if(bean.getUpass().equals(rs.getString("upass"))) {
+						//게시판에 글이 있으면 수정 가능
+						String qeury = "update review set content=? where num=?";
+						pstmt = con.prepareStatement(qeury);
+						pstmt.setString(1, bean.getContent());
+						pstmt.setInt(2, bean.getNum());
+						result = pstmt.executeUpdate();
+						System.out.println("게시글 수정 완료"+result);
+					}else {
+						//게시판 비밀번호가 다를 시
+						result = 0;
+					}
+				}else {
+					//게시판 글이 없을 시
+					result = -1;
+				}
+				System.out.println("게시글 수정 완료"+result);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return result;
+		}
+	   
+	   
 	   
 	// 모든 게시글을 리턴해주는 메소드 작성
 		public Vector<ReviewBean> getAllBoard() {
@@ -136,6 +201,7 @@ public class ReviewDAO {
 					bean.setSubject(rs.getString(4));
 					bean.setContent(rs.getString(5));
 					bean.setWdate(rs.getString(7));
+					bean.setLike_this(rs.getInt(10));
 					// bean.setReadCount(rs.getInt(5));
 					// bean.setReplyCount(rs.getInt(6));
 					
@@ -198,6 +264,7 @@ public class ReviewDAO {
 					  bean.setWdate(rs.getString(7)); 
 					  bean.setReadCount(rs.getInt(8));
 					  bean.setReplyCount(rs.getInt(9)); 
+					  bean.setLike_this(rs.getInt(10));
 					  } 
 				  System.out.println("게시글 읽기 연결 성공"); }
 			  catch (Exception e) { 
@@ -212,6 +279,27 @@ public class ReviewDAO {
 				pstmt = null;
 				try {
 					String sql = "UPDATE review SET like_this = like_this + 1 WHERE num = ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, num);
+					return pstmt.executeUpdate();
+				}catch(Exception e){
+					e.printStackTrace();
+				}finally {
+					try {
+						if(pstmt != null) pstmt.close();
+						if(con != null) con.close();
+					}catch(Exception e) {
+						e.printStackTrace();
+					}
+				}
+				return -1;
+			}
+			//좋아요 취소
+			public int delete(int num) {
+				getCon();
+				pstmt = null;
+				try {
+					String sql = "UPDATE review SET like_this = like_this - 1 WHERE num = ?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setInt(1, num);
 					return pstmt.executeUpdate();

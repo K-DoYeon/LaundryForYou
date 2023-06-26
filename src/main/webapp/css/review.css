@@ -195,3 +195,22 @@ section.notice {
   width: 1px;
   height: 1px;
 }
+.txt-align{
+	text-align: center;
+}
+.number{
+	margin-top: 20px;
+	font-size: 18px;
+	font-family: 'IMHyemin';
+}
+.number span{
+	display: inline-block;
+	padding: 5px 10px;
+	background: #efefef;
+	transition: all 0.2s;
+	margin-right: 5px;
+	border-radius: 5px;
+}
+.number span:hover{
+	background: #8AC4D0;
+}
