@@ -33,6 +33,12 @@
 		reviewlist = rdao.getReviewList(startRow, pageSize);
 	}
 %>
+<%
+	String uid = null;
+	if(session.getAttribute("uid") != null){
+		uid = (String)session.getAttribute("uid");
+	}
+%>
 <section class="notice">
   <div class="page-title">
         <div class="container">
@@ -128,9 +134,18 @@
 <%
 	}
 %>
+     <%
+      	if(uid == null){
+      %>
+     	<div>
+     	 	<a onclick = "return confirm('로그인 후 이용하실 수 있습니다.')" href="../user/login.jsp" class="write-review">글쓰기</a>
+      	</div>
+      	
+      <% }else{ %>
+     	 <div>
             <a href="reviewWrite.jsp" class="write-review">글쓰기</a>
-        </div>
-    </div>
+         </div>
+      <% } %>
 
 </section>
 </body>

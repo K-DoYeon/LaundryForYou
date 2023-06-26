@@ -3,7 +3,11 @@
 <%@ page import ="review.ReviewBean, review.ReviewDAO, review.RCommentBean, likey.LikeyDAO, likey.LikeyDTO" %>
 <%@ page import="java.util.*"%>
 <%@ page import = "java.io.*" %>
-
+<%
+ReviewDAO rdao = new ReviewDAO();
+ArrayList<ReviewBean> reviewlist = null;
+reviewlist = rdao.getReviewList();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,10 +20,7 @@
 		$("#form").submit();
 	});
 
-	 $(document).ready(function(){
-	        var replyContent = $("#content").val();  // textarea의 값을 가져옴
-	        $("#form input[name='replyContent']").val(replyContent);  // 숨겨진 input에 할당
-	    });
+	
 
 </script>
 <!-- Bootstrap CSS -->
@@ -44,6 +45,12 @@
 	LikeyDAO ldao = new LikeyDAO();
 	boolean lresult = ldao.countLike(loginid, subject);
 	System.out.println(lresult);
+%>
+<%
+	String bbsId = null;
+	if(session.getAttribute("bbsId") != null){
+		bbsId = (String)session.getAttribute("bbsID");
+	}
 %>
 <style>
 @font-face {
@@ -86,7 +93,9 @@ button a{
 }
 .justify{
 	justify-content : space-between;
-
+}
+.menu{
+   justify-content : space-between;
 }
 .review textarea{
 	resize : none;
@@ -151,7 +160,6 @@ i.fa-heart:hover{
 					<div class = "mb-3 mt-4 review-img">
 					<img src = "../imgs/<%=bean.getImg()%>" alt = "">
             	    <textarea class="form-control mt-3" rows="5" name="content" id="content" readonly><%=bean.getContent() %></textarea>
-            	   
             	    </div>
 				</div>
 					
@@ -184,8 +192,7 @@ i.fa-heart:hover{
 			<%
 					}
 			%>
-			</div>
-		
+			
 
 <!-- comment -->
 		
@@ -206,7 +213,7 @@ i.fa-heart:hover{
 			<textarea class="form-control" name="replyContent" rows="3" placeholder = "댓글을 입력해주세요"></textarea>
 					
 			<div class ="choi-qna">
-				<input type="submit" class="btn btn-sm choi-qna-btn" id="btnSave" value="등록">
+				<button type="submit" class="btn btn-sm choi-qna-btn mt-2" id="btnSave" value="등록" >등록</button>
 		    </div>
 		    </li>
 		</ul>
@@ -216,34 +223,38 @@ i.fa-heart:hover{
   
 	<table class="table table-striped"
 		style="text-align: center; border: 1px solid #dddddd;">
-			
+	
+				
 		<thead>
 			<tr>
+			<th colspan="3"
+					style="background-color: #eeeeeee; text-align: center;">댓글</th>
+						</tr>
 			<%
-				ReviewDAO rdao = new ReviewDAO();
-				ArrayList<RCommentBean> list = rdao.getList(bean.getNum());
+				
+				ArrayList<RCommentBean> list = dao.getList(bean.getNum());
 				for(int i = 0; i<list.size(); i++){
 				
 			%>
-				<th colspan="3"
-					style="background-color: #eeeeeee; text-align: center;">댓글</th>
-						</tr>
+				
 		</thead>
 			<tbody>
 				<tr>
-					<td style="text-align: left;"><%=list.get(i).getUid() %></td>
-					<td style="text-align: left;"><%=list.get(i).getWdate()%>
-					<a href="#" class="btn">수정</a>
-					<a href="#" class="btn ">삭제</a>
+					<td style="text-align: left;"><%=list.get(i).getUid() %></td>  
+					<td style = "text-align : center;"><%= list.get(i).getReplyContent() %></td>
+					<td style = "text-align: right;"><%=list.get(i).getWdate().substring(0,11) %>
+					<a href="#" class="btn ">대댓글</a>
+					<a onclick = "return confirm('정말로 삭제하시겠습니까?')" href="reviewCommentDelete.jsp?num=<%=bean.getNum()%>&bbsId=<%=list.get(i).getBbsId() %>" class="btn-del">삭제</a>
 					</td>
-					<td><%= list.get(i).getReplyContent() %></td>
+					
 				<% } %>
 				</tr>
 				
 			</tbody>
 	</table>				
 			
-			
+	</div>
+		
 	</article>
 </body>
 </html>
