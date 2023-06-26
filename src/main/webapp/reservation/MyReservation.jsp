@@ -54,10 +54,11 @@
 
 <link rel="stylesheet" href="../css/bootstrap.css" />
 <style>
-	input[type=text] {
+	input[type=text],input[type=number] {
 		border: 0;
 		outline: none;
-		width: 100px;
+		width: 59px;
+	
 	}
 	
 	td {
@@ -75,6 +76,8 @@
       총 예약 : <%=maxColumn %>건
    </div>
    <div class="row">
+   
+
       <table class="table  memberstbl">
          <thead>
             <tr>
@@ -92,6 +95,8 @@
             </tr>
          </thead>
          <tbody>
+         
+
 <%
 for(int i=0; i < size; i++){
     ReservationBean rbean = data.elementAt(i);
@@ -110,19 +115,19 @@ for(int i=0; i < size; i++){
     int condition = rbean.getCondition();
  
 %>
-<form action="">
+
    <tr>
+ 	<form action="paymentProc.jsp" method="post" name="payform"> 
    	  <td>
- 
       	 <input type="text" name="num" value="<%=num %>" readonly/>
 
       </td>
-      <td><input type="text" name="daily" value="<%=daily %>개" readonly /> </td>
-      <td><input type="text" name="blanket" value="<%=blanket %>개" readonly/> </td>
-      <td><input type="text" name="shirt" value="<%=shirt %>개" readonly/> </td>
-      <td><input type="text" name="dry" value="<%=dry %>개" readonly/> </td>
-      <td><input type="text" name="care" value="<%=care %>개" readonly/> </td>
-      <td><input type="text" name="totalprice" value="<%=totalprice %>원" readonly/> </td>
+      <td><input type="text" name="daily" value="<%=daily %>" readonly />개</td>
+      <td><input type="text" name="blanket" value="<%=blanket %>" readonly/>개 </td>
+      <td><input type="text" name="shirt" value="<%=shirt %>" readonly/>개 </td>
+      <td><input type="text" name="dry" value="<%=dry %>" readonly/>개 </td>
+      <td><input type="text" name="care" value="<%=care %>" readonly/>개 </td>
+      <td><input type="text" name="totalprice" value="<%=totalprice %>" readonly/>원 </td>
 
         <td><button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='DetailReservation.jsp?num=<%=num %>'">상세보기</button></td>
       <td>
@@ -138,26 +143,29 @@ for(int i=0; i < size; i++){
       	}
       %>
       </td>
-      <td><button type="button" class="btn btn-outline-secondary btn-sm">결제하기</button></td>
-      <td>
+      <td><button type="submit" class="btn btn-outline-secondary btn-sm">결제하기</button></td>
+ </form>
+      
+	<td>
       	<form method="post" action="">
          <input type="hidden" name="delete" value="<%=num %>">
          <button type="submit" class="btn btn-outline-danger btn-sm">예약취소</button>
-      </form>
+      	</form>
       </td>
       
       
    </tr>
-</form>
+
    
 <%
 }
-
-
 %>
+
          </tbody>
          
-      </table>
+ </table>
+ 
+
    </div> <!-- /row -->
    <div class="mt-3 mb-5 row ">
       <ul class="pagination justify-content-center mb-5">

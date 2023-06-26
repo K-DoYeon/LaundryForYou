@@ -1,13 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import ="review.ReviewBean, review.ReviewDAO, review.RCommentBean" %>
+<%@ page import ="review.ReviewBean, review.ReviewDAO, review.RCommentBean, likey.LikeyDAO, likey.LikeyDTO" %>
 <%@ page import="java.util.*"%>
 <%@ page import = "java.io.*" %>
-<%
-ReviewDAO rdao = new ReviewDAO();
-ArrayList<ReviewBean> reviewlist = null;
-reviewlist = rdao.getReviewList();
-%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +16,10 @@ reviewlist = rdao.getReviewList();
 		$("#form").submit();
 	});
 
-	
+	 $(document).ready(function(){
+	        var replyContent = $("#content").val();  // textarea의 값을 가져옴
+	        $("#form input[name='replyContent']").val(replyContent);  // 숨겨진 input에 할당
+	    });
 
 </script>
 <!-- Bootstrap CSS -->
@@ -29,7 +28,7 @@ reviewlist = rdao.getReviewList();
 	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" 
 	crossorigin="anonymous" />
 
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <title>Review Page</title>
 <%
 	int num = Integer.parseInt(request.getParameter("num").trim());
@@ -40,6 +39,11 @@ reviewlist = rdao.getReviewList();
 <%
 	String subject = bean.getSubject();
 	String uid = bean.getUid();
+	String loginid = (String) session.getAttribute("uid");
+	
+	LikeyDAO ldao = new LikeyDAO();
+	boolean lresult = ldao.countLike(loginid, subject);
+	System.out.println(lresult);
 %>
 <style>
 @font-face {
@@ -96,6 +100,27 @@ button a{
 input:read-only {
     background-color: #fff;
 }
+.mj-btn{
+	margin-top: 15px;
+	margin-bottom: 15px;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	
+}
+.mj-btn:focus{
+	outline: none;
+}
+.heart-emo{
+	font-color: 30px;
+}
+i.fa-heart{
+	color: #bc2222;
+}
+i.fa-heart:hover{
+	color: #fe3434;
+	transition: all 300ms;
+}
 </style>
 </head>
 <body>
@@ -113,6 +138,7 @@ input:read-only {
                <div>
                   <label for="reg_num"><%=bean.getNum() %> /</label>
                   <label for="reg_id"><%=bean.getUid() %></label>
+                  <input type="hidden" name="upass" value="<%=bean.getUpass() %>" />
                </div>
                <div>
                   <label for="reg_wdate"><%=bean.getWdate() %> /</label>
@@ -125,6 +151,7 @@ input:read-only {
 					<div class = "mb-3 mt-4 review-img">
 					<img src = "../imgs/<%=bean.getImg()%>" alt = "">
             	    <textarea class="form-control mt-3" rows="5" name="content" id="content" readonly><%=bean.getContent() %></textarea>
+            	   
             	    </div>
 				</div>
 					
@@ -135,52 +162,88 @@ input:read-only {
 					<input type = "hidden" name = "readcount" id="readcount" />
 					<input type = "hidden" name = "replycount" id="replycount"/>
 					<input type = "hidden" name = "like" id="like" />
-				<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" value ="submit">수정</button>
-				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList" value = "submit">삭제</a></button>
+				<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" onclick="location.href='reviewUpdate.jsp?num=<%=bean.getNum() %>'">수정</button>
+				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList" onclick="location.href='reviewDelete.jsp?num=<%=bean.getNum() %>'">삭제</button>
+				<%
+					if(lresult){
+				%>
+				<form action="LikeCancel.jsp?num=<%= bean.getNum()%>" method="post">
+				<input type="hidden" name="subject" value="<%=bean.getSubject() %>" />
+				<input type="hidden" name="num" value="<%=bean.getNum() %>" />
+				<button type="submit" class="mj-btn"><span class="heart-emo"><i class="fa-solid fa-heart fa-xl"></i></span></button>
+				</form>
+				<%
+					}else{
+				%>
 				<form action="LikeAction.jsp?num=<%= bean.getNum()%>" method="post">
 				<input type="hidden" name="subject" value="<%=bean.getSubject() %>" />
 				<input type="hidden" name="num" value="<%=bean.getNum() %>" />
-				<button type="submit" onclick="return confirm('추천하시겠습니까?')" class="btn btn-sm choi-qna-btn">좋아요</button>
+				<button type="submit" class="mj-btn"><span class="heart-emo"><i class="fa-regular fa-heart fa-xl"></i></span></button>
 				</form>
+			</div>
+			<%
+					}
+			%>
 			</div>
 		
 
 <!-- comment -->
 		
-<%
-	int commentnum = 0;
-	if(request.getParameter("commentnum") != null)
-		commentnum = Integer.parseInt(request.getParameter("commentnum"));
-		
-		
-%>
 <div class="card mb-2">
 	<div class="card-header bg-light">
 	        <i class="fa fa-comment fa"></i> COMMENT
 	</div>
-	
+	<form method = "post" action = "reviewCommentProc.jsp" name = "form" id = "form">
+	<input type ="hidden" name = "ref" value=<%=bean.getNum() %>>
 	<div class="card-body">
 		<ul class="list-group list-group-flush">
 		    <li class="list-group-item">
 			<div class="form-inline mb-2">
-			<%
-				ArrayList<RCommentBean> list = dao.getList(num);
-				for(int i = 0; i<list.size(); i++){
-							
-			%>
-				<label for="replyId"><i class="fa fa-user-circle-o fa-2x"></i></label>
-				<input type="text" class="form-control ml-2" placeholder="<%=list.get(i).getUid() %>" id="replyId">
-				<label for="replyPassword" class="ml-4"><i class="fa fa-unlock-alt fa-2x"></i></label>
-				<input type="password" class="form-control ml-2" placeholder="<%=list.get(i).getUpass()%>" id="replyPassword">
-			<% } %>
-			<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+				<input type="text" class="form-control ml-2" placeholder="<%=bean.getUid() %>" id="uid" readonly />
+				<input type="password" class="form-control ml-2" placeholder="<%=bean.getUpass()%>" id="upass" readonly/>
 			</div>
-			<button type="button" class="btn choi-qna-btn mt-3" onClick="javascript:addReply();">댓글 등록</button>
+
+			<textarea class="form-control" name="replyContent" rows="3" placeholder = "댓글을 입력해주세요"></textarea>
+					
+			<div class ="choi-qna">
+				<input type="submit" class="btn btn-sm choi-qna-btn" id="btnSave" value="등록">
+		    </div>
 		    </li>
 		</ul>
 	</div>
-
-</div>
+  </form>
+  </div>
+  
+	<table class="table table-striped"
+		style="text-align: center; border: 1px solid #dddddd;">
+			
+		<thead>
+			<tr>
+			<%
+				ReviewDAO rdao = new ReviewDAO();
+				ArrayList<RCommentBean> list = rdao.getList(bean.getNum());
+				for(int i = 0; i<list.size(); i++){
+				
+			%>
+				<th colspan="3"
+					style="background-color: #eeeeeee; text-align: center;">댓글</th>
+						</tr>
+		</thead>
+			<tbody>
+				<tr>
+					<td style="text-align: left;"><%=list.get(i).getUid() %></td>
+					<td style="text-align: left;"><%=list.get(i).getWdate()%>
+					<a href="#" class="btn">수정</a>
+					<a href="#" class="btn ">삭제</a>
+					</td>
+					<td><%= list.get(i).getReplyContent() %></td>
+				<% } %>
+				</tr>
+				
+			</tbody>
+	</table>				
+			
+			
 	</article>
 </body>
 </html>

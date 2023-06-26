@@ -56,6 +56,71 @@ public class ReviewDAO {
 		}
 	   }
 	   
+	 //게시글 삭제
+	   public int deleteReview(int num, String upass) {
+			int result = -1;
+			getCon();
+			try {
+				String sql = "select upass from review where num=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, num);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					if(upass.equals(rs.getString("upass"))) {
+						String query = "delete from review where num=?";
+						pstmt=con.prepareStatement(query);
+						pstmt.setInt(1, num);
+						result = pstmt.executeUpdate();
+					}else {
+						//비밀번호 오류 시
+						result = 0;
+					}
+				}else {
+					//게시글 없을 시
+					return -1;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return result;
+		}
+	   
+	 //게시글 수정
+	   public int reviewUpdate (ReviewBean bean) {
+			int result = 0;
+			getCon();
+			try {
+				String sql = "select upass from review where num=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, bean.getNum());
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					if(bean.getUpass().equals(rs.getString("upass"))) {
+						//게시판에 글이 있으면 수정 가능
+						String qeury = "update review set content=? where num=?";
+						pstmt = con.prepareStatement(qeury);
+						pstmt.setString(1, bean.getContent());
+						pstmt.setInt(2, bean.getNum());
+						result = pstmt.executeUpdate();
+						System.out.println("게시글 수정 완료"+result);
+					}else {
+						//게시판 비밀번호가 다를 시
+						result = 0;
+					}
+				}else {
+					//게시판 글이 없을 시
+					result = -1;
+				}
+				System.out.println("게시글 수정 완료"+result);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return result;
+		}
+	   
+	   
 	   
 	// 모든 게시글을 리턴해주는 메소드 작성
 		public Vector<ReviewBean> getAllBoard() {
@@ -136,6 +201,7 @@ public class ReviewDAO {
 					bean.setSubject(rs.getString(4));
 					bean.setContent(rs.getString(5));
 					bean.setWdate(rs.getString(7));
+					bean.setLike_this(rs.getInt(10));
 					// bean.setReadCount(rs.getInt(5));
 					// bean.setReplyCount(rs.getInt(6));
 					
@@ -198,6 +264,7 @@ public class ReviewDAO {
 					  bean.setWdate(rs.getString(7)); 
 					  bean.setReadCount(rs.getInt(8));
 					  bean.setReplyCount(rs.getInt(9)); 
+					  bean.setLike_this(rs.getInt(10));
 					  } 
 				  System.out.println("게시글 읽기 연결 성공"); }
 			  catch (Exception e) { 
@@ -227,46 +294,50 @@ public class ReviewDAO {
 				}
 				return -1;
 			}
-	
-			
-	/********************** 리뷰 댓글 ***********************/
-			
-			public int getNext() {
+			//좋아요 취소
+			public int delete(int num) {
 				getCon();
+				pstmt = null;
 				try {
-					String sql = "select num from board order by num desc";
-					pstmt=con.prepareStatement(sql);
-					rs = pstmt.executeQuery();
-					
-					if(rs.next()) {
-						System.out.println(rs.getInt(1)); //select문에서 첫번쨰 값
-						return rs.getInt(1)+1;	//현재 게시글 갯수 +1 반환
-					}
-					return 1;
-				} catch (Exception e) {
+					String sql = "UPDATE review SET like_this = like_this - 1 WHERE num = ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, num);
+					return pstmt.executeUpdate();
+				}catch(Exception e){
 					e.printStackTrace();
+				}finally {
+					try {
+						if(pstmt != null) pstmt.close();
+						if(con != null) con.close();
+					}catch(Exception e) {
+						e.printStackTrace();
+					}
 				}
 				return -1;
 			}
-		//게시글 
+	
 			
-			public RCommentBean getRCommentnum(int commentnum) {
-				getCon();
+	/********************** 리뷰 댓글 ***********************/
+			//ref 게시글 번호를 받아옴
+			public RCommentBean getBbsId(int ref) {
+				
+				String sql = "select*from review_comment where ref = ?";
 				try {
-					String sql = "select*from review_comment where commentnum=?";
 					pstmt = con.prepareStatement(sql);
-					pstmt.setInt(1, commentnum);
+					pstmt.setInt(1, ref);
+					
 					rs = pstmt.executeQuery();
 					
 					while(rs.next()) {
 						RCommentBean bean = new RCommentBean();
-						bean.setCommentnum(rs.getInt(1));
-						bean.setUid(rs.getString(2));
-						bean.setUpass(rs.getString(3));
-						bean.setContent(rs.getString(4));
-						bean.setWdate(rs.getString(5));
-						bean.setRef(rs.getInt(6));
-						bean.setCommentAvailable(rs.getString(7));
+						
+						bean.setBbsId(rs.getInt(1));
+						bean.setReplyId(rs.getInt(2));
+						bean.setReplyContent(rs.getString(3));
+						bean.setUid(rs.getString(4));
+						bean.setReplyAvailable(rs.getInt(5));
+						bean.setWdate(rs.getString(6));
+						bean.setRef(rs.getInt(7));
 						
 						return bean;
 					}
@@ -276,15 +347,44 @@ public class ReviewDAO {
 				return null;
 			}
 			
-			public int write(String content, String uid, String upass, int ref) {
+			
+			public ArrayList<RCommentBean> getList(int ref){
+				getCon();
+				String sql = "select*from review_comment where ref = ? and replyAvailable = 1";
+				ArrayList<RCommentBean> list = new ArrayList<RCommentBean>();
+				
+				try {
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, ref);
+					rs = pstmt.executeQuery();
+					
+					while(rs.next()) {
+						RCommentBean bean = new RCommentBean();
+						bean.setBbsId(rs.getInt(1));
+						bean.setReplyId(rs.getInt(2));
+						bean.setReplyContent(rs.getString(3));
+						bean.setUid(rs.getString(4));
+						bean.setReplyAvailable(rs.getInt(5));
+						bean.setWdate(rs.getString(6));
+						bean.setRef(rs.getInt(7));
+						
+						list.add(bean);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				return list;
+			}
+						
+			
+			public int write(String replyContent, String uid, int ref) {
 				getCon();
 				try {
-					String sql = "insert into review_comment values(commentid,?,?,?,sysdate(),0, ?)";
+					String sql = "insert into review_comment values(bbsId,1,?,?,1,sysdate(),?)";
 					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, uid);
-					pstmt.setString(2, upass);
-					pstmt.setString(3, content);
-					pstmt.setInt(4, ref);
+					pstmt.setString(1, replyContent);
+					pstmt.setString(2, uid);
+					pstmt.setInt(3, ref);
 					System.out.println(pstmt);
 					return pstmt.executeUpdate();
 				} catch (Exception e) {
@@ -293,64 +393,35 @@ public class ReviewDAO {
 				return -1;
 			}
 			
-			public ArrayList<RCommentBean> getList(int num){
-				getCon();
-				String sql = "select*from review_comment where num=? and commentAvailable=1 order by num desc limit 10";
-				ArrayList<RCommentBean> list = new ArrayList<RCommentBean>();
-				try {
-					pstmt = con.prepareStatement(sql);
-					pstmt.setInt(1, num);
-					rs = pstmt.executeQuery();
-					
-					while(rs.next()) {
-						RCommentBean bean = new RCommentBean();
-						bean.setCommentnum(rs.getInt(1));
-						bean.setUid(rs.getString(2));
-						bean.setUpass(rs.getString(3));
-						bean.setContent(rs.getString(4));
-						bean.setWdate(rs.getString(5));
-						bean.setRef(rs.getInt(6));
-						bean.setCommentAvailable(rs.getString(7));
-						list.add(bean);
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				return list;
-			}
-		
 			
-			public RCommentBean getRComment(int commentnum) {
+			public RCommentBean getComment(int bbsId) {
 				getCon();
 				try {
-					String sql = "select*from review_comment where num = ?";
+					String sql = "select*from review_comment where bbsId =? ";
 					pstmt = con.prepareStatement(sql);
-					pstmt.setInt(1, commentnum);
+					pstmt.setInt(1, bbsId);
 					rs = pstmt.executeQuery();
 					
 					System.out.println(pstmt);
 					
 					while(rs.next()) {
-						RCommentBean rcomment = new RCommentBean();
-						rcomment.setCommentnum(rs.getInt(1));
-						rcomment.setUid(rs.getString(2));
-						rcomment.setUpass(rs.getString(3));
-						rcomment.setContent(rs.getString(4));
-						rcomment.setWdate(rs.getString(5));
-						rcomment.setRef(rs.getInt(6));
-						rcomment.setCommentAvailable(rs.getString(7));
+						RCommentBean rdao = new RCommentBean();
+						rdao.setBbsId(rs.getInt(1));
+						rdao.setReplyId(rs.getInt(2));
+						rdao.setReplyContent(rs.getString(3));
+						rdao.setUid(rs.getString(4));
+						rdao.setReplyAvailable(rs.getInt(5));
+						rdao.setWdate(rs.getString(6));
+						rdao.setRef(rs.getInt(7));
 						
-						return rcomment;
+						return rdao;
+						
 					}
-					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 				return null;
 			}
-				
-			
-			
 			
 	}
 

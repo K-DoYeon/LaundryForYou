@@ -44,4 +44,41 @@ public class LikeyDAO {
 		   return -1;
 	   }
 	   
-}
+	   public int delete(String uid, String subject) {
+		   getCon();
+		   String sql = "delete from likey where userid = ? and subject = ?";
+		   try {
+			   pstmt = con.prepareStatement(sql);
+			   pstmt.setString(1, uid);
+			   pstmt.setString(2, subject);
+			   return pstmt.executeUpdate();
+		   }catch(Exception e) {
+			   e.printStackTrace();
+		   }
+		   return -1;
+	   }
+	   
+	   
+	   
+	   public boolean countLike(String uid, String subject) {
+		         
+		         getCon();
+		         
+		         try {
+		             LikeyDTO ldto = new LikeyDTO(uid, subject);
+		             String sql = "SELECT * FROM likey WHERE userid = ? AND subject = ?";
+		             pstmt = con.prepareStatement(sql);
+		             pstmt.setString(1, ldto.getUserID());
+		             pstmt.setString(2, ldto.getSubject());
+		             rs = pstmt.executeQuery();
+		             if (rs.next()) {
+		                 System.out.println(rs);
+		                 return true;
+		             }
+		         } catch (Exception e) {
+		             e.printStackTrace();
+		         }
+				return false;
+	   
+	   		}
+	   }
