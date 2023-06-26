@@ -67,10 +67,10 @@ Integer totalprice = (Integer) session.getAttribute("totalprice");
                 //성공시 이동할 페이지
                location.href='<%=request.getContextPath()%>/user/MyReservation.jsp?msg='+msg;
             } else {
-                msg = '결제에 실패하였습니다.';
-                msg += '에러내용 : ' + rsp.error_msg;
+                msg = '결제에 실패했습니다';
+                msg += ' 에러내용 : ' + rsp.error_msg;
                 //실패시 이동할 페이지
-                <%-- ocation.href="<%=request.getContextPath()%>/main/main.jsp"; --%>
+                location.href="<%=request.getContextPath()%>/reservation/MyReservation.jsp";
                 alert(msg);
             }
         });

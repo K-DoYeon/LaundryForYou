@@ -57,7 +57,8 @@
 	input[type=text],input[type=number] {
 		border: 0;
 		outline: none;
-		width: 100px;
+		width: 59px;
+	
 	}
 	
 	td {
@@ -116,18 +117,17 @@ for(int i=0; i < size; i++){
 %>
 
    <tr>
- 	<form action="paymentProc.jsp" method="post"> 
+ 	<form action="paymentProc.jsp" method="post" name="payform"> 
    	  <td>
- 
       	 <input type="text" name="num" value="<%=num %>" readonly/>
 
       </td>
-      <td><input type="text" name="daily" value="<%=daily %>개" readonly /> </td>
-      <td><input type="text" name="blanket" value="<%=blanket %>개" readonly/> </td>
-      <td><input type="text" name="shirt" value="<%=shirt %>개" readonly/> </td>
-      <td><input type="text" name="dry" value="<%=dry %>개" readonly/> </td>
-      <td><input type="text" name="care" value="<%=care %>개" readonly/> </td>
-      <td><input type="text" name="totalprice" value="<%=totalprice %>원" readonly/> </td>
+      <td><input type="text" name="daily" value="<%=daily %>" readonly />개</td>
+      <td><input type="text" name="blanket" value="<%=blanket %>" readonly/>개 </td>
+      <td><input type="text" name="shirt" value="<%=shirt %>" readonly/>개 </td>
+      <td><input type="text" name="dry" value="<%=dry %>" readonly/>개 </td>
+      <td><input type="text" name="care" value="<%=care %>" readonly/>개 </td>
+      <td><input type="text" name="totalprice" value="<%=totalprice %>" readonly/>원 </td>
 
         <td><button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='DetailReservation.jsp?num=<%=num %>'">상세보기</button></td>
       <td>

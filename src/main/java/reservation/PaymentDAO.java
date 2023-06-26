@@ -35,6 +35,7 @@ public class PaymentDAO {
 		public void insert(PaymentBean bean) {	
 			getCon();
 			try {
+				
 				String sql = "insert into pay values (?,sysdate(), ?, ?, ?, ?, ?, ?)";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, bean.getNum());
@@ -52,6 +53,24 @@ public class PaymentDAO {
 				e.printStackTrace();
 				System.out.println("pay값 안들어감");
 			}
+		}
+		
+		public int Total(int num) {
+			int totalprice = 0;
+			try {
+				getCon();
+				String sql = "select totalprice from pay where num = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, num);
+				rs = pstmt.executeQuery();
+				System.out.println(pstmt);
+				if(rs.next()) {
+					totalprice = rs.getInt("totalprice");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return totalprice;
 		}
 
 }
