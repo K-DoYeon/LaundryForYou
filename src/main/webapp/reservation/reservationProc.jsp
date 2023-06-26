@@ -28,7 +28,7 @@
 	session.setAttribute("totalprice", totalprice);
 
 	
-	response.sendRedirect("payment.jsp");
+	response.sendRedirect("../user/MyReservation.jsp");
 %>
 </body>
 </html>

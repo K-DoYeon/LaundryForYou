@@ -54,7 +54,7 @@
 
 <link rel="stylesheet" href="../css/bootstrap.css" />
 <style>
-	input[type=text] {
+	input[type=text],input[type=number] {
 		border: 0;
 		outline: none;
 		width: 100px;
@@ -75,6 +75,8 @@
       총 예약 : <%=maxColumn %>건
    </div>
    <div class="row">
+   
+
       <table class="table  memberstbl">
          <thead>
             <tr>
@@ -92,6 +94,8 @@
             </tr>
          </thead>
          <tbody>
+         
+
 <%
 for(int i=0; i < size; i++){
     ReservationBean rbean = data.elementAt(i);
@@ -110,8 +114,9 @@ for(int i=0; i < size; i++){
     int condition = rbean.getCondition();
  
 %>
-<form action="">
+
    <tr>
+ 	<form action="paymentProc.jsp" method="post"> 
    	  <td>
  
       	 <input type="text" name="num" value="<%=num %>" readonly/>
@@ -138,26 +143,29 @@ for(int i=0; i < size; i++){
       	}
       %>
       </td>
-      <td><button type="button" class="btn btn-outline-secondary btn-sm">결제하기</button></td>
-      <td>
+      <td><button type="submit" class="btn btn-outline-secondary btn-sm">결제하기</button></td>
+ </form>
+      
+	<td>
       	<form method="post" action="">
          <input type="hidden" name="delete" value="<%=num %>">
          <button type="submit" class="btn btn-outline-danger btn-sm">예약취소</button>
-      </form>
+      	</form>
       </td>
       
       
    </tr>
-</form>
+
    
 <%
 }
-
-
 %>
+
          </tbody>
          
-      </table>
+ </table>
+ 
+
    </div> <!-- /row -->
    <div class="mt-3 mb-5 row ">
       <ul class="pagination justify-content-center mb-5">
