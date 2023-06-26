@@ -16,10 +16,10 @@
 		$("#form").submit();
 	});
 
-	 $(document).ready(function(){
-	        var replyContent = $("#content").val();  // textarea의 값을 가져옴
-	        $("#form input[name='replyContent']").val(replyContent);  // 숨겨진 input에 할당
-	    });
+	$(document).on('click', '#btnSave', function(e){
+		e.preventDefault();	
+		$("#form").submit();
+	});
 
 </script>
 <!-- Bootstrap CSS -->
