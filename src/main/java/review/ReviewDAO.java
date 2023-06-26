@@ -297,7 +297,9 @@ public class ReviewDAO {
 					pstmt.setString(1, replyContent);
 					pstmt.setString(2, uid);
 					pstmt.setInt(3, ref);
+					
 					System.out.println(pstmt);
+					
 					return pstmt.executeUpdate();
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -333,6 +335,21 @@ public class ReviewDAO {
 					e.printStackTrace();
 				}
 				return null;
+			}
+			
+			//댓글 삭제
+			public int delete(int bbsId) {
+				getCon();
+				try {
+					String sql = "delete from review_comment where bbsId =?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, bbsId);
+					
+					return pstmt.executeUpdate();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				return -1;
 			}
 			
 	}

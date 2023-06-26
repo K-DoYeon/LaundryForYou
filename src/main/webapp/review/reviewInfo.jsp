@@ -3,6 +3,9 @@
 <%@ page import ="review.ReviewBean, review.ReviewDAO, review.RCommentBean" %>
 <%@ page import="java.util.*"%>
 <%@ page import = "java.io.*" %>
+<%
+    request.setCharacterEncoding("UTF-8");
+%>
 
 <!DOCTYPE html>
 <html>
@@ -40,6 +43,12 @@
 	String subject = bean.getSubject();
 	String uid = bean.getUid();
 %>
+<%
+	String bbsId = null;
+	if(session.getAttribute("bbsId") != null){
+		bbsId = (String)session.getAttribute("bbsID");
+	}
+%>
 <style>
 @font-face {
     font-family: 'IM_Hyemin-Bold';
@@ -65,19 +74,26 @@ button a{
 	color : #fff;
 	border : none;
 }
+button a:hover{
+   color : #fff;
+   text-decoration:none;
+}
 .choi-qna{
 	text-align : right;
 }
 .choi-qna-btn{
-	background-color : #58A3BC;
+	background : #58A3BC;
 	color : #fff;
 	font-family:  'SUITE-Regular';
-	text-align : right;
+
 }
 .choi-qna-btn:hover{
 	background-color : #3E83A8;
 	color : #fff;
 	font-family:  'SUITE-Regular';	
+}
+.choi-qna>input{
+	background : #58A3BC;
 }
 .justify{
 	justify-content : space-between;
@@ -94,6 +110,14 @@ button a{
 }
 input:read-only {
     background-color: #fff;
+}
+.menu{
+   justify-content : space-between;
+}
+.btn-comment{
+	margin-top : 10px;
+	padding : 5px 8ppx;
+	background-color : #58A3BC;
 }
 </style>
 </head>
@@ -137,6 +161,8 @@ input:read-only {
 					<input type = "hidden" name = "like" id="like" />
 				<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" value ="submit">수정</button>
 				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList" value = "submit">삭제</a></button>
+				
+				
 				<form action="LikeAction.jsp?num=<%= bean.getNum()%>" method="post">
 				<input type="hidden" name="subject" value="<%=bean.getSubject() %>" />
 				<input type="hidden" name="num" value="<%=bean.getNum() %>" />
@@ -164,7 +190,7 @@ input:read-only {
 			<textarea class="form-control" name="replyContent" rows="3" placeholder = "댓글을 입력해주세요"></textarea>
 					
 			<div class ="choi-qna">
-				<input type="submit" class="btn btn-sm choi-qna-btn" id="btnSave" value="등록">
+				<button type="submit" class="btn btn-sm choi-qna-btn btn-comment" id="btnSave" value="등록" >등록</button>
 		    </div>
 		    </li>
 		</ul>
@@ -174,27 +200,30 @@ input:read-only {
   
 	<table class="table table-striped"
 		style="text-align: center; border: 1px solid #dddddd;">
-			
+	
+				
 		<thead>
 			<tr>
+			<th colspan="3"
+					style="background-color: #eeeeeee; text-align: center;">댓글</th>
+						</tr>
 			<%
 				ReviewDAO rdao = new ReviewDAO();
 				ArrayList<RCommentBean> list = rdao.getList(bean.getNum());
 				for(int i = 0; i<list.size(); i++){
 				
 			%>
-				<th colspan="3"
-					style="background-color: #eeeeeee; text-align: center;">댓글</th>
-						</tr>
+				
 		</thead>
 			<tbody>
 				<tr>
-					<td style="text-align: left;"><%=list.get(i).getUid() %></td>
-					<td style="text-align: left;"><%=list.get(i).getWdate()%>
-					<a href="#" class="btn">수정</a>
-					<a href="#" class="btn ">삭제</a>
+					<td style="text-align: left;"><%=list.get(i).getUid() %></td>  
+					<td style = "text-align : center;"><%= list.get(i).getReplyContent() %></td>
+					<td style = "text-align: right;"><%=list.get(i).getWdate().substring(0,11) %>
+					<a href="#" class="btn ">대댓글</a>
+					<a onclick = "return confirm('정말로 삭제하시겠습니까?')" href="reviewCommentDelete.jsp?num=<%=bean.getNum()%>&bbsId=<%=list.get(i).getBbsId() %>" class="btn-del">삭제</a>
 					</td>
-					<td><%= list.get(i).getReplyContent() %></td>
+					
 				<% } %>
 				</tr>
 				
