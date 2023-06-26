@@ -3,11 +3,7 @@
 <%@ page import ="review.ReviewBean, review.ReviewDAO, review.RCommentBean, likey.LikeyDAO, likey.LikeyDTO" %>
 <%@ page import="java.util.*"%>
 <%@ page import = "java.io.*" %>
-<%
-ReviewDAO rdao = new ReviewDAO();
-ArrayList<ReviewBean> reviewlist = null;
-reviewlist = rdao.getReviewList();
-%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +16,10 @@ reviewlist = rdao.getReviewList();
 		$("#form").submit();
 	});
 
-	
+	 $(document).ready(function(){
+	        var replyContent = $("#content").val();  // textarea의 값을 가져옴
+	        $("#form input[name='replyContent']").val(replyContent);  // 숨겨진 input에 할당
+	    });
 
 </script>
 <!-- Bootstrap CSS -->
@@ -152,6 +151,7 @@ i.fa-heart:hover{
 					<div class = "mb-3 mt-4 review-img">
 					<img src = "../imgs/<%=bean.getImg()%>" alt = "">
             	    <textarea class="form-control mt-3" rows="5" name="content" id="content" readonly><%=bean.getContent() %></textarea>
+            	   
             	    </div>
 				</div>
 					
@@ -189,40 +189,61 @@ i.fa-heart:hover{
 
 <!-- comment -->
 		
-<%
-	int commentnum = 0;
-	if(request.getParameter("commentnum") != null)
-		commentnum = Integer.parseInt(request.getParameter("commentnum"));
-		
-		
-%>
 <div class="card mb-2">
 	<div class="card-header bg-light">
 	        <i class="fa fa-comment fa"></i> COMMENT
 	</div>
-	
+	<form method = "post" action = "reviewCommentProc.jsp" name = "form" id = "form">
+	<input type ="hidden" name = "ref" value=<%=bean.getNum() %>>
 	<div class="card-body">
 		<ul class="list-group list-group-flush">
 		    <li class="list-group-item">
 			<div class="form-inline mb-2">
-			<%
-				ArrayList<RCommentBean> list = dao.getList(num);
-				for(int i = 0; i<list.size(); i++){
-							
-			%>
-				<label for="replyId"><i class="fa fa-user-circle-o fa-2x"></i></label>
-				<input type="text" class="form-control ml-2" placeholder="<%=list.get(i).getUid() %>" id="replyId">
-				<label for="replyPassword" class="ml-4"><i class="fa fa-unlock-alt fa-2x"></i></label>
-				<input type="password" class="form-control ml-2" placeholder="<%=list.get(i).getUpass()%>" id="replyPassword">
-			<% } %>
-			<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+				<input type="text" class="form-control ml-2" placeholder="<%=bean.getUid() %>" id="uid" readonly />
+				<input type="password" class="form-control ml-2" placeholder="<%=bean.getUpass()%>" id="upass" readonly/>
 			</div>
-			<button type="button" class="btn choi-qna-btn mt-3" onClick="javascript:addReply();">댓글 등록</button>
+
+			<textarea class="form-control" name="replyContent" rows="3" placeholder = "댓글을 입력해주세요"></textarea>
+					
+			<div class ="choi-qna">
+				<input type="submit" class="btn btn-sm choi-qna-btn" id="btnSave" value="등록">
+		    </div>
 		    </li>
 		</ul>
 	</div>
-
-</div>
+  </form>
+  </div>
+  
+	<table class="table table-striped"
+		style="text-align: center; border: 1px solid #dddddd;">
+			
+		<thead>
+			<tr>
+			<%
+				ReviewDAO rdao = new ReviewDAO();
+				ArrayList<RCommentBean> list = rdao.getList(bean.getNum());
+				for(int i = 0; i<list.size(); i++){
+				
+			%>
+				<th colspan="3"
+					style="background-color: #eeeeeee; text-align: center;">댓글</th>
+						</tr>
+		</thead>
+			<tbody>
+				<tr>
+					<td style="text-align: left;"><%=list.get(i).getUid() %></td>
+					<td style="text-align: left;"><%=list.get(i).getWdate()%>
+					<a href="#" class="btn">수정</a>
+					<a href="#" class="btn ">삭제</a>
+					</td>
+					<td><%= list.get(i).getReplyContent() %></td>
+				<% } %>
+				</tr>
+				
+			</tbody>
+	</table>				
+			
+			
 	</article>
 </body>
 </html>

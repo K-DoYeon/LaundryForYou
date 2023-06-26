@@ -1,20 +1,35 @@
 package review;
 
 public class RCommentBean {
-	private int commentnum;
+	
+	
+	private int bbsId;
+	private int replyId;
+	private String replyContent;
 	private String uid;
-	private String upass;
-	private String content;
+	private int replyAvailable;
 	private String wdate;
 	private int ref;
-	private String commentAvailable;
 	
 	
-	public int getCommentnum() {
-		return commentnum;
+	
+	public int getBbsId() {
+		return bbsId;
 	}
-	public void setCommentnum(int commentnum) {
-		this.commentnum = commentnum;
+	public void setBbsId(int bbsId) {
+		this.bbsId = bbsId;
+	}
+	public int getReplyId() {
+		return replyId;
+	}
+	public void setReplyId(int replyId) {
+		this.replyId = replyId;
+	}
+	public String getReplyContent() {
+		return replyContent;
+	}
+	public void setReplyContent(String replyContent) {
+		this.replyContent = replyContent;
 	}
 	public String getUid() {
 		return uid;
@@ -22,17 +37,11 @@ public class RCommentBean {
 	public void setUid(String uid) {
 		this.uid = uid;
 	}
-	public String getUpass() {
-		return upass;
+	public int getReplyAvailable() {
+		return replyAvailable;
 	}
-	public void setUpass(String upass) {
-		this.upass = upass;
-	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setReplyAvailable(int replyAvailable) {
+		this.replyAvailable = replyAvailable;
 	}
 	public String getWdate() {
 		return wdate;
@@ -46,12 +55,6 @@ public class RCommentBean {
 	public void setRef(int ref) {
 		this.ref = ref;
 	}
-	public String getCommentAvailable() {
-		return commentAvailable;
-	}
-	public void setCommentAvailable(String commentAvailable) {
-		this.commentAvailable = commentAvailable;
-	}
-		
+	
 	
 }
