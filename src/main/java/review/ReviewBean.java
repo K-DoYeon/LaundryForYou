@@ -10,6 +10,7 @@ public class ReviewBean {
 	private String wdate;
 	private int readCount;
 	private int replyCount;
+	private int like_this;
 	
 	public int getNum() {
 		return num;
@@ -64,6 +65,12 @@ public class ReviewBean {
 	}
 	public void setReplyCount(int replyCount) {
 		this.replyCount = replyCount;
+	}
+	public int getLike_this() {
+		return like_this;
+	}
+	public void setLike_this(int like_this) {
+		this.like_this = like_this;
 	}
 	
 	
