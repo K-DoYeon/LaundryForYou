@@ -16,7 +16,7 @@
 	ReviewDAO dao = new ReviewDAO();
 	bean.setBbsId(Integer.parseInt(request.getParameter("bbsId")));
 	
-	int result = dao.delete(bean.getBbsId());
+	int result = dao.commentDelete(bean.getBbsId());
 	if(result == -1){
 		PrintWriter script = response.getWriter();
 		script.println("<script>");

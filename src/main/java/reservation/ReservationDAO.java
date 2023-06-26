@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
+import board.BoardBean;
+
 
 
 
@@ -40,12 +42,14 @@ public class ReservationDAO {
 	
 	
 	// 회원가입 메소드
-		public void insert(ReservationBean bean) {
+		public int insert(ReservationBean bean) {
+			int mynum = 0;
+			
 			getCon();
 			try {
 				
 				String sql = "insert into reservation values (num, ?, ? ,? ,?, ?, ?, ?, ?, 0, sysdate(), ?, ?, ?, ?, ?, ?, 0)";
-				pstmt = con.prepareStatement(sql);
+				pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 				pstmt.setString(1, bean.getUid());
 				pstmt.setString(2, bean.getUname());
 				pstmt.setString(3, bean.getTel());
@@ -61,11 +65,20 @@ public class ReservationDAO {
 				pstmt.setInt(13, bean.getCare());
 				pstmt.setInt(14, bean.getTotalprice());
 				pstmt.executeUpdate();
+				rs = pstmt.getGeneratedKeys();
+				
+				if(rs.next()) {
+					mynum = rs.getInt(1);
+					System.out.println(mynum);
+				}
+				
 				System.out.println(pstmt);
+				
 				con.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			return mynum;
 		}
 		
 		
@@ -191,7 +204,25 @@ public class ReservationDAO {
 			return res;
 		}
 		
-		
+		//session 저장
+		public int Total(String uid, int num) {
+			int totalprice = 0;
+			try {
+				getCon();
+				String sql = "select totalprice from reservation where uid = ? and num = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, uid);
+				pstmt.setInt(2, num);
+				rs = pstmt.executeQuery();
+				System.out.println(pstmt);
+				if(rs.next()) {
+					totalprice = rs.getInt("totalprice");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return totalprice;
+		}
 		
 		
 		
@@ -313,6 +344,84 @@ public class ReservationDAO {
 
 	        return reservation;
 	    }
+	    
+	    //예약 삭제
+	    public boolean deleteReservation(int reservationNum) {
+	    	   getCon();
+	    	   boolean success = false;
+	    	   
+	    	   try {
+	    	      
+	    	      // 예약 정보 삭제 SQL 쿼리 작성
+	    	      String query = "DELETE FROM reservation WHERE num = ?";
+	    	      
+	    	      pstmt = con.prepareStatement(query);
+	    	      pstmt.setInt(1, reservationNum);
+	    	      
+	    	      int rowCount = pstmt.executeUpdate();
+	    	      
+	    	      if (rowCount > 0) {
+	    	         // 예약 정보 삭제 성공
+	    	         success = true;
+	    	      }
+	    	   } catch (SQLException e) {
+	    	      e.printStackTrace();
+	    	   } 
+	    	   
+	    	   return success;
+	    	}
+	    
+	    
+	 // search
+	    public ArrayList<ReservationBean> getSearch(String searchField, String searchText){
+			
+			ArrayList<ReservationBean> search = new ArrayList<ReservationBean>();
+			String sql = "select * from reservation where "+searchField.trim();
+			try {
+				if(searchText != null && !searchText.equals("")) {
+					sql +=" like '%"+searchText.trim()+ "%' order by num desc";
+				}
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					ReservationBean bean = new ReservationBean();
+					bean.setNum(rs.getInt(1));
+					bean.setUid(rs.getString(2));
+					bean.setUname(rs.getString(3));
+					bean.setTel(rs.getString(4));
+					bean.setPostcode(rs.getInt(5));
+					bean.setAddr(rs.getString(6));
+					bean.setDetailaddr(rs.getString(7));
+					bean.setComment(rs.getString(8));
+					bean.setSelectdate(rs.getString(9));
+					bean.setCount(rs.getInt(10));
+					bean.setWdate(rs.getString(11));
+					bean.setDaily(rs.getInt(12));
+					bean.setBlanket(rs.getInt(13));
+					bean.setShirt(rs.getInt(14));
+					bean.setDry(rs.getInt(15));
+					bean.setCare(rs.getInt(16));
+					bean.setTotalprice(rs.getInt(17));
+					bean.setCondition(rs.getInt(18));
+					
+					
+					search.add(bean);
+					//System.out.println(pstmt);
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return search;
+		}
+	    
+	    
+	  
+
+	    
+	 
+	    
+	    
 	    
 	  
 	}

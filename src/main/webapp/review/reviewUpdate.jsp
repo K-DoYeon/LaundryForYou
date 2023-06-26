@@ -1,22 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import ="board.BoardBean, board.BoardDAO" %>
-<%@page import="java.util.*"%>
-
+<%@ page import ="review.ReviewBean, review.ReviewDAO, java.io.*"  %>
+<%@ page import="java.util.*"%>
+<%@ page import = "java.io.*" %>
+<%
+ReviewDAO rdao = new ReviewDAO();
+ArrayList<ReviewBean> reviewlist = null;
+reviewlist = rdao.getReviewList();
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<!-- <script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script>
 	$(document).on('click', '#btnSave', function(e){
 		e.preventDefault();	
 		$("#form").submit();
 	});
 
+	
 
-</script> -->
+</script>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" 
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" 
@@ -24,8 +30,20 @@
 	crossorigin="anonymous" />
 
 
-<title>Q&A Write</title>
+<title>후기 삭제</title>
+<%
+	int num = Integer.parseInt(request.getParameter("num").trim());
 
+	ReviewDAO dao = new ReviewDAO();
+	ReviewBean bean = dao.getOneReview(num);
+%>
+<%
+	
+	String subject = bean.getSubject();
+	String uid = bean.getUid();
+	String upass = (String) request.getParameter("upass");
+	
+%>
 <style>
 @font-face {
     font-family: 'IM_Hyemin-Bold';
@@ -58,6 +76,7 @@ button a{
 	background-color : #58A3BC;
 	color : #fff;
 	font-family:  'SUITE-Regular';
+	text-align : right;
 }
 .choi-qna-btn:hover{
 	background-color : #3E83A8;
@@ -68,47 +87,55 @@ button a{
 	justify-content : space-between;
 
 }
+.review textarea{
+	resize : none;
+}
+.review-img img{
+	width : 100%;
+	height : auto;
+	margin : 0 auto;
+	padding : 0 auto;
+}
+input:read-only {
+    background-color: #fff;
+}
 </style>
 </head>
 <body>
 <jsp:include page="../include/header.jsp"></jsp:include>
 
-	<article>
+<article>
 		<div class="container">
-			<h2 class = "text-center">QnA</h2>
-			<form action="qnaWriteProc.jsp" id = "form" name = "form" method="post" accept-charset="UTF-8">
+		<form action="reviewUpdateProc.jsp?num=<%=bean.getNum() %>" method="post" id="form">
+			<h2 class = "text-center">후기 수정</h2>
 				<div class="mb-3 mt-4">
 					<label for="title">제목</label>
-					<input type="text" class="form-control" name="subject" id="subject" placeholder="제목을 입력해 주세요">
+					<input type="text" class="form-control" name="subject" id="subject" placeholder="<%=bean.getSubject()%>" readonly>
 				</div>
-				<div class="mb-3 d-flex justify">
+				
+			<div class="mb-3 d-flex justify">
 					<div>
 						<label for="uid">작성자</label>
-						<input type="text" class="form-control" name="uid" id="uid" placeholder="아이디를 입력하세요" />
+						<input type="text" class="form-control" name="uid" id="uid" value="<%=uid %>" readonly />
 					</div>
 					<div>
 						<label for="upass">비밀번호</label>
-						<input type="passowrd" class="form-control" name="upass" id="upass" placeholder="비밀번호를 입력하세요"  />
+						<input type="password" class="form-control" name="upass" id="upass"  />
+						
 					</div>
 				
-				</div>			
-				<div class="mb-3">
+				</div>	 		
+            
+				<div class="mb-3 mt-4 review">
 					<label for="content">내용</label>
-					<textarea class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요"  ></textarea>
+					<div class = "mb-3 mt-4 review-img">
+					<img src = "../imgs/<%=bean.getImg() %>" alt = "">
+            	    <textarea class="form-control mt-3" rows="5" name="content" id="content" ><%=bean.getContent() %></textarea>
+            	    </div>
 				</div>
-				<!--1. int 값들과 level input type hidden으로 해서 넣기 
-				2. pass 넣기 -->
-											
-			<div class ="choi-qna">
-					<input type = "hidden" name = "level" id="level" />
-					<input type = "hidden" name = "readcount" id="readcount" />
-					<input type = "hidden" name = "replycount" id="replycount"/>
-					<input type = "hidden" name = "like" id="like" />
-				<button type="submit" class="btn btn-sm choi-qna-btn" id="btnSave" value ="submit">저장</button>
-				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList"><a href = "boardlist.jsp">목록</a></button>
+				<button type="submit" class="btn btn-sm choi-qna-btn" id="btnList">수정</button>
+				</form>
 			</div>
-			</form>	
-		</div>
-	</article>
+		</article>
 </body>
 </html>

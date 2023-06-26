@@ -1,7 +1,11 @@
+<%@page import="reservation.ReservationBean"%>
 <%@page import="reservation.ReservationDAO"%>
 <%@page import="user.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
 <!DOCTYPE html>
 <html>
 <body>
@@ -11,10 +15,20 @@
 </jsp:useBean>
 
 <%
-	ReservationDAO rdao = new ReservationDAO();
-	rdao.insert(bean);
 	
-	response.sendRedirect("../main/main.jsp");
+	ReservationBean rbean = new ReservationBean();
+	ReservationDAO rdao = new ReservationDAO(); 
+	
+	int mynum = rdao.insert(bean);
+	
+	
+	String uid = (String) session.getAttribute("uid");
+	
+	int totalprice = rdao.Total(uid, mynum);
+	session.setAttribute("totalprice", totalprice);
+
+	
+	response.sendRedirect("../user/MyReservation.jsp");
 %>
 </body>
 </html>

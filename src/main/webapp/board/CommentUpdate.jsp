@@ -141,7 +141,7 @@ CommentBean be = dao.getOneUpdateComment(commentid);
       
    <div class="container">
     <form id="commentForm" name="commentForm" method="post" action="commentUpdateAction.jsp" accept-charset="UTF-8">
-   <input type="hidden" name="ref" value="<%=bean.getNum()%>">
+    <input type="hidden" name="ref" value="<%=bean.getNum()%>">
 	<input type="hidden" name="commentid" value="<%=be.getCommentid() %>">
 <%
 
