@@ -6,6 +6,9 @@
 <%@page import="user.UserDAO"%>
 <%@page import="user.UserBean"%>
 <%@ page import="java.io.PrintWriter" %>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
 <!DOCTYPE html>
 <html>
 <head>

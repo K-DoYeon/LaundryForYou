@@ -3,6 +3,10 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "review.ReviewBean, review.ReviewDAO, review.RCommentBean" %>
 <%@ page import = "java.io.*, java.util.*" %>
+<%
+    request.setCharacterEncoding("UTF-8");
+%>
+
 <!DOCTYPE html>
 <html>
 <jsp:useBean id = "bean" class = "review.RCommentBean" scope = "page" />
@@ -15,18 +19,17 @@
 <%
 	
 	ReviewDAO dao = new ReviewDAO();
-	RCommentBean rbean = new RCommentBean();
 	String uid = (String)session.getAttribute("uid");
 	 
-	   if(rbean.getReplyContent() == null){
+	   if(bean.getReplyContent() == null){
 	      PrintWriter script = response.getWriter();
 	      script.println("<script>");
 	        script.println("alert('댓글을 입력해주세요.')");
 	        script.println("history.back()");
 	        script.println("</script>");
 	   }else{
-	     rbean.setRef(Integer.parseInt(request.getParameter("ref")));
-	      int rs = dao.write(rbean.getReplyContent(), uid, rbean.getRef()); 
+	     bean.setRef(Integer.parseInt(request.getParameter("ref")));
+	      int rs = dao.write(bean.getReplyContent(), uid, bean.getRef()); 
 	      if(rs == -1){
 	         PrintWriter script = response.getWriter();
 	         script.println("<script>");

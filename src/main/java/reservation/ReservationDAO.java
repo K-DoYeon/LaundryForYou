@@ -415,7 +415,28 @@ public class ReservationDAO {
 			return search;
 		}
 	    
-	    
+	    public boolean vipLevel(String uid) {
+			boolean flag = false;
+			try {
+				getCon();
+				String sql = "update user set vip = 1 where uid=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, uid);
+					
+				int i = pstmt.executeUpdate();
+				
+				System.out.println(pstmt);
+				
+				if(i == 1) {
+					flag = true;
+				} else {
+					flag = false;
+				}			
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return flag;
+		}
 	  
 
 	    
