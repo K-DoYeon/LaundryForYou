@@ -423,5 +423,28 @@ public class ReviewDAO {
 				return null;
 			}
 			
+			public int getReviewCount(String uid) {
+				getCon();
+				int reviewCount = 0;
+				
+				try {
+					String sql = "select count(*) from review where uid = ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, uid);
+					rs = pstmt.executeQuery();
+					
+					if (rs.next()) {
+						reviewCount = rs.getInt(1);
+					}
+					
+					
+					System.out.println(pstmt);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+				return reviewCount;
+			}
+			
 	}
 
