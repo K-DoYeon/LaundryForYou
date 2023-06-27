@@ -28,7 +28,7 @@
 			script.println("</script>");
 			}
 			
-			int pageSize = 10; // 페이지당 게시글 수
+			int pageSize = 5; // 페이지당 게시글 수
 			int currentPage = 1; // 현재 페이지 번호
 			if (request.getParameter("pageNum") != null) {
 			currentPage = Integer.parseInt(request.getParameter("pageNum"));
