@@ -28,20 +28,28 @@
 	}
 	int limitNum = (mypg - 1) * listNum;
 	
-   Vector data = rdao.getSelect(limitNum, listNum);
-   
-	int maxColumn = rdao.getAllSelect();
-	int size = data.size();
+	 String searchField = request.getParameter("searchField");
+	    String searchText = request.getParameter("searchText");
+	    ArrayList<ReservationBean> list = new ArrayList<ReservationBean>();
+	    int searchResultCount = 1;
+	
+	    if (searchField != null && searchText != null) {
+	        list = rdao.getSearch(searchField.trim(), searchText.trim());
+	        searchResultCount = list.size();
+	    }
+
+	    int maxColumn = searchResultCount;
+	    int size = list.size();
 	
 	/*
 		1. 전체 페이지 수 2. 전체 블럭수 3. 현재 블록번호 4. 블록당 시작번호 5. 블록당 마지막 번호
 	*/
 	int totalPage = (int) Math.ceil(maxColumn / (double) listNum);
-	int totalBlock = (int) Math.ceil(totalPage / (double) pageNum);
-	int nowBlock = (int) Math.ceil(mypg / (double) pageNum);
-	int startNum = (nowBlock - 1) * pageNum + 1;
-	int endNum = nowBlock * pageNum;
-	if (endNum > totalPage) endNum = totalPage;
+    int totalBlock = (int) Math.ceil(totalPage / (double) pageNum);
+    int nowBlock = (int) Math.ceil(mypg / (double) pageNum);
+    int startNum = (nowBlock - 1) * pageNum + 1;
+    int endNum = nowBlock * pageNum;
+    if (endNum > totalPage) endNum = totalPage;
 	
 	
 	// 예약 삭제 처리
@@ -82,9 +90,9 @@
     </div>
     <!-- search box -->
     
-    <div class="text-end">
+    <%-- <div class="text-end">
         전체 예약 : <%= maxColumn %> 건
-    </div>
+    </div> --%>
     <div class="row">
         <table class="table  memberstbl">
             <thead>
@@ -105,13 +113,12 @@
             </thead>
             <tbody>
                 <% 
-                String searchField = request.getParameter("searchField");
-                String searchText = request.getParameter("searchText");
-                ArrayList<ReservationBean> list = new ArrayList<ReservationBean>();
+     
+               
                 if (searchField != null && searchText != null) {
                     list = rdao.getSearch(searchField.trim(), searchText.trim());
                 }
-                
+               /*  
                 if (list.size() == 0) {
                     PrintWriter script = response.getWriter();
                     script.println("<script>");
@@ -123,10 +130,10 @@
                 	script.println("<script>");
                     script.println("alert('검색됨.')");
                     script.println("</script>");
-                }
+                } */
 				
                 
-                for (int i = 0; i < list.size(); i++) {
+                for (int i = limitNum; i < limitNum + listNum && i < size; i++) {
                     ReservationBean rbean = list.get(i);
 
                     int num = rbean.getNum();
@@ -175,27 +182,27 @@
         </table>
     </div> <!-- /row -->
     <div class="mt-3 mb-5 row ">
-        <ul class="pagination justify-content-center mb-5">
-            <% //이전페이지
+       <ul class="pagination justify-content-center mb-5">
+            <% // 이전페이지
             if (startNum > 1) {
                 int prevPage = startNum - 1;
-                out.print("<li class=\"page-item\"><a class=\"page-link\" href=\"?page=" + prevPage + "\">이전</a></li>");
+                out.print("<li class=\"page-item\"><a class=\"page-link\" href=\"search-reservationList.jsp?page=" + prevPage + "&searchField=" + searchField + "&searchText=" + searchText + "\">이전</a></li>");
             } else {
                 out.print("<li class=\"page-item\"><a class=\"page-link text-muted\" href=\"javascript:void(0)\">이전</a></li>");
             }
 
-            //페이지 출력
+            // 페이지 출력
             for (int j = startNum; j <= endNum; j++) {
                 String act = "";
                 if (mypg == j) act = "active";
             %>
-                <li class="page-item <%= act %>"> <a href="?page=<%= j %>" class="page-link"><%= j %></a></li>
+                <li class="page-item <%= act %>"><a class="page-link" href="search-reservationList.jsp?page=<%= j %>&searchField=<%= searchField %>&searchText=<%= searchText %>"><%= j %></a></li>
             <% }
 
-            // 다음페이지
+            // 다음 페이지
             if (endNum < totalPage) {
                 int nextPage = endNum + 1;
-                out.print("<li class=\"page-item\"><a class=\"page-link\" href=\"?page=" + nextPage + "\">다음</a></li>");
+                out.print("<li class=\"page-item\"><a class=\"page-link\" href=\"search-reservationList.jsp?page=" + nextPage + "&searchField=" + searchField + "&searchText=" + searchText + "\">다음</a></li>");
             } else {
                 out.print("<li class=\"page-item\"><a class=\"page-link text-muted\" href=\"javascript:void(0)\">다음</a></li>");
             } %>
@@ -204,3 +211,4 @@
 </div>
 
 <script src="../js/reservationlist.js"></script>
+
