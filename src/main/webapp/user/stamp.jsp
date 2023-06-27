@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="user.UserBean"%>
+<%@page import="user.UserBean, review.ReviewDAO"%>
 <jsp:include page="../include/header.jsp"></jsp:include>
 <link rel="stylesheet" href="../css/stamp.css">
 	
@@ -8,6 +8,11 @@
 	UserBean ubean = new UserBean();
 	String uid = (String) session.getAttribute("uid");
 	String img = (String) session.getAttribute("img");
+	
+	ReviewDAO rdao = new ReviewDAO();
+	int reviewCount = rdao.getReviewCount(uid);
+	int maxColorPhotos = reviewCount % 5; 
+	int blackAndWhitePhotos = 5 - maxColorPhotos;
 	%>
 	
 	<div class="stamp-container">
@@ -24,15 +29,28 @@
 		
 		<div class="stamp-right">
 			<h2 class="stamp-h2">내 스탬프 현황
-				<span class="stamp-span"><%=uid %> 님의 스탬프 : 1 개</span>
+				<span class="stamp-span"><%=uid %> 님의 스탬프 : <%=reviewCount / 5 %> 개</span>
 			</h2>
 			<div class="stamp-img-container">
 				<div class="stamp-img">
-					<img src="../img/stamp-color.png">
-					<img src="../img/stamp-gray.png">
-					<img src="../img/stamp-gray.png">
-					<img src="../img/stamp-gray.png">
-					<img src="../img/stamp-gray.png">
+					<div class="bubbleMono-my">
+         <%
+               for(int i = 0; i < maxColorPhotos; i++) {
+            %>
+               <img alt="bubble_mono" src="../img/bubble.png" class="bubbleImg-my">
+            <%
+               }
+         	%>
+            <%
+           	   for (int i = 0; i < blackAndWhitePhotos; i++) {
+            %>
+               <img alt="bubble_mono" src="../img/bubble_mono.png" class="bubbleImg-my">
+            <%
+               }
+            %>
+           
+            
+         </div>
 				</div>
 			</div>
 			<div class="stamp-info">
