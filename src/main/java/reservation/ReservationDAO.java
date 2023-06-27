@@ -372,9 +372,9 @@ public class ReservationDAO {
 	    	}
 	    
 	    
-	 // search
+	    // search
 	    public ArrayList<ReservationBean> getSearch(String searchField, String searchText){
-			
+			getCon();
 			ArrayList<ReservationBean> search = new ArrayList<ReservationBean>();
 			String sql = "select * from reservation where "+searchField.trim();
 			try {
