@@ -5,6 +5,9 @@
 <%@ page import = "com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
 <%@ page import="com.oreilly.servlet.MultipartRequest"%>
 <%@ page import="java.util.Enumeration" %>
+<%
+    request.setCharacterEncoding("UTF-8");
+%>
 
 <!DOCTYPE html>
 <html>
@@ -21,10 +24,11 @@
 	String upass = (String)session.getAttribute("upass");
 
 	ReviewDAO dao = new ReviewDAO();
-
+	dao.insertReview(bean);
+	
 	
 
-	String realFolder = "";
+	/* String realFolder = "";
 	String saveFolder = "/imgs";	//사진을 저장할 경로
 	String encType = "utf-8";	//변환형식
 	int maxSize = 3*1024*1024; //3MB로 파일 크기 제한
@@ -75,7 +79,7 @@
 				script.println("<script>");
 				script.println("location.href= \'review.jsp?uid="+uid+"\'");
 				script.println("</script>");
-			}
+			} */
 		
 	
 	response.sendRedirect("review.jsp");

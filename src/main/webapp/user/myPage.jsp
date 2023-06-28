@@ -39,7 +39,7 @@
             <a class="Title-my" href="stamp.jsp">
                <h2>스탬프</h2> <i class="ri-arrow-right-s-line"></i>
             </a>
-            <p><span class="Count-my"><%=reviewCount %></span>개</p>
+            <p><span class="Count-my"><%=reviewCount % 5 %></span>개</p>
             <img alt="stamp" src="../img/stamp.png" class="stampImg-my">
          </div>
          <div class="coupon-my">

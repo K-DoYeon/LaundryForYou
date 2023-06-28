@@ -29,7 +29,7 @@
 		
 		<div class="stamp-right">
 			<h2 class="stamp-h2">내 스탬프 현황
-				<span class="stamp-span"><%=uid %> 님의 스탬프 : <%=reviewCount / 5 %> 개</span>
+				<span class="stamp-span"><%=uid %> 님의 스탬프 : <%=reviewCount % 5 %> 개</span>
 			</h2>
 			<div class="stamp-img-container">
 				<div class="stamp-img">

@@ -36,6 +36,8 @@ reviewlist = rdao.getReviewList();
 
 	ReviewDAO dao = new ReviewDAO();
 	ReviewBean bean = dao.getOneReview(num);
+	RCommentBean rbean = new RCommentBean();
+
 %>
 <%
 	String subject = bean.getSubject();
@@ -47,9 +49,9 @@ reviewlist = rdao.getReviewList();
 	System.out.println(lresult);
 %>
 <%
-	String bbsId = null;
-	if(session.getAttribute("bbsId") != null){
-		bbsId = (String)session.getAttribute("bbsID");
+	uid = null;
+	if(session.getAttribute("uid")!=null){
+		uid = (String)session.getAttribute("uid");
 	}
 %>
 <style>
@@ -74,6 +76,10 @@ body {
 	margin-top : 50px;
 }
 button a{
+	color : #fff;
+	border : none;
+}
+button a:hover{
 	color : #fff;
 	border : none;
 }
@@ -205,16 +211,24 @@ i.fa-heart:hover{
 	<div class="card-body">
 		<ul class="list-group list-group-flush">
 		    <li class="list-group-item">
-			<div class="form-inline mb-2">
+<%-- 			<div class="form-inline mb-2">
 				<input type="text" class="form-control ml-2" placeholder="<%=bean.getUid() %>" id="uid" readonly />
-				<input type="password" class="form-control ml-2" placeholder="<%=bean.getUpass()%>" id="upass" readonly/>
 			</div>
-
+ --%>
 			<textarea class="form-control" name="replyContent" rows="3" placeholder = "댓글을 입력해주세요"></textarea>
-					
+		
+		<%
+			if(uid==null){
+		%>
+			<div class ="choi-qna">
+				<button type="submit" class="btn btn-sm choi-qna-btn mt-2" >
+				<a onclick = "return confirm('로그인 후 이용하실 수 있습니다.')" href="../user/login.jsp">등록</a></button>
+		    </div>
+		<% }else{ %>
 			<div class ="choi-qna">
 				<button type="submit" class="btn btn-sm choi-qna-btn mt-2" id="btnSave" value="등록" >등록</button>
 		    </div>
+		<% } %>
 		    </li>
 		</ul>
 	</div>
@@ -223,13 +237,12 @@ i.fa-heart:hover{
   
 	<table class="table table-striped"
 		style="text-align: center; border: 1px solid #dddddd;">
-	
-				
-		<thead>
+	<thead>
 			<tr>
-			<th colspan="3"
-					style="background-color: #eeeeeee; text-align: center;">댓글</th>
-						</tr>
+				<th colspan="3" style="background-color: #eeeeeee; text-align: center;">댓글</th>
+			</tr>
+			<thead>
+						
 			<%
 				
 				ArrayList<RCommentBean> list = dao.getList(bean.getNum());
@@ -238,12 +251,14 @@ i.fa-heart:hover{
 			%>
 				
 		</thead>
+		
+		
 			<tbody>
 				<tr>
 					<td style="text-align: left;"><%=list.get(i).getUid() %></td>  
 					<td style = "text-align : center;"><%= list.get(i).getReplyContent() %></td>
 					<td style = "text-align: right;"><%=list.get(i).getWdate().substring(0,11) %>
-					<a href="#" class="btn ">대댓글</a>
+					<a href="reviewReComment.jsp?num=<%=bean.getNum() %>&ref=<%=rbean.getRef()%>&bbsId=<%=rbean.getBbsId() %>&replyAvailable=<%=rbean.getReplyAvailable() %>" class="btn ">대댓글</a>
 					<a onclick = "return confirm('정말로 삭제하시겠습니까?')" href="reviewCommentDelete.jsp?num=<%=bean.getNum()%>&bbsId=<%=list.get(i).getBbsId() %>" class="btn-del">삭제</a>
 					</td>
 					
