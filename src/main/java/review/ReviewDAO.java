@@ -455,40 +455,6 @@ public class ReviewDAO {
 			
 			
 		
-	/**********************대댓글******************************/
-			
-			public void reWrite(RCommentBean bean) {
-				
-				int ref = bean.getRef();
-				int replyAvailable = bean.getReplyAvailable();
-				int bbsId = bean.getBbsId();
-				
-				getCon();
-				
-				try {
-					//부모 글 보다 큰 replyAvailabler값을 전부 1씩 증가시켜줌
-					String sql = "update review_comment bbsId = replayAvailable + 1 where ref = ? and replyAvailable > ?";
-					pstmt = con.prepareStatement(sql);
-					pstmt.setInt(1, bbsId);
-					pstmt.setInt(2, replyAvailable);
-					
-					pstmt.executeUpdate();
-					
-					//답변글 데이터를 저장
-					String query = "insert into review_comment values(bbsId, 1,?,?,?,sysdate(),?)";
-					pstmt = con.prepareStatement(query);
-					pstmt.setString(1, bean.getReplyContent());
-					pstmt.setString(2, bean.getUid());
-					pstmt.setInt(3, replyAvailable+1);	//답글이기에 부모의 글에 1을 더해줌
-					pstmt.setInt(4, ref);	//부모의 ref값을 넣어줌
-					
-					pstmt.executeUpdate();
-					
-					
-					
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
+	
 	}
 
