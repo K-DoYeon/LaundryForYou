@@ -15,20 +15,18 @@
 </jsp:useBean>
 
 <%
-	
-	ReservationBean rbean = new ReservationBean();
-	ReservationDAO rdao = new ReservationDAO(); 
-	
-	int mynum = rdao.insert(bean);
-	
-	
-	String uid = (String) session.getAttribute("uid");
-	
-	int totalprice = rdao.Total(uid, mynum);
-	session.setAttribute("totalprice", totalprice);
+ReservationBean rbean = new ReservationBean();
+ReservationDAO rdao = new ReservationDAO(); 
 
+bean.setNum(Integer.parseInt(request.getParameter("num")));
+
+int orderNum = rdao.ConditionUpdate(bean.getNum());
+
+response.sendRedirect("../reservation/MyReservation.jsp");
 	
-	response.sendRedirect("../reservation/MyReservation.jsp");
+	
+	
+
 %>
 </body>
 </html>

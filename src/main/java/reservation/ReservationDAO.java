@@ -438,8 +438,22 @@ public class ReservationDAO {
 			return flag;
 		}
 	  
-
-	    
+	    //결제 상태 업데이트
+	    public int ConditionUpdate(int num) {
+	    	getCon();
+	    	String sql = "update reservation set `condition` = 1 where num = ?";
+	    	try {
+	    		pstmt = con.prepareStatement(sql);
+	            pstmt.setInt(1, num);
+	            System.out.println(pstmt);
+	            
+	            return pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	    	
+	    	return -1;
+	    }
 	 
 	    
 	    

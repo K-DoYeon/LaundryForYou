@@ -198,7 +198,7 @@ CommentBean cmt = new CommentBean();
                    <p>PW : <span class="pw"><%=pw%></span></p>
                 </div>
                 <div class="do-right">
-                   <textarea rows="5" cols="120" name="content" placeholder="관리자만 쓸수있습니다." maxlength="100"></textarea>
+                   <textarea rows="5" cols="100" name="content" placeholder="관리자만 쓸수있습니다." maxlength="100"></textarea>
                 </div>
             </div>
             

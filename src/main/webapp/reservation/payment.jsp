@@ -65,7 +65,9 @@ Integer totalprice = (Integer) session.getAttribute("totalprice");
                     }
                 });
                 //성공시 이동할 페이지
-               location.href='<%=request.getContextPath()%>/user/MyReservation.jsp?msg='+msg;
+                //msg = '결제에 성공했습니다';
+               location.href='<%=request.getContextPath()%>/reservation/payCompleted.jsp';
+               //alert(msg);
             } else {
                 msg = '결제에 실패했습니다';
                 msg += ' 에러내용 : ' + rsp.error_msg;
@@ -76,6 +78,9 @@ Integer totalprice = (Integer) session.getAttribute("totalprice");
         });
         
     });
+	 
+	 //결제 환불
+	 
     </script> 
 
 </body>
