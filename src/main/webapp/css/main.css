@@ -9,7 +9,7 @@ p{
 
 .main-container{
 	width: auto;
-    height: 2000px;
+    height: 1900px;
 
 } 
 
@@ -184,8 +184,9 @@ i.ri-arrow-right-s-line.sBannerBtn-main {
 }
 .review-left,.review-right{
 	width: 650px;
-	height: 600px;
+	height: 570px;
 	padding-top: 50px;
+	overflow: hidden;
 }
 
 .review-left-header{
@@ -258,20 +259,43 @@ i.ri-arrow-right-s-line.sBannerBtn-main {
 	padding-bottom: 20px;
 	border-bottom: 5px solid #8AC4D0;
 }
+.review-container{
+	height: 400px;
+	overflow: hidden;
+}
+
+.review-for {
+  position: relative;
+  animation: move-up 20s infinite linear;
+}
+
+.review-for span{
+	width: 100px;
+	text-align: center;
+}
+
+@keyframes move-up {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -390px;
+  }
+}
 
 .review-for{
-	width: 400px;
+	width: 550px;
 	margin: 0 auto;
 	margin-top: 25px;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
+	border-bottom: 1px dashed #ccc;
 }
 
 .review-for-for{
 	width: 600px;
-	border-bottom: 1px dashed #ccc;
 	margin: 0 auto;
 }
 

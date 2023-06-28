@@ -464,6 +464,36 @@ public class ReviewDAO {
 				}
 				return -1;
 			}
+			
+			// 메인에 최신순으로 리뷰 나타냄
+			public ArrayList<ReviewBean> getMainReview(int startRow, int pageSize) {
+				
+				ArrayList<ReviewBean> reviewlist = new ArrayList<ReviewBean>();
+				getCon();
+				try {
+					String sql = "select * from review order by num desc limit ?,?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, startRow - 1);
+					pstmt.setInt(2, pageSize);
+					rs = pstmt.executeQuery();
+					while (rs.next()) {
+						ReviewBean bean = new ReviewBean();			
+						bean.setNum(rs.getInt(1));
+						bean.setUid(rs.getString(2));
+						bean.setSubject(rs.getString(4));
+						bean.setContent(rs.getString(5));
+						bean.setWdate(rs.getString(7));
+						bean.setLike_this(rs.getInt(10));
+						// bean.setReadCount(rs.getInt(5));
+						// bean.setReplyCount(rs.getInt(6));
+						
+						reviewlist.add(bean);   // list에 해당 인스터스를 넘긴다
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				return reviewlist;
+			}
 
 	}
 
