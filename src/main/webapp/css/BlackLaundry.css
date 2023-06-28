@@ -44,7 +44,14 @@ h2 {
 }
 
 .left-mainbox p:first-child {
-	margin-top: 50px;
+	margin-top: 20px;
+}
+.left-mainbox a {
+	color: #fff;
+	text-decoration: none;
+	border-bottom: 1px solid #fff;
+	padding: 0 5px 5px;
+    font-weight: bold;
 }
 
 /*******************************************/

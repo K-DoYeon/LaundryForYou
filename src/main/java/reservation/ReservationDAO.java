@@ -372,9 +372,9 @@ public class ReservationDAO {
 	    	}
 	    
 	    
-	 // search
+	    // search
 	    public ArrayList<ReservationBean> getSearch(String searchField, String searchText){
-			
+			getCon();
 			ArrayList<ReservationBean> search = new ArrayList<ReservationBean>();
 			String sql = "select * from reservation where "+searchField.trim();
 			try {
@@ -415,7 +415,28 @@ public class ReservationDAO {
 			return search;
 		}
 	    
-	    
+	    public boolean vipLevel(String uid) {
+			boolean flag = false;
+			try {
+				getCon();
+				String sql = "update user set vip = 1 where uid=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, uid);
+					
+				int i = pstmt.executeUpdate();
+				
+				System.out.println(pstmt);
+				
+				if(i == 1) {
+					flag = true;
+				} else {
+					flag = false;
+				}			
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return flag;
+		}
 	  
 
 	    
