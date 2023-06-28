@@ -270,8 +270,18 @@ i.ri-arrow-right-s-line.sBannerBtn-main {
 }
 
 .review-for span{
-	width: 100px;
+	width: 200px;
 	text-align: center;
+}
+
+.review-for img{
+	margin-left: 20px;
+}
+
+.review-subject{
+	white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+	overflow: hidden; /* 요소 내부의 내용이 너무 클 때 숨김 처리 */
+	text-overflow: ellipsis; /* 말줄임 기호 표시 */
 }
 
 @keyframes move-up {
@@ -284,8 +294,7 @@ i.ri-arrow-right-s-line.sBannerBtn-main {
 }
 
 .review-for{
-	width: 550px;
-	margin: 0 auto;
+	width: 645px;
 	margin-top: 25px;
 	display: flex;
 	flex-direction: row;
@@ -294,10 +303,6 @@ i.ri-arrow-right-s-line.sBannerBtn-main {
 	border-bottom: 1px dashed #ccc;
 }
 
-.review-for-for{
-	width: 600px;
-	margin: 0 auto;
-}
 
 /* .main-pr-slide{
 	width: 1500px;
