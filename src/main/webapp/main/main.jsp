@@ -1,3 +1,4 @@
+<%@ page import ="review.ReviewBean,review.ReviewDAO, java.util.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="../include/header.jsp"></jsp:include>
@@ -81,45 +82,57 @@
 				 고객님들의 실시간 리뷰</p>
 			<p class="review-right-bottom">소중한 고객님들의 만족스러운 서비스 후기</p>
 			
-			<!-- db로 review for문 예정 -jeon -->
-			<div class="review-db-for">
-				<div class="review-for-for">
-					<div class="review-for">
-						<img src="../img/review-tshirt.png" alt="t-shirt">
-						<span>강** 님의 후기</span>
-						<span>2023-06-13</span>
-					</div>
-				</div>
-				<div class="review-for-for">
-					<div class="review-for">
-						<img src="../img/review-shirt.png" alt="shirt">
-						<span>최** 님의 후기</span>
-						<span>2023-06-11</span>
-					</div>
-				</div>
-				<div class="review-for-for">
-					<div class="review-for">
-						<img src="../img/review-towel.png" alt="towel">
-						<span>차** 님의 후기</span>
-						<span>2023-06-10</span>
-					</div>
-				</div>
-				<div class="review-for-for">
-					<div class="review-for">
-						<img src="../img/review-shoes.png" alt="shoes">
-						<span>홍** 님의 후기</span>
-						<span>2023-06-08</span>
-					</div>
-				</div>
-				<div class="review-for-for">
-					<div class="review-for">
-						<img src="../img/review-pants.png" alt="pants">
-						<span>김** 님의 후기</span>
-						<span>2023-06-07</span>
-					</div>
-				</div>	
-			</div>
-			<!-- db로 review for문 예정 -jeon -->
+			
+			<%
+			//전체 게시물의 내용을 jsp 쪽으로 가져와야함
+			ReviewDAO rdao = new ReviewDAO();
+			
+			// 전체 게시글을 리턴 받아주는 소스
+			Vector<ReviewBean> vec = rdao.getAllBoard();
+			
+			ArrayList<ReviewBean> reviewlist = null;
+			int cnt = rdao.getReviewCount();
+			
+			int pageSize = 10;   // 한 페이지당 10개씩
+			String pageNum = request.getParameter("pageNum");
+			if(pageNum == null){
+				pageNum = "1";
+			}
+			int currentPage = Integer.parseInt(pageNum);
+			int startRow = (currentPage - 1) * pageSize + 1;
+			int endRow = currentPage * pageSize;
+			if(cnt != 0){
+				reviewlist = rdao.getMainReview(startRow, pageSize);
+			}
+			
+			%>
+			<div class="review-container">
+		  <%
+		  		
+		    	
+		  		for (int i = 0; i < reviewlist.size(); i++) {
+				
+				Random random = new Random();
+		    	int randomNumber = random.nextInt(5) + 1;
+		    	String imagePath = "../img/reviewimg" + randomNumber + ".png";
+		    	 
+		    	ReviewBean bean = reviewlist.get(i); // 백터에 저장되어있는 빈클래스를 하나씩 추출
+		  %>	
+		  			<div class="review-db-for">
+		               <div class="review-for-for">
+		                <div class="review-for">
+		                	<img src="<%= imagePath %>" alt="">
+		                    <span><%=bean.getUid() %> 님</span>
+		                    <span class="review-subject"><a href="../review/reviewInfo.jsp?num=<%=bean.getNum()%>"><%=bean.getSubject() %></a></span>
+		                    <span><%=bean.getWdate().substring(0, 10) %></span>
+		                </div>
+		               </div>
+		            </div>
+		          
+		 <%
+		  		}
+		 %>
+		 </div>
 		</div>
 	</div>
 	
@@ -140,6 +153,7 @@
 	
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../js/main-slide.js"></script>
+
 
 
 <jsp:include page="../include/footer.jsp"></jsp:include>
