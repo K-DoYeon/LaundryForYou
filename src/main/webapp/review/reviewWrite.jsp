@@ -87,7 +87,7 @@ button a{
 	<article>
 		<div class="container">
 			<h2 class = "text-center">Review</h2>
-			<form action="reviewWriteProc.jsp" id = "form" name = "form" method="post"  encType = "multipart/form-data">
+			<form action="reviewWriteProc.jsp" id = "form" name = "form" method="post">  <!-- encType = "multipart/form-data"> -->
 				<div class="mb-3 mt-4">
 					<label for="title">제목</label>
 					<input type="text" class="form-control" name="subject" id="subject" placeholder="제목을 입력해 주세요">
