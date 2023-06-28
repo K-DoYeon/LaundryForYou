@@ -18,7 +18,7 @@
 	<div class="stamp-container">
 		<div class="stamp-left">
 			<div class="stamp-user">
-				<img alt="userImg" src="<%=img %>" class="stamp-user-img">
+				<img alt="userImg" src="../img/<%=img %>" class="stamp-user-img">
 				<h3 class="stamp-user-name"> <span><%= uid %></span> 님</h3>
 			</div>
 			<div class="stapm-userpage">
