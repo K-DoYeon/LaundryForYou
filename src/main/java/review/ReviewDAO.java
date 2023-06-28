@@ -478,7 +478,7 @@ public class ReviewDAO {
 				return -1;
 			}
 			
-<<<<<<< HEAD
+
 			// 메인에 최신순으로 리뷰 나타냄
 			public ArrayList<ReviewBean> getMainReview(int startRow, int pageSize) {
 				
@@ -509,7 +509,7 @@ public class ReviewDAO {
 				return reviewlist;
 			}
 
-=======
+
 /**********************대댓글******************************/
 			
 			public void reWrite(RCommentBean bean) {
@@ -547,6 +547,5 @@ public class ReviewDAO {
 			}
 		
 	
->>>>>>> branch 'main' of https://github.com/K-DoYeon/LaundryForYou.git
 	}
 
