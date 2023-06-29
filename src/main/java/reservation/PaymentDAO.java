@@ -55,6 +55,7 @@ public class PaymentDAO {
 			}
 		}
 		
+		//total 세션 받아오기
 		public int Total(int num) {
 			int totalprice = 0;
 			try {
@@ -71,6 +72,10 @@ public class PaymentDAO {
 				e.printStackTrace();
 			}
 			return totalprice;
+		}
+		
+		public void update(int num) {
+			
 		}
 
 }

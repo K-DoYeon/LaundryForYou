@@ -33,26 +33,39 @@ public class ReviewDAO {
 	      }
 	   }
 	   
-	   //게시들 데베로 저장되는 메소드
-	   public void insertReview(ReviewBean bean, String uid, String upass, String subject, String content, String img) {
+		/*
+		 * //게시들 데베로 저장되는 메소드 public void insertReview(ReviewBean bean, String uid,
+		 * String upass, String subject, String content, String img) { getCon(); try {
+		 * String sql =
+		 * "insert into review values(num, ?, ?, ?, ?, ?, sysdate(), 0, 0, 0)"; pstmt =
+		 * con.prepareStatement(sql);
+		 * 
+		 * pstmt.setString(1, uid); pstmt.setString(2, upass); pstmt.setString(3,
+		 * subject); pstmt.setString(4, content); pstmt.setString(5, img);
+		 * System.out.println(pstmt); pstmt.executeUpdate();
+		 * 
+		 * 
+		 * System.out.println("데베연결성공"); } catch (Exception e) { e.printStackTrace();
+		 * System.out.println("데베연결실패"); } }
+		 */
+	   
+	   public void insertReview(ReviewBean bean) {
 		   getCon();
+		   
 		   try {
-			String sql = "insert into review values(num, ?, ?, ?, ?, ?, sysdate(), 0, 0, 0)";
-			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setString(1, uid);
-			pstmt.setString(2, upass);
-			pstmt.setString(3, subject);
-			pstmt.setString(4, content);
-			pstmt.setString(5, img);
-			System.out.println(pstmt);
-			pstmt.executeUpdate();
-			
-			
-			System.out.println("데베연결성공");
+			   String sql = "insert into review values(num,?,?,?,?,0,sysdate(),0,0,0)";
+			   pstmt = con.prepareStatement(sql);
+			   pstmt.setString(1, bean.getUid());
+			   pstmt.setString(2, bean.getUpass());
+			   pstmt.setString(3, bean.getSubject());
+			   pstmt.setString(4, bean.getContent());
+			   
+			   pstmt.executeUpdate();
+			   System.out.println("리뷰 글쓰기 데베 연결 성공");
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("데베연결실패");
+			System.out.println("리뷰 글쓰기 데베 연결 실패");
 		}
 	   }
 	   
@@ -464,6 +477,75 @@ public class ReviewDAO {
 				}
 				return -1;
 			}
+			
 
+			// 메인에 최신순으로 리뷰 나타냄
+			public ArrayList<ReviewBean> getMainReview(int startRow, int pageSize) {
+				
+				ArrayList<ReviewBean> reviewlist = new ArrayList<ReviewBean>();
+				getCon();
+				try {
+					String sql = "select * from review order by num desc limit ?,?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, startRow - 1);
+					pstmt.setInt(2, pageSize);
+					rs = pstmt.executeQuery();
+					while (rs.next()) {
+						ReviewBean bean = new ReviewBean();			
+						bean.setNum(rs.getInt(1));
+						bean.setUid(rs.getString(2));
+						bean.setSubject(rs.getString(4));
+						bean.setContent(rs.getString(5));
+						bean.setWdate(rs.getString(7));
+						bean.setLike_this(rs.getInt(10));
+						// bean.setReadCount(rs.getInt(5));
+						// bean.setReplyCount(rs.getInt(6));
+						
+						reviewlist.add(bean);   // list에 해당 인스터스를 넘긴다
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				return reviewlist;
+			}
+
+
+/**********************대댓글******************************/
+			
+			public void reWrite(RCommentBean bean) {
+				
+				int ref = bean.getRef();
+				int replyAvailable = bean.getReplyAvailable();
+				int bbsId = bean.getBbsId();
+				
+				getCon();
+				
+				try {
+					//부모 글 보다 큰 replyAvailabler값을 전부 1씩 증가시켜줌
+					String sql = "update review_comment bbsId = replayAvailable + 1 where ref = ? and replyAvailable > ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, bbsId);
+					pstmt.setInt(2, replyAvailable);
+					
+					pstmt.executeUpdate();
+					
+					//답변글 데이터를 저장
+					String query = "insert into review_comment values(bbsId, 1,?,?,?,sysdate(),?)";
+					pstmt = con.prepareStatement(query);
+					pstmt.setString(1, bean.getReplyContent());
+					pstmt.setString(2, bean.getUid());
+					pstmt.setInt(3, replyAvailable+1);	//답글이기에 부모의 글에 1을 더해줌
+					pstmt.setInt(4, ref);	//부모의 ref값을 넣어줌
+					
+					pstmt.executeUpdate();
+					
+					
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		
+	
 	}
 

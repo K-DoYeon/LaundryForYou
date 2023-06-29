@@ -145,7 +145,6 @@ for(int i=0; i < size; i++){
       </td>
       <td><button type="submit" class="btn btn-outline-secondary btn-sm">결제하기</button></td>
  </form>
-      
 	<td>
       	<form method="post" action="">
          <input type="hidden" name="delete" value="<%=num %>">
