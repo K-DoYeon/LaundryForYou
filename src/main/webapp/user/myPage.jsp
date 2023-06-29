@@ -49,7 +49,9 @@
             <p><span class="Count-my"><%= reviewCount / 5 %></span>개</p>  <!-- 총 스탬프 개수를 5로 나누어 쿠폰 개수 구함 -->
             <img alt="coupon" src="../img/coupon.png" class="couponImg-my">
          </div>
-         
+         <%
+         	
+         %>
          <%
             if (vip == 0) {
          %>

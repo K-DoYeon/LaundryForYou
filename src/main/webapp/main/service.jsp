@@ -1,3 +1,4 @@
+<%@page import="reservation.ReservationDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,14 +10,14 @@
 <jsp:include page="../include/header.jsp"></jsp:include>
 <link rel="stylesheet" href="../css/service.css">
 <body>
-<div class="service-container">
-	<div class="top-tab">
-		<div class="tab">
-			<h1><a href="#" id="tab-cost" class="active n" data-idx="#cost">기본 요금</a></h1>
-			<h1>/</h1>
-			<h1><a href="#" class="n" data-idx ="#pr">Pr</a></h1>
-		</div>
+<div class="top-tab">
+	<div class="tab">
+		<h1 class="do-cost"><a href="#" id="tab-cost" class="active n" data-idx="#cost">기본 요금</a></h1>
+		<h1><a href="#" class="n" data-idx ="#pr">Pr</a></h1>
 	</div>
+</div>
+<div class="service-container">
+	
 	<div class="service-content">
 		<div class="active" id="cost">
 			<div class="daily-laundry">
