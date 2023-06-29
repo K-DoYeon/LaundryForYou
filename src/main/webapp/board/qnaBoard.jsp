@@ -50,7 +50,6 @@
     font-style: normal;
 }
 .choi-body {
-  padding-top: 70px;
   padding-bottom: 30px;
   font-family: 'SUITE-Regular';
 }
