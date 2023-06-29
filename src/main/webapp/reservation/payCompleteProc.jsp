@@ -1,6 +1,6 @@
-<%@page import="reservation.ReservationBean"%>
 <%@page import="reservation.ReservationDAO"%>
-<%@page import="user.UserDAO"%>
+<%@page import="reservation.PaymentBean"%>
+<%@page import="reservation.PaymentDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -9,24 +9,17 @@
 <!DOCTYPE html>
 <html>
 <body>
-
-<jsp:useBean id="bean" class="reservation.ReservationBean">
+<jsp:useBean id="bean" class="reservation.PaymentBean">
 	<jsp:setProperty name="bean" property="*" />
 </jsp:useBean>
 
-<%
-ReservationBean rbean = new ReservationBean();
-ReservationDAO rdao = new ReservationDAO(); 
+<%	
+	int num = (int) session.getAttribute("num");	
 
-bean.setNum(Integer.parseInt(request.getParameter("num")));
-
-int orderNum = rdao.ConditionUpdate(bean.getNum());
-
-response.sendRedirect("../reservation/MyReservation.jsp");
+	ReservationDAO rdao = new ReservationDAO();
+	int rs = rdao.update(num);
 	
-	
-	
-
+	response.sendRedirect("../reservation/MyReservation.jsp");
 %>
 </body>
 </html>

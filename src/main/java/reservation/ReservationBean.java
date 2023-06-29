@@ -27,6 +27,7 @@ public class ReservationBean {
 	public void setNum(int num) {
 		this.num = num;
 	}
+	
 	public String getUid() {
 		return uid;
 	}
