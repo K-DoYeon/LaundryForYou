@@ -49,6 +49,9 @@
     font-weight: 400;
     font-style: normal;
 }
+.gnb-header, .welcome-header{
+		margin: 0;
+	}
 .choi-body {
   padding-bottom: 30px;
   font-family: 'SUITE-Regular';
@@ -220,3 +223,5 @@ CommentBean cmt = new CommentBean();
     <script src="../js/boardlist.js"></script>
 </body>
 </html>
+
+<jsp:include page="../include/footer.jsp"></jsp:include>

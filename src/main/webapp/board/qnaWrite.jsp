@@ -39,6 +39,21 @@
     font-weight: 400;
     font-style: normal;
 }
+.gnb-header, .welcome-header{
+	margin: 0;
+}
+.text-center{
+	font-size: 45px;
+	padding-bottom: 20px;
+}
+article{
+	margin: 50px 0px;
+}
+.choi-body {
+ /*  padding-top: 70px; */
+  padding-bottom: 30px;
+  font-family: 'SUITE-Regular' ;
+}
 body {
   padding-bottom: 30px;
   font-family:  'SUITE-Regular';
@@ -69,7 +84,7 @@ button a{
 }
 </style>
 </head>
-<body>
+<body class = "choi-body">
 <jsp:include page="../include/header.jsp"></jsp:include>
 
 	<article>
@@ -111,3 +126,4 @@ button a{
 	</article>
 </body>
 </html>
+<jsp:include page="../include/footer.jsp"></jsp:include>
