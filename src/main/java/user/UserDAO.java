@@ -572,5 +572,17 @@ public class UserDAO {
 			return flag; //DB 오류 
 		}
 		
+		public void updateVIP(String uid) {
+			try {
+				getCon();
+				String sql = "update user set vip = 1 where uid = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, uid);
+				pstmt.executeUpdate();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 		
 }//userDAO
