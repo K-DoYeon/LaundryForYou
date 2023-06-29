@@ -31,7 +31,7 @@
             <div class="userBtn-my">
                <a href="updatePw.jsp" class="updatePw-my">비밀번호 수정</a>
                <a onclick="userCheck()" class="updateUser-my">회원정보 수정</a>
-               <a href="">후기 관리</a>
+               <a href="../review/MyReview.jsp">후기 관리</a>
                <a href="../reservation/MyReservation.jsp">예약 관리</a>
             </div>
          </div>

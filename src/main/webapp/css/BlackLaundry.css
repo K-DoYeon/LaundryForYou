@@ -47,11 +47,14 @@ h2 {
 	margin-top: 20px;
 }
 .left-mainbox a {
-	color: #fff;
-	text-decoration: none;
-	border-bottom: 1px solid #fff;
-	padding: 0 5px 5px;
-    font-weight: bold;
+	display: inline-block;
+    line-height: 40px;
+    height: 40px;
+    width: 114px;
+    border-radius: 8px;
+    color: #2c2c2c;
+    font-weight: bolder;
+    background: linear-gradient(66deg, #57370d -10%, #ffe998 48%, #57370d 110%);
 }
 
 /*******************************************/
