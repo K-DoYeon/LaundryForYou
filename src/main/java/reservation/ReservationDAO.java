@@ -146,9 +146,28 @@ public class ReservationDAO {
 			return allCount;
 		}
 	
-		
 		// 예약관리 컨디션 변경
-		public int update(int num) {
+	      public int update(int condition, int num) {
+	          int flag = 0;
+	          getCon();
+	          try {
+	              String sql = "update reservation set `condition` = ? where num = ?";
+	              pstmt = con.prepareStatement(sql);
+	              pstmt.setInt(1, condition);
+	              pstmt.setInt(2, num);
+	              
+	              flag = pstmt.executeUpdate();
+
+	              con.close();
+	          } catch (Exception e) {
+	              e.printStackTrace();
+	          }
+	          
+	          return flag;
+	      }
+		
+		// complete 예약관리 컨디션 변경
+		public int Newupdate(int num) {
 		    int flag = 0;
 		    getCon();
 		    try {

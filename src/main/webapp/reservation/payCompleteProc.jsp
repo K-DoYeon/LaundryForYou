@@ -17,7 +17,7 @@
 	int num = (int) session.getAttribute("num");	
 
 	ReservationDAO rdao = new ReservationDAO();
-	int rs = rdao.update(num);
+	int rs = rdao.Newupdate(num);
 	
 	response.sendRedirect("../reservation/MyReservation.jsp");
 %>
