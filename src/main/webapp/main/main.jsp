@@ -29,7 +29,7 @@
 		<div class="banner-inside">
 			<div class="main-delivery">
 				<p class="delivery-p">우리집이<span> 반짝 배송 </span>지역인지<br>확인해보세요!</p>
-				<p class="delivery-p-s">남들보다 빠르게, 신속한 반짝배송을 받아보세요.</p>
+				<p class="delivery-p-s">남들보다 빠르게, 신속한 반짝 배송을 받아보세요.</p>
 				<a href="EarlyDelivery.jsp">
 				<input type="search" id="delivery-search" placeholder="거주지의 지역명을 검색해보세요." class="delivery-search" name="searchText" autocomplete="off" disabled>
 				</a>

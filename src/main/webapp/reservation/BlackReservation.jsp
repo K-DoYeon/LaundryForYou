@@ -31,6 +31,7 @@
 		Integer postcode = (Integer) session.getAttribute("postcode");
 		String addr = (String) session.getAttribute("addr");
 		String detailaddr = (String) session.getAttribute("detailaddr");
+		Integer vip = (Integer) session.getAttribute("vip");
 	%>
 	<div class="container-reser">
 		<form class="reservation-reser" name="reservaionForm" action="BlackReservationProc.jsp" method="post">
@@ -137,9 +138,24 @@
 				</div>
 			</div>			
 			
+			<%
+				if(vip == 0){
+			%>
 			<div class="totalPriceBox-reser">
 				<h2 class="sizeDown-reser">총</h2> <input type="text" name="totalprice" id="total" value="0" size="11"> <h2>원</h2>
 			</div>
+			<%
+				}else{
+			%>
+				<div class="totalPriceBox-reser sale-reservation">
+					<p>총</p> <input type="text" id="total" class="sale-res" value="0" size="11"> <p>원</p>
+				</div>
+				<div class="totalPriceBox-reser">
+					<h2 class="sizeDown-reser">할인가격</h2><input type="text" name="totalprice" id="sale" value="0" size="11"><h2>원</h2>
+				</div>
+			<%
+				}
+			%>
 			
 			<button type="submit" class="do-reser" value ="submit">예약하기</button>
 		</div>
