@@ -23,7 +23,7 @@
 			</div>
 			<div class="stapm-userpage">
 				<a href="myPage.jsp" class="stamp-mypage">마이페이지</a> <br>
-				<a href="myPage.jsp" class="stamp-coupon">무료배송 쿠폰 : 0개</a>
+				<a href="myPage.jsp" class="stamp-coupon">무료배송 쿠폰 : <%= reviewCount / 5 %>개</a>
 			</div>
 		</div>
 		
@@ -79,5 +79,4 @@
 	
 	
 	
-</body>
-</html>
+<jsp:include page="../include/footer.jsp"></jsp:include>

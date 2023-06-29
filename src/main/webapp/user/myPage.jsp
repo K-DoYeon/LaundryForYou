@@ -116,5 +116,5 @@
    </div>
 
    <script src="../js/myPage.js"></script>
-</body>
-</html>
+   
+<jsp:include page="../include/footer.jsp"></jsp:include>
