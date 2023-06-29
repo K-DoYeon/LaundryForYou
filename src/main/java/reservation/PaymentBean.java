@@ -2,6 +2,7 @@ package reservation;
 
 public class PaymentBean {
 	private int num;
+	private String uid;
 	private String wdate;
 	private int daily;
 	private int blanket;
@@ -15,6 +16,12 @@ public class PaymentBean {
 	}
 	public void setNum(int num) {
 		this.num = num;
+	}
+	public String getUid() {
+		return uid;
+	}
+	public void setUid(String uid) {
+		this.uid = uid;
 	}
 	public String getWdate() {
 		return wdate;

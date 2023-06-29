@@ -65,9 +65,6 @@
 		width: 100px;
 	}
 	
-	a {
-		
-	}
 </style>
 <jsp:include page="../include/header.jsp"></jsp:include>
 <div class="container lmember">
@@ -117,10 +114,10 @@ for(int i=0; i < size; i++){
 %>
 
    <tr>
- 	<form action="paymentProc.jsp" method="post" name="payform"> 
+ 	<form action="paymentProc.jsp" method="post" name="payform" id="payform"> 
    	  <td>
       	 <input type="text" name="num" value="<%=num %>" readonly/>
-
+		<input type="hidden" name="uid" value="<%=userId %>"/>
       </td>
       <td><input type="text" name="daily" value="<%=daily %>" readonly />개</td>
       <td><input type="text" name="blanket" value="<%=blanket %>" readonly/>개 </td>
@@ -143,9 +140,21 @@ for(int i=0; i < size; i++){
       	}
       %>
       </td>
-      <td><button type="submit" class="btn btn-outline-secondary btn-sm">결제하기</button></td>
+      <td>
+      <%
+      	if (condition == 1) {
+      %>
+       <button type="button" class="btn btn-outline-primary btn-sm" disabled="disabled">결제완료</button>
+      <%
+      	} else {
+      %>
+     
+      <button type="submit" class="btn btn-outline-secondary btn-sm">결제하기</button>
+	  <%
+      	}
+      %>
+      </td>
  </form>
-      
 	<td>
       	<form method="post" action="">
          <input type="hidden" name="delete" value="<%=num %>">

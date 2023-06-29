@@ -1,5 +1,6 @@
 <%@page import="reservation.PaymentDAO"%>
 <%@page import="reservation.PaymentBean"%>
+<%@ page import="javax.servlet.http.HttpSession" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
     request.setCharacterEncoding("UTF-8");
@@ -33,6 +34,9 @@
     pdao.insert(pay);
 	
     int totalprice = pdao.Total(pay.getNum());
+    
+    session.setAttribute("num", pay.getNum());
+    
     session.setAttribute("totalprice", totalprice);
     response.sendRedirect("payment.jsp");
 %>

@@ -1,3 +1,4 @@
+<%@page import="java.util.Vector"%>
 <%@page import="reservation.ReservationBean"%>
 <%@page import="reservation.ReservationDAO"%>
 <%@page import="user.UserDAO"%>

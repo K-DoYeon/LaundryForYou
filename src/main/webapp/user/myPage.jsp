@@ -1,6 +1,7 @@
+<%@page import="reservation.ReservationDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="user.UserBean, review.ReviewDAO"%>
+<%@page import="user.UserBean, review.ReviewDAO, reservation.PaymentDAO"%>
 <jsp:include page="../include/header.jsp"></jsp:include>
 <link rel="stylesheet" href="../css/myPage.css">
    
@@ -12,6 +13,10 @@
    
    ReviewDAO rdao = new ReviewDAO();
    int reviewCount = rdao.getReviewCount(uid);
+   
+   PaymentDAO pdao = new  PaymentDAO();
+   int totalReservationPrice = pdao.getTotalReservationPrice(uid);
+   
    
    int maxColorPhotos = reviewCount % 5; // 컬러 스탬프는 총 스탬프 개수에서 쿠폰으로 전환하고 남은 스탬프 개수 구함.
    int blackAndWhitePhotos = 5 - maxColorPhotos; // 5개에서 컬러 스탬프 개수 뺀 것이 흑백 스탬프.
@@ -31,7 +36,7 @@
             <div class="userBtn-my">
                <a href="updatePw.jsp" class="updatePw-my">비밀번호 수정</a>
                <a onclick="userCheck()" class="updateUser-my">회원정보 수정</a>
-               <a href="">후기 관리</a>
+               <a href="../review/MyReview.jsp">후기 관리</a>
                <a href="../reservation/MyReservation.jsp">예약 관리</a>
             </div>
          </div>
@@ -51,24 +56,25 @@
          </div>
          
          <%
-            if (vip == 0) {
+            if (totalReservationPrice >= 500000) {
          %>
+           <div class="vip-my">
+            <a class="Title-my">
+               <h2>회원등급</h2>
+            </a>
+            <img alt="vip" src="../img/vip.png" class="vipImg-my">
+            <p><span class="point-my">VIP</span>회원</p>
+         </div>
+         <%
+            } else {
+         %>
+       
          <div class="vip-my">
             <a class="Title-my">
                <h2>회원등급</h2>
             </a>
             <img alt="normal" src="../img/normal.png" class="vipImg-my">
             <p><span class="point-my">일반</span>회원</p>
-         </div>
-         <%
-            } else {
-         %>
-         <div class="vip-my">
-            <a class="Title-my">
-               <h2>회원등급</h2>
-            </a>
-            <img alt="vip" src="../img/vip.png" class="vipImg-my">
-            <p><span class="point-my">VIP</span>회원</p>
          </div>
          <%
             }

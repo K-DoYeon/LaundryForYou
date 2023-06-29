@@ -42,21 +42,24 @@
 			
 			for (int i = startRow; i < endRow; i++) {
 			BoardBean bean = list.get(i);
-/*  				String wdateStr = bean.getWdate();
+			String wdateStr = bean.getWdate();
 
-				SimpleDateFormat sdfInput = new SimpleDateFormat("yyyy-MM-dd"); // 현재 형식
-				Date wdate = sdfInput.parse(wdateStr); // 문자열을 Date 객체로 변환
+			SimpleDateFormat sdfInput = new SimpleDateFormat("yyyy-MM-dd"); // 현재 형식
+			Date wdate = sdfInput.parse(wdateStr); // 문자열을 Date 객체로 변환
 
-				SimpleDateFormat sdfOutput = new SimpleDateFormat("yyyy.MM.dd"); // 변경하고자 하는 형식
-				String formattedWdate = sdfOutput.format(wdate); // 변경된 형식으로 날짜를 문자열로 변환 */
+			SimpleDateFormat sdfOutput = new SimpleDateFormat("yyyy.MM"); // 변경하고자 하는 형식
+			String formattedWdate = sdfOutput.format(wdate); // 변경된 형식으로 날짜를 문자열로 변환
+
+			SimpleDateFormat sdfBigOutput = new SimpleDateFormat("dd"); // 변경하고자 하는 형식 ("dd")
+			String formattedBigWdate = sdfBigOutput.format(wdate); // 변경된 형식으로 날짜를 문자열로 변환
 %>
 <div class="do-container">
  	<div class="active" id="QA">
       <div class="faq">
       	<div class="do-title">
 	      	<div class="do-day">
-	      		<span class="big">01</span>
-	      		<%-- <span><%=formattedWdate%></span> --%>
+	      		<span class="big"><%=formattedBigWdate%></span>
+	      		<span><%=formattedWdate%></span>
 	      	</div>
 	      	<div><h3 class="faq-title"><%=bean.getSubject() %></h3></div>
       	</div>
@@ -102,6 +105,9 @@
                 }
               %>
 		</div>
+		</div>
+		<div class="write-button active">
+			<button onclick="location.href='boardlist.jsp'">목록</button>
 		</div>
 		</div>
 

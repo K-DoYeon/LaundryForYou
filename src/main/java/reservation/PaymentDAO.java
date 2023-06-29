@@ -36,15 +36,16 @@ public class PaymentDAO {
 			getCon();
 			try {
 				
-				String sql = "insert into pay values (?,sysdate(), ?, ?, ?, ?, ?, ?)";
+				String sql = "insert into pay values (?, ?, sysdate(), ?, ?, ?, ?, ?, ?)";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, bean.getNum());
-				pstmt.setInt(2, bean.getDaily());
-				pstmt.setInt(3, bean.getBlanket());
-				pstmt.setInt(4, bean.getShirt());
-				pstmt.setInt(5, bean.getDry());
-				pstmt.setInt(6, bean.getCare());
-				pstmt.setInt(7, bean.getTotalprice());
+				pstmt.setString(2, bean.getUid());
+				pstmt.setInt(3, bean.getDaily());
+				pstmt.setInt(4, bean.getBlanket());
+				pstmt.setInt(5, bean.getShirt());
+				pstmt.setInt(6, bean.getDry());
+				pstmt.setInt(7, bean.getCare());
+				pstmt.setInt(8, bean.getTotalprice());
 				pstmt.executeUpdate();
 				
 				System.out.println(pstmt);
@@ -55,6 +56,7 @@ public class PaymentDAO {
 			}
 		}
 		
+		//total 세션 받아오기
 		public int Total(int num) {
 			int totalprice = 0;
 			try {
@@ -72,5 +74,25 @@ public class PaymentDAO {
 			}
 			return totalprice;
 		}
+		
+		public int getTotalReservationPrice(String uid) {
+			getCon();
+			int totalReservationPrice = 0;
+			try {
+				String sql = "select sum(totalprice) as totalprice from pay where uid = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, uid);
+				rs = pstmt.executeQuery();
+				
+				if (rs.next()) {
+					totalReservationPrice = rs.getInt("totalprice");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return totalReservationPrice;
+		}
+		
+
 
 }

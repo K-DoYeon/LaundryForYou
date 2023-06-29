@@ -147,17 +147,36 @@ public class ReservationDAO {
 			return allCount;
 		}
 	
-		
 		// 예약관리 컨디션 변경
-		public int update(int condition, int num) {
+	      public int update(int condition, int num) {
+	          int flag = 0;
+	          getCon();
+	          try {
+	              String sql = "update reservation set `condition` = ? where num = ?";
+	              pstmt = con.prepareStatement(sql);
+	              pstmt.setInt(1, condition);
+	              pstmt.setInt(2, num);
+	              
+	              flag = pstmt.executeUpdate();
+
+	              con.close();
+	          } catch (Exception e) {
+	              e.printStackTrace();
+	          }
+	          
+	          return flag;
+	      }
+		
+		// complete 예약관리 컨디션 변경
+		public int Newupdate(int num) {
 		    int flag = 0;
 		    getCon();
 		    try {
-		        String sql = "update reservation set `condition` = ? where num = ?";
+		        String sql = "update reservation set `condition` = 1 where num = ?";
 		        pstmt = con.prepareStatement(sql);
-		        pstmt.setInt(1, condition);
-		        pstmt.setInt(2, num);
+		        pstmt.setInt(1, num);
 		        
+		        System.out.println(pstmt);
 		        flag = pstmt.executeUpdate();
 
 		        con.close();
@@ -211,7 +230,7 @@ public class ReservationDAO {
 			int totalprice = 0;
 			try {
 				getCon();
-				String sql = "select totalprice from reservation where uid = ? and num = ?";
+				String sql = "select num,totalprice from reservation where uid = ? and num = ?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, uid);
 				pstmt.setInt(2, num);
@@ -225,6 +244,40 @@ public class ReservationDAO {
 			}
 			return totalprice;
 		}
+		
+		/*// session저장
+	      public Vector<ReservationBean> Res() {
+	          // 리턴할 객체 선언
+	          Vector<ReservationBean> data = new Vector<>();
+	          
+	          getCon();
+	          
+	          try {
+	             // 쿼리 준비
+	             String sql = "select num,totalprice from reservation order by num desc";
+	             // 쿼리를 실행할 객체 선언
+	             pstmt = con.prepareStatement(sql);
+	             // 쿼리 실행 후 결과 저장
+	             rs = pstmt.executeQuery();
+	             // 데이터 개수를 모르기에 반복문으로 추출
+	             while (rs.next()) {
+	                // 데이터를 패키징
+	                ReservationBean bean = new ReservationBean();         
+	                bean.setNum(rs.getInt(1));
+	                bean.setTotalprice(rs.getInt(17));
+	                
+	                data.add(bean);
+	             }
+	             
+	             con.close();
+	             
+	             
+	          } catch (Exception e) {
+	             e.printStackTrace();
+	          }
+	          return data;
+	       }
+		*/
 		
 		
 		
@@ -445,7 +498,6 @@ public class ReservationDAO {
 			return flag;
 		}
 	  
-
 	    
 	 
 	    

@@ -11,9 +11,7 @@
                 <p>Premium laundry service</p>
                 <h1>세탁의 당신 <br> BLACK LAUNDRY </h1>
                 <p>명품 전문 케어 센터인 EzenAcademy Center에서 <br> 각 파트별 전문 마스터들이 맞춤 관리하는 케어 서비스 BLACK LAUNDRY 입니다.</p>
-            	<a href="../reservation/BlackReservation.jsp">
-           			예약하기 <i class="ri-arrow-drop-right-line"></i> 
-           		</a>
+            	<a href="../reservation/BlackReservation.jsp">예약하기</a>
             </div>
             <div class="right-mainbox">
                 <img src="../img/black1.jpg" alt="black1">
@@ -100,7 +98,7 @@
             </div>
             <div class="row-k">
                 <div class="left-process">
-                    <h1>07 포장</h1>
+                    <h1>06 포장</h1>
                     <span>블랙런드리 의류 전용 포장지로 깔끔하게 포장합니다.</span> <br>
                 </div>
                 <div class="right-process">

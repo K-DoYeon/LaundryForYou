@@ -74,6 +74,7 @@ for(int i=0; i < size; i++){
     String tel = ubean.getTel();
     String email = ubean.getUemail();
     int level = ubean.getLevel();
+    int vip = ubean.getVip();
  
 %>
 	<tr>
@@ -94,29 +95,30 @@ for(int i=0; i < size; i++){
 				} else {	
 			
 				String selected1 = "", selected2 = "", selected3 = "", selected4 = "", selected5 = "";
-				switch (level) {
+				switch (vip) {
 				case 0:
 					selected1 = "selected";
 					break;
 				case 1:
 					selected2 = "selected";
 					break;
-				case 2:
+				case 99:
 					selected3 = "selected";
 					break;
-				case 3:
-					selected4 = "selected";
-					break;
+
 				
 				}
 			%>
-			<select name="level" class="level" onchange="memLevel(this, <%=level %>, <%=num %>);">
-				<option value="0" <%=selected1 %> >VIP회원</option>
-				<option value="1" <%=selected2 %> >서울지역</option>
-				<option value="2" <%=selected3 %> >타지역</option>
-				<option value="3" <%=selected4 %> >관리자</option>
+			<select name="vip" class="vip" onchange="memLevel(this, <%=vip %>, <%=num %>);">
+				<option value="0" <%=selected1 %> >일반회원</option>
+				<option value="1" <%=selected2 %> >VIP회원</option>
+				<option value="2" <%=selected3 %> >관리자</option>
 			</select>
 		</td>
+		
+		
+		
+		
 	
 	</tr>
 <%

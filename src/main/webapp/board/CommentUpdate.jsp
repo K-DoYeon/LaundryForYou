@@ -34,7 +34,6 @@
 %>
 <style>
 @font-face {
-    font-family: 'IM_Hyemin-Bold';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Bold.woff2') format('woff');
     font-weight: normal;
     font-style: normal;
@@ -42,7 +41,6 @@
 .choi-body {
   padding-top: 70px;
   padding-bottom: 30px;
-  font-family: 'IM_Hyemin-Bold';
 }
 .form-control:disabled, .form-control[readonly]{
    backgrond-color : #fff;
@@ -155,7 +153,7 @@ CommentBean be = dao.getOneUpdateComment(commentid);
                    <p>PW : <span class="pw"><%=be.getUpass()%></span></p>
                 </div>
                 <div class="do-right">
-                   <textarea rows="5" cols="110" name="content" placeholder="관리자만 쓸수있습니다." maxlength="100"><%=be.getContent()%></textarea>
+                   <textarea rows="5" cols="100" name="content" placeholder="관리자만 쓸수있습니다." maxlength="100"><%=be.getContent()%></textarea>
                 </div>
             </div>
             
