@@ -42,45 +42,60 @@ public class ReservationDAO {
 	
 	
 	// 회원가입 메소드
-		public int insert(ReservationBean bean) {
-			int mynum = 0;
-			
-			getCon();
-			try {
-				
-				String sql = "insert into reservation values (num, ?, ? ,? ,?, ?, ?, ?, ?, 0, sysdate(), ?, ?, ?, ?, ?, ?, 0,0)";
-				pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-				pstmt.setString(1, bean.getUid());
-				pstmt.setString(2, bean.getUname());
-				pstmt.setString(3, bean.getTel());
-				pstmt.setInt(4, bean.getPostcode());
-				pstmt.setString(5, bean.getAddr());
-				pstmt.setString(6, bean.getDetailaddr());
-				pstmt.setString(7, bean.getComment());
-				pstmt.setString(8, bean.getSelectdate());
-				pstmt.setInt(9, bean.getDaily());
-				pstmt.setInt(10, bean.getBlanket());
-				pstmt.setInt(11, bean.getShirt());
-				pstmt.setInt(12, bean.getDry());
-				pstmt.setInt(13, bean.getCare());
-				pstmt.setInt(14, bean.getTotalprice());
-				pstmt.executeUpdate();
-				rs = pstmt.getGeneratedKeys();
-				
-				if(rs.next()) {
-					mynum = rs.getInt(1);
-					System.out.println(mynum);
-				}
-				
-				System.out.println(pstmt);
-				
-				con.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return mynum;
-		}
-		
+	@SuppressWarnings("unused")
+	public int insert(ReservationBean bean) {
+	    int mynum = 0;
+	    getCon();
+	    try {
+	        String getMaxNumQuery = "SELECT MAX(num) FROM reservation";
+	        String setNewNumQuery = "SET @new_num = (SELECT MAX(num) + 1 FROM reservation)";
+	        String insertQuery = "INSERT INTO reservation VALUES (@new_num, ?, ?, ?, ?, ?, ?, ?, ?, 0, SYSDATE(), ?, ?, ?, ?, ?, ?, 0, @new_num)";
+
+	        // Step 1: 최대값 조회
+	        Statement getMaxNumStatement = con.createStatement();
+	        ResultSet maxNumResult = getMaxNumStatement.executeQuery(getMaxNumQuery);
+	        int maxNum = 0;
+	        if (maxNumResult.next()) {
+	            maxNum = maxNumResult.getInt(1);
+	        }
+
+	        // Step 2: 변수에 값 저장
+	        Statement setNewNumStatement = con.createStatement();
+	        setNewNumStatement.executeUpdate(setNewNumQuery);
+
+	        // Step 3: 새로운 행 추가
+	        pstmt = con.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
+	        pstmt.setString(1, bean.getUid());
+	        pstmt.setString(2, bean.getUname());
+	        pstmt.setString(3, bean.getTel());
+	        pstmt.setInt(4, bean.getPostcode());
+	        pstmt.setString(5, bean.getAddr());
+	        pstmt.setString(6, bean.getDetailaddr());
+	        pstmt.setString(7, bean.getComment());
+	        pstmt.setString(8, bean.getSelectdate());
+	        pstmt.setInt(9, bean.getDaily());
+	        pstmt.setInt(10, bean.getBlanket());
+	        pstmt.setInt(11, bean.getShirt());
+	        pstmt.setInt(12, bean.getDry());
+	        pstmt.setInt(13, bean.getCare());
+	        pstmt.setInt(14, bean.getTotalprice());
+	        pstmt.executeUpdate();
+	        rs = pstmt.getGeneratedKeys();
+
+	        if (rs.next()) {
+	            mynum = rs.getInt(1);
+	            System.out.println(mynum);
+	        }
+
+	        System.out.println(pstmt);
+
+	        con.close();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return mynum;
+	}
+
 		
 		// 페이징 메소드, 제한된 갯수 불러옴
 		public Vector<ReservationBean> getSelect(int limitNum, int listNum) {

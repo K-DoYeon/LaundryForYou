@@ -53,7 +53,7 @@ public class ReviewDAO {
 		   getCon();
 		   
 		   try {
-			
+			   
 			   String sql = "insert into review values(num,?,?,?,?,0,sysdate(),0,0,0,0)";
 			   pstmt = con.prepareStatement(sql);
 			   pstmt.setString(1, bean.getUid());

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import ="review.ReviewBean, review.ReviewDAO, review.RCommentBean, likey.LikeyDAO, likey.LikeyDTO" %>
+<%@ page import ="review.ReviewBean, review.ReviewDAO, review.RCommentBean, likey.LikeyDAO, likey.LikeyDTO, reservation.ReservationDAO" %>
 <%@ page import="java.util.*"%>
 <%@ page import = "java.io.*" %>
 <%
@@ -39,6 +39,10 @@ reviewlist = rdao.getReviewList();
 	LikeyDAO ldao = new LikeyDAO();
 	boolean lresult = ldao.countLike(loginid, subject);
 	System.out.println(lresult);
+	
+	ReservationDAO rsdao = new ReservationDAO();
+	int resnum = (Integer)session.getAttribute("resnum");
+	
 %>
 <%
 	uid = null;
@@ -151,6 +155,7 @@ i.fa-heart:hover{
                   <label for="reg_num"><%=bean.getNum() %> /</label>
                   <label for="reg_id"><%=bean.getUid() %></label>
                   <input type="hidden" name="upass" value="<%=bean.getUpass() %>" />
+                  <input type="hidden" name="upass" value="<%=resnum%>" />
                </div>
                <div>
                   <label for="reg_wdate"><%=bean.getWdate() %> /</label>

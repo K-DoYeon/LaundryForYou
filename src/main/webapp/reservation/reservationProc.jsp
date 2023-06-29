@@ -26,6 +26,7 @@
 	String uid = (String) session.getAttribute("uid");
 	
 	int totalprice = rdao.Total(uid, mynum);
+	System.out.println(totalprice);
 	session.setAttribute("totalprice", totalprice);
 
 	
