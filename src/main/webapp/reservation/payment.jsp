@@ -5,10 +5,6 @@
 <%
 
 String uname = (String) session.getAttribute("uname");
-String tel = (String) session.getAttribute("tel");
-Integer postcode = (Integer) session.getAttribute("postcode");
-String addr = (String) session.getAttribute("addr");
-String detailaddr = (String) session.getAttribute("detailaddr");
 String uemail = (String) session.getAttribute("uemail");
 Integer totalprice = (Integer) session.getAttribute("totalprice");
 /* out.print("세션값" + session.getAttribute("totalprice")); */
@@ -33,7 +29,7 @@ Integer totalprice = (Integer) session.getAttribute("totalprice");
         IMP.request_pay({
             pg : 'html5_inicis',
             pay_method : 'card',
-            merchant_uid : 'merchant_' + new Date().getTime(),
+            merchant_uid : new Date().getTime(),
             name : '세탁의 당신',
             amount : '<%=totalprice%>',
             buyer_name : '<%=uname%>',
@@ -51,6 +47,7 @@ Integer totalprice = (Integer) session.getAttribute("totalprice");
                     }
                 }).done(function(data) {
                     //[2] 서버에서 REST API로 결제정보확인 및 서비스루틴이 정상적인 경우
+                    console.log(data);
                     if ( everythings_fine ) {
                         msg = '결제가 완료되었습니다.';
                         msg += '\n고유ID : ' + rsp.imp_uid;
@@ -66,6 +63,8 @@ Integer totalprice = (Integer) session.getAttribute("totalprice");
                 });
                 //성공시 이동할 페이지
                 //msg = '결제에 성공했습니다';
+                sessionStorage.setItem("merchant_uid",rsp.merchant_uid);
+                
                location.href='<%=request.getContextPath()%>/reservation/payCompleted.jsp';
                //alert(msg);
             } else {

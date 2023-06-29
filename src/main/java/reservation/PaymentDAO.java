@@ -36,15 +36,16 @@ public class PaymentDAO {
 			getCon();
 			try {
 				
-				String sql = "insert into pay values (?,sysdate(), ?, ?, ?, ?, ?, ?)";
+				String sql = "insert into pay values (?, ?, sysdate(), ?, ?, ?, ?, ?, ?)";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, bean.getNum());
-				pstmt.setInt(2, bean.getDaily());
-				pstmt.setInt(3, bean.getBlanket());
-				pstmt.setInt(4, bean.getShirt());
-				pstmt.setInt(5, bean.getDry());
-				pstmt.setInt(6, bean.getCare());
-				pstmt.setInt(7, bean.getTotalprice());
+				pstmt.setString(2, bean.getUid());
+				pstmt.setInt(3, bean.getDaily());
+				pstmt.setInt(4, bean.getBlanket());
+				pstmt.setInt(5, bean.getShirt());
+				pstmt.setInt(6, bean.getDry());
+				pstmt.setInt(7, bean.getCare());
+				pstmt.setInt(8, bean.getTotalprice());
 				pstmt.executeUpdate();
 				
 				System.out.println(pstmt);
@@ -74,8 +75,6 @@ public class PaymentDAO {
 			return totalprice;
 		}
 		
-		public void update(int num) {
-			
-		}
+
 
 }

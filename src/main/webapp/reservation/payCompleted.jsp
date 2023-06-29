@@ -1,3 +1,5 @@
+<%@page import="reservation.PaymentBean"%>
+<%@page import="reservation.PaymentDAO"%>
 <%@page import="reservation.ReservationDAO"%>
 <%@page import="reservation.ReservationBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -22,16 +24,8 @@
 </style>
 </head>
 <body>
-<%
-
-
-ReservationDAO rdao = new ReservationDAO(); 
-ReservationBean rbean = rdao.getOneReservation(num);
-
-%>
   <div id="popup-dialog" title="팝업 제목">
   <form action="payCompleteProc.jsp">
-  <input type="hidden" name="num" value="<%=rbean.getNum()%>">
     <p>결제가 완료되었습니다.</p>
     <button type="submit">확인</button>
   </form>
@@ -47,7 +41,6 @@ ReservationBean rbean = rdao.getOneReservation(num);
         height: 200      // 다이얼로그 높이
       });
     });
-    
     
   </script>
 
