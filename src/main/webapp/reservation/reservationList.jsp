@@ -179,3 +179,4 @@
 
 <script src="../js/reservationlist.js"></script>
 
+<jsp:include page="../include/footer.jsp"></jsp:include>
