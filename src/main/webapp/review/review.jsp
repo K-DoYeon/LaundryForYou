@@ -46,21 +46,6 @@
         </div>
     </div>
 
-    <!-- board seach area -->
-    <div id="board-search">
-        <div class="container">
-            <div class="search-window">
-                <form action="">
-                    <div class="search-wrap">
-                        <label for="search" class="blind">내용 검색</label>
-                        <input id="search" type="search" name="" placeholder="검색어를 입력해주세요." value="">
-                        <button type="submit" class="btn btn-dark">검색</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-   
   <!-- board list area -->
 
     <div id="board-list">
@@ -143,7 +128,7 @@
       	
       <% }else{ %>
      	 <div>
-            <a href="reviewWrite.jsp" class="write-review">글쓰기</a>
+            <a href="MyReview.jsp" class="write-review">글쓰기</a>
          </div>
       <% } %>
 

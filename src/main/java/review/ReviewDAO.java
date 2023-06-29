@@ -53,8 +53,8 @@ public class ReviewDAO {
 		   getCon();
 		   
 		   try {
-			
-			   String sql = "insert into review values(num,?,?,?,?,0,sysdate(),0,0,0)";
+			   
+			   String sql = "insert into review values(num,?,?,?,?,0,sysdate(),0,0,0,0)";
 			   pstmt = con.prepareStatement(sql);
 			   pstmt.setString(1, bean.getUid());
 			   pstmt.setString(2, bean.getUpass());
@@ -291,6 +291,7 @@ public class ReviewDAO {
 					  bean.setReadCount(rs.getInt(8));
 					  bean.setReplyCount(rs.getInt(9)); 
 					  bean.setLike_this(rs.getInt(10));
+					  bean.setResnum(rs.getInt(11));
 					  } 
 				  System.out.println("게시글 읽기 연결 성공"); }
 			  catch (Exception e) { 
