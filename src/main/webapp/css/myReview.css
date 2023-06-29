@@ -1,0 +1,28 @@
+@charset "UTF-8";
+.container-myre {
+	margin: 0 auto;
+	width: 1245px;
+}
+.container-myre h1 {
+	text-align: center;
+	font-size: 40px;
+	line-height: 48px;
+	margin: 16px 0;
+	font-weight: 500;
+}
+.container-myre p {
+	text-align: right;
+}
+.reviewList-myre {
+	margin-top: 25px;
+}
+.reviewList-myre table {
+	border-collapse: collapse;
+}
+.reviewListTitle-myre {
+	border-bottom: 1px solid #000;
+}
+.reviewListTitle-myre th {
+	width: 800px;
+	padding-bottom: 10px;
+}
