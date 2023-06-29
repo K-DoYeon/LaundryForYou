@@ -15,10 +15,12 @@ function dailyMinus(){
 		shirtsum = document.getElementById("shirtSumprice"),
 		drysum = document.getElementById("drySumprice"),
 		caresum = document.getElementById("careSumprice"),
-		total = document.getElementById("total");
+		total = document.getElementById("total"),
+		sale = document.getElementById("sale");
 		
 	total.value = parseInt(dailysum.value) + parseInt(blanketsum.value) + 
 				parseInt(shirtsum.value) + parseInt(drysum.value) + parseInt(caresum.value);
+	sale.value = total.value * 0.9;
 }
 function dailyPlus(){
 		
@@ -36,10 +38,12 @@ function dailyPlus(){
 		shirtsum = document.getElementById("shirtSumprice"),
 		drysum = document.getElementById("drySumprice"),
 		caresum = document.getElementById("careSumprice"),
-		total = document.getElementById("total");
+		total = document.getElementById("total"),
+		sale = document.getElementById("sale");
 		
 	total.value = parseInt(dailysum.value) + parseInt(blanketsum.value) + 
 				parseInt(shirtsum.value) + parseInt(drysum.value) + parseInt(caresum.value);
+	sale.value = total.value * 0.9;
 }
 
 function blanketMinus(){
