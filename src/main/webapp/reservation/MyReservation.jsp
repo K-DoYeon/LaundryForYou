@@ -54,6 +54,9 @@
 
 <link rel="stylesheet" href="../css/bootstrap.css" />
 <style>
+	.gnb-header, .welcome-header{
+		margin: 0;
+	}
 	input[type=text]{
 		border: 0;
 		outline: none;
