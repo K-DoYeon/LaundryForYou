@@ -3,6 +3,7 @@
 <%@ page import ="review.ReviewBean, review.ReviewDAO, review.RCommentBean, likey.LikeyDAO, likey.LikeyDTO" %>
 <%@ page import="java.util.*"%>
 <%@ page import = "java.io.*" %>
+
 <%
 ReviewDAO rdao = new ReviewDAO();
 ArrayList<ReviewBean> reviewlist = null;
@@ -43,8 +44,10 @@ reviewlist = rdao.getReviewList();
 	String subject = bean.getSubject();
 	String uid = bean.getUid();
 	String loginid = (String) session.getAttribute("uid");
-	int level = (Integer)session.getAttribute("level");
-	
+	int level = 0;
+	if(loginid != null){
+	level = (Integer)session.getAttribute("level");
+	}
 	LikeyDAO ldao = new LikeyDAO();
 	boolean lresult = ldao.countLike(loginid, subject);
 	System.out.println(lresult);
@@ -177,15 +180,13 @@ i.fa-heart:hover{
 					<input type = "hidden" name = "readcount" id="readcount" />
 					<input type = "hidden" name = "replycount" id="replycount"/>
 					<input type = "hidden" name = "like" id="like" />
-				<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" onclick="location.href='reviewUpdate.jsp?num=<%=bean.getNum() %>'">수정</button>
-				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList" onclick="location.href='reviewDelete.jsp?num=<%=bean.getNum() %>'">삭제</button>
+				<button type="button" class="btn btn-sm choi-qna-btn" onclick="location.href='reviewUpdate.jsp?num=<%=bean.getNum() %>'">수정</button>
+				<button type="button" class="btn btn-sm choi-qna-btn" onclick="location.href='reviewDelete.jsp?num=<%=bean.getNum() %>'">삭제</button>
 				<%
 				if(level == 99){
 				%>
 				<a type="button" class="btn btn-sm choi-qna-btn" id="btnList" onclick="return confirm('관리자 권한으로 삭제하시겠습니까?')" href="adminDelete.jsp?num=<%=bean.getNum() %>">관리자 권한으로 삭제</a>
 				<%
-				}else{
-					
 				}
 				%>
 				<%
@@ -231,8 +232,8 @@ i.fa-heart:hover{
 			if(uid==null){
 		%>
 			<div class ="choi-qna">
-				<button type="submit" class="btn btn-sm choi-qna-btn mt-2" >
-				<a onclick = "return confirm('로그인 후 이용하실 수 있습니다.')" href="../user/login.jsp">등록</a></button>
+				<button type="submit" class="btn btn-sm choi-qna-btn mt-2" ></button>
+				<a onclick = "return confirm('로그인 후 이용하실 수 있습니다.')" href="../user/login.jsp">등록</a>
 		    </div>
 		<% }else{ %>
 			<div class ="choi-qna">
