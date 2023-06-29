@@ -144,8 +144,8 @@
 			<%
 				}else{
 			%>
-				<div>
-					<p>총</p> <input type="text" id="total" value="0" size="11"> <p>원</p>
+				<div class="totalPriceBox-reser sale-reservation">
+					<p>총</p> <input type="text" id="total" class="sale-res" value="0" size="11"> <p>원</p>
 				</div>
 				<div class="totalPriceBox-reser">
 					<h2 class="sizeDown-reser">할인가격</h2><input type="text" name="totalprice" id="sale" value="0" size="11"><h2>원</h2>

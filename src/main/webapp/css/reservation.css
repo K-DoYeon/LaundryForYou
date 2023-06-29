@@ -153,7 +153,7 @@ body{
 /***** Clean Info *****/
 .selectOption-reser {
 	display: flex;
-	margin-bottom: 24px;
+	margin-bottom: 20px;
 }
 .selectName-reser {
 	margin-right: 25px;
@@ -207,4 +207,28 @@ body{
 }
 .sizeDown-reser {
 	font-size: 20px;
+}
+
+
+
+
+.sale-reservation{
+	margin: 0;
+	position: relative;
+	color: #999;
+}
+
+.sale-reservation::after{
+	width: 50%;
+	height: 3px;
+	background: #cc1800;
+	position:absolute;
+	top:12px;
+	right:-5px;
+	content: "";
+	
+}
+
+.sale-res{
+	color: #999;
 }
