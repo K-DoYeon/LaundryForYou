@@ -63,7 +63,7 @@
 	input[type=number] {
 		border: 0;
 		outline: none;
-		width: 81px;
+		width: 88px;
 		margin-left: -8px;
 		text-align: center;
 	}
