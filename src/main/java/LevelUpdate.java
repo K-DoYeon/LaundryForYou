@@ -16,14 +16,14 @@ public class LevelUpdate extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
 		UserDAO udao = new UserDAO();
-		int level = Integer.parseInt(req.getParameter("level"));
+		int vip = Integer.parseInt(req.getParameter("vip"));
 		int num = Integer.parseInt(req.getParameter("num"));
 		
 		res.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = res.getWriter();
 		req.setCharacterEncoding("UTF-8");
 		
-		int rs = udao.update(level, num);
+		int rs = udao.update(vip, num);
 		out.print(rs);
 
 	}

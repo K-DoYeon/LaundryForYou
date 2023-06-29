@@ -81,13 +81,13 @@ public class UserDAO {
 	}
 	
 	// 멤버 수정
-	public int update(int level, int num) {
+	public int update(int vip, int num) {
 		int flag = 0;
 		getCon();
 		try {
-			String sql = "update user set level=? where num=?";
+			String sql = "update user set vip=? where num=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, level);
+			pstmt.setInt(1, vip);
 			pstmt.setInt(2, num);
 			
 			flag = pstmt.executeUpdate();
@@ -100,6 +100,9 @@ public class UserDAO {
 		
 		return flag;
 	}
+	
+	
+
 	
 	// select
 	public Vector<UserBean> getSelect(int limitNum, int listNum) {
