@@ -13,16 +13,7 @@ reviewlist = rdao.getReviewList();
 <head>
 <meta charset="UTF-8">
 <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script>
-	$(document).on('click', '#btnSave', function(e){
-		e.preventDefault();	
-		$("#form").submit();
-	});
 
-	
-
-</script>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" 
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" 
@@ -136,6 +127,11 @@ i.fa-heart:hover{
 	color: #fe3434;
 	transition: all 300ms;
 }
+.re-btn{
+	border : none;
+	cursor : pointer;
+}
+
 </style>
 </head>
 <body>
@@ -258,18 +254,19 @@ i.fa-heart:hover{
 					<td style="text-align: left;"><%=list.get(i).getUid() %></td>  
 					<td style = "text-align : center;"><%= list.get(i).getReplyContent() %></td>
 					<td style = "text-align: right;"><%=list.get(i).getWdate().substring(0,11) %>
-					<a href="reviewReComment.jsp?num=<%=bean.getNum() %>&ref=<%=rbean.getRef()%>&bbsId=<%=rbean.getBbsId() %>&replyAvailable=<%=rbean.getReplyAvailable() %>" class="btn ">대댓글</a>
+					<a href = "#" type="button" class="re-btn" id="re-review<%= i %>">대댓글</a>
 					<a onclick = "return confirm('정말로 삭제하시겠습니까?')" href="reviewCommentDelete.jsp?num=<%=bean.getNum()%>&bbsId=<%=list.get(i).getBbsId() %>" class="btn-del">삭제</a>
 					</td>
-					
-				<% } %>
+
 				</tr>
-				
+				 <% } %>
 			</tbody>
-	</table>				
 			
-	</div>
-		
-	</article>
+ </table >
+		   
+			
+</div>	
+</article>
+
 </body>
 </html>

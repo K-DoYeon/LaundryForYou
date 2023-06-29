@@ -48,7 +48,7 @@ public class ReservationDAO {
 			getCon();
 			try {
 				
-				String sql = "insert into reservation values (num, ?, ? ,? ,?, ?, ?, ?, ?, 0, sysdate(), ?, ?, ?, ?, ?, ?, 0)";
+				String sql = "insert into reservation values (num, ?, ? ,? ,?, ?, ?, ?, ?, 0, sysdate(), ?, ?, ?, ?, ?, ?, 0,0)";
 				pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 				pstmt.setString(1, bean.getUid());
 				pstmt.setString(2, bean.getUname());
@@ -113,6 +113,7 @@ public class ReservationDAO {
 					rbean.setCare(rs.getInt("care"));
 					rbean.setTotalprice(rs.getInt("totalprice"));
 					rbean.setCondition(rs.getInt("condition"));
+					rbean.setResnum(rs.getInt("resnum"));
 					
 					data.add(rbean);
 				}
@@ -196,6 +197,7 @@ public class ReservationDAO {
 					res.setCare(rs.getInt("care"));
 					res.setTotalprice(rs.getInt("totalprice"));
 					res.setCondition(rs.getInt("condition"));
+					res.setResnum(rs.getInt("resnum"));
 				}
 				con.close();
 			} catch (Exception e) {
@@ -263,6 +265,7 @@ public class ReservationDAO {
 					rbean.setCare(rs.getInt("care"));
 					rbean.setTotalprice(rs.getInt("totalprice"));
 					rbean.setCondition(rs.getInt("condition"));
+					rbean.setResnum(rs.getInt("resnum"));
 
 	                data.add(rbean);
 	            }
@@ -323,6 +326,7 @@ public class ReservationDAO {
 	                int care = rs.getInt("care");
 	                int totalprice = rs.getInt("totalprice");
 
+
 	                // Create a ReservationBean object and set the retrieved values
 	                reservation = new ReservationBean();
 	                reservation.setNum(num);
@@ -337,6 +341,8 @@ public class ReservationDAO {
 	                reservation.setDry(dry);
 	                reservation.setCare(care);
 	                reservation.setTotalprice(totalprice);
+
+	                
 	            }
 	        } catch (SQLException e) {
 	            e.printStackTrace();
@@ -404,6 +410,7 @@ public class ReservationDAO {
 					bean.setCare(rs.getInt(16));
 					bean.setTotalprice(rs.getInt(17));
 					bean.setCondition(rs.getInt(18));
+					bean.setResnum(rs.getInt(19));
 					
 					
 					search.add(bean);
