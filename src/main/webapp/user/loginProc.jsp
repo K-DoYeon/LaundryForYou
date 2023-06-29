@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="user.UserDAO"%>
+<%@page import="user.UserDAO, reservation.ReservationBean, reservation.PaymentDAO"%>
 <%@page import="user.UserBean"%>
 <%@ page import="java.io.PrintWriter" %>
 <!DOCTYPE html>
@@ -13,6 +13,7 @@
 	<%
 		UserDAO udao = new UserDAO();
 		UserBean ubean = new UserBean();
+		
 		
 		ubean.setUid((String) request.getParameter("uid"));
 		ubean.setUpass((String) request.getParameter("upass"));
@@ -32,6 +33,7 @@
 		String detailaddr = udao.userDetailaddr(ubean.getUid());
 		String gender = udao.userGender(ubean.getUid());
 		int birth = udao.userBirth(ubean.getUid());
+		
 		
 		String rememberId = request.getParameter("rememberId");
 		String uid = request.getParameter("uid");
@@ -69,6 +71,15 @@
 			session.setAttribute("detailaddr", detailaddr);
 			session.setAttribute("gender", gender);
 			session.setAttribute("birth", birth);
+			
+			PaymentDAO pdao = new PaymentDAO();
+			int total = pdao.getTotalReservationPrice(uid);
+			System.out.println(uid);
+			if(total >= 500000 && vip == 0){
+				udao.updateVIP(uid);
+				
+			}
+			
 			
 			PrintWriter script = response.getWriter();
 			script.println("<script>");

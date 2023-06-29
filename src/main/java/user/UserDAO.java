@@ -81,13 +81,13 @@ public class UserDAO {
 	}
 	
 	// 멤버 수정
-	public int update(int level, int num) {
+	public int update(int vip, int num) {
 		int flag = 0;
 		getCon();
 		try {
-			String sql = "update user set level=? where num=?";
+			String sql = "update user set vip=? where num=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, level);
+			pstmt.setInt(1, vip);
 			pstmt.setInt(2, num);
 			
 			flag = pstmt.executeUpdate();
@@ -100,6 +100,9 @@ public class UserDAO {
 		
 		return flag;
 	}
+	
+	
+
 	
 	// select
 	public Vector<UserBean> getSelect(int limitNum, int listNum) {
@@ -567,6 +570,18 @@ public class UserDAO {
 				e.printStackTrace();
 			}
 			return flag; //DB 오류 
+		}
+		
+		public void updateVIP(String uid) {
+			try {
+				getCon();
+				String sql = "update user set vip = 1 where uid = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, uid);
+				pstmt.executeUpdate();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		

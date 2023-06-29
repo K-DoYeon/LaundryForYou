@@ -69,6 +69,10 @@ li{
 	margin: 0 auto;
 	padding-bottom: 100px;
 }
+.cha-container{
+	width: 1000px;
+	margin: 0 auto;
+}
 .do-search{
 	text-align: right;
 	font-family: 'IMHyemin';
