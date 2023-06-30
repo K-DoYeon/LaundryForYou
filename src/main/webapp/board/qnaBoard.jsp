@@ -131,6 +131,7 @@ CommentBean cmt = new CommentBean();
             </div>      
             
          <div class ="choi-qna">
+         	<button type="button" class="btn btn-sm choi-qna-btn" id="btnList" onclick="location.href='boardlist.jsp'">목록</button>
             <button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" value ="submit" onclick="location.href='qnaUpdate.jsp?num=<%=bean.getNum() %>'">수정</button> 
             <button type="button" class="btn btn-sm choi-qna-btn" id="btnList" onclick="location.href='qnaDelete.jsp?num=<%=bean.getNum() %>'">삭제</button>
          </div>               

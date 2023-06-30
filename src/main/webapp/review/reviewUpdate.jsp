@@ -133,9 +133,13 @@ input:read-only {
             	    <textarea class="form-control mt-3" rows="5" name="content" id="content" ><%=bean.getContent() %></textarea>
             	    </div>
 				</div>
-				<button type="submit" class="btn btn-sm choi-qna-btn" id="btnList">수정</button>
+				<div class = "choi-qna">
+					<button type="button" class="btn btn-sm choi-qna-btn" id="btnList" onclick="location.href='review.jsp'">목록</button>
+					<button type="submit" class="btn btn-sm choi-qna-btn" id="btnList">수정</button>
+				</div>
 				</form>
 			</div>
 		</article>
+		<jsp:include page="../include/footer.jsp" />
 </body>
 </html>

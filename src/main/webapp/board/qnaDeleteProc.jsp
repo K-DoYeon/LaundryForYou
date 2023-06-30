@@ -32,12 +32,12 @@
 </script>	
 <% }else if(result ==0){ %>
 <script type = "text/javascript">
-		alert("비밀번호오류푱푱푱.");
+		alert("비밀번호를 다시 입력해주세요.");
 		history.back();
 </script>	
 <%}else{ %>
 <script type = "text/javascript">
-		alert("게시글이 업슴요.");
+		alert("게시글이 없습니다. 다시 확인해주세요.");
 		history.back();
 </script>	
 <% } %>
