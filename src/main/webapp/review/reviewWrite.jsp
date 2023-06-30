@@ -81,6 +81,7 @@ button a{
 	if (request.getParameter("num") != null){
 		num = Integer.parseInt(request.getParameter("num"));
 	}
+	int resnum = Integer.parseInt(request.getParameter("resnum").trim());
 %>
 <jsp:include page="../include/header.jsp"></jsp:include>
 
@@ -88,6 +89,7 @@ button a{
 		<div class="container">
 			<h2 class = "text-center">Review</h2>
 			<form action="reviewWriteProc.jsp" id = "form" name = "form" method="post">  <!-- encType = "multipart/form-data"> -->
+				<input type="hidden" name="resnum" value="<%=resnum%>" />
 				<div class="mb-3 mt-4">
 					<label for="title">제목</label>
 					<input type="text" class="form-control" name="subject" id="subject" placeholder="제목을 입력해 주세요">

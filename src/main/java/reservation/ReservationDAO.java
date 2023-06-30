@@ -516,8 +516,74 @@ public class ReservationDAO {
 	    
 	 
 	    
+	    /***** My ReviewList *****/
 	    
-	    
+
+		
+		
+		public Vector<ReservationBean> myReviewList(String uid, int limitNum, int listNum) {
+	        Vector<ReservationBean> data = new Vector<>();
+	        getCon();
+	        try {
+	            String sql = "select * from reservation where uid = ? and `condition` = 1 order by num desc limit ?, ?";
+	            pstmt = con.prepareStatement(sql);
+	            pstmt.setString(1, uid);
+	            pstmt.setInt(2, limitNum);
+	            pstmt.setInt(3, listNum);
+	            
+	            System.out.println(pstmt);
+	            rs = pstmt.executeQuery();
+
+	            while (rs.next()) {
+	                ReservationBean rbean = new ReservationBean();
+	                rbean.setNum(rs.getInt("num"));
+					rbean.setUid(rs.getString("uid"));
+					rbean.setUname(rs.getString("uname"));
+					rbean.setTel(rs.getString("tel"));
+					rbean.setPostcode(rs.getInt("postcode"));
+					rbean.setAddr(rs.getString("addr"));
+					rbean.setDetailaddr(rs.getString("detailaddr"));
+					rbean.setComment(rs.getString("comment"));
+					rbean.setSelectdate(rs.getString("selectdate"));
+					rbean.setCount(rs.getInt("count"));
+					rbean.setWdate(rs.getString("wdate"));
+					rbean.setDaily(rs.getInt("daily"));
+					rbean.setBlanket(rs.getInt("blanket"));
+					rbean.setShirt(rs.getInt("shirt"));
+					rbean.setDry(rs.getInt("dry"));
+					rbean.setCare(rs.getInt("care"));
+					rbean.setTotalprice(rs.getInt("totalprice"));
+					rbean.setCondition(rs.getInt("condition"));
+					rbean.setResnum(rs.getInt("resnum"));
+
+	                data.add(rbean);
+	            }
+	            con.close();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        return data;
+	    }
+		
+		public int myReviewCount(String uid) {
+	        int count = 0;
+	        getCon();
+	        try {
+	            String sql = "select count(*) as count from reservation where uid = ? and `condition` = 1";
+	            pstmt = con.prepareStatement(sql);
+	            pstmt.setString(1, uid);
+	            System.out.println(pstmt);
+	            rs = pstmt.executeQuery();
+
+	            if (rs.next()) {
+	                count = rs.getInt("count");
+	            }
+	            con.close();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        return count;
+	    }
 	  
 	}
 		

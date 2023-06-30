@@ -66,7 +66,11 @@
   %>
                 <tr>
                     <td><%=bean.getNum() %></td>
-                    <th><a href="reviewInfo.jsp?num=<%=bean.getNum()%>"><%=bean.getSubject() %></a></th>
+                    <th>
+	                    <input type="hidden" name="resnum" value="<%=bean.getResnum()%>">
+	                    <a href="reviewInfo.jsp?num=<%=bean.getNum()%>&resnum=<%=bean.getResnum()%>"><%=bean.getSubject() %>
+	                    </a>
+                    </th>
                     <td><%=bean.getWdate() %></td>
                     <td><%=bean.getLike_this() %></td>
                 </tr>
