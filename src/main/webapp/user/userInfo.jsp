@@ -70,7 +70,7 @@
 			
 			<div class="select-info">
 				<label class="selectName-info">생년월일</label>
-				<input type="text" class="selectVal-info" value="<%= birth %>" name="birth" required />
+				<input type="text" class="selectVal-info" value="<%= birth %>" name="birth" maxlength="8" required />
 			</div>
 			
 			<div class="submitBtnBox-info">

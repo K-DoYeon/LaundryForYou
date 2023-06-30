@@ -530,6 +530,7 @@ public class UserDAO {
 				} else {
 					flag = false;
 				}			
+				System.out.println(pstmt);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
