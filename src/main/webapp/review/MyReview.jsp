@@ -1,4 +1,5 @@
 
+<%@page import="javax.naming.StringRefAddr"%>
 <%@page import="review.ReviewDAO"%>
 <%@page import="reservation.ReservationBean"%>
 <%@page import="java.util.Vector"%>
@@ -11,7 +12,7 @@
 <link rel="stylesheet" href="../css/myReview.css">
 <%
 	int listNum = 7;
-	int pageNum = 10;
+	int pageNum = 5;
 	
 	String pg = request.getParameter("page");
    int mypg = 1;
@@ -41,8 +42,8 @@
 	   
 %>
 	<div class="container-myre">
-		<h1>결제목록</h1>
-		<p>총 결제 완료 : <%=totalCount%> <%=reviewCount%>건</p>
+		<h1>후기목록</h1>
+		<p>총 결제 완료 : <%=totalCount%>건</p>
 		<div class="reviewList-myre">
 			<div class="tableHeader-myre">
 				<h4 class="resnum-myre">예약번호</h4>			
@@ -72,11 +73,15 @@
 						<%
 							if(userReview == 1){
 						%>
-							<a href="reviewInfo.jsp?num=<%=reNum%>&resnum=<%=rbean.getResnum()%>">후기 보러가기</a>
+							<div>
+								<a href="reviewInfo.jsp?num=<%=reNum%>&resnum=<%=rbean.getResnum()%>">후기 보러가기</a>
+							</div>
 						<%
 							} else {
 						%>
-							<a href="reviewWrite.jsp?resnum=<%=rbean.getResnum()%>">후기 쓰러가기</a>
+							<div>
+								<a href="reviewWrite.jsp?resnum=<%=rbean.getResnum()%>" class="reWrite-myre">후기 쓰러가기</a>
+							</div>
 						<%
 							}
 						%>
@@ -84,6 +89,36 @@
 				<%
 					}
 					
+				%>
+			</div>
+			
+			<div class="pageNum-myre">
+				<%
+					//이전 페이지
+					if(startNum > 1){
+						int prevPg = startNum - 1;
+				%>
+					<a href="MyReview.jsp?page=<%=prevPg%>" class="prevPgBtn-myre">이전</a>
+				<%
+					} 
+					
+					//현재 페이지
+					for(int i = startNum; i <= endNum; i++){
+						String act = "";
+						if(mypg == i)
+							act = "active-myre";
+				%>
+					<a href="MyReview.jsp?page=<%=i%>" class="<%=act%>"><%=i %></a>
+				<%
+					}
+					
+					// 다음 페이지
+					if (endNum < totalPage) {
+		               int nextPg = endNum + 1;
+		        %>
+		        	<a href="MyReview.jsp?page=<%=nextPg%>" class="nextPgBtn-myre">다음</a>
+		        <%
+					}
 				%>
 			</div>
 		</div>
