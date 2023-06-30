@@ -40,8 +40,18 @@
     font-weight: 400;
     font-style: normal;
 }
+.gnb-header, .welcome-header{
+	margin: 0;
+}
+.text-center{
+	font-size: 45px;
+	padding-bottom: 20px;
+}
+article{
+	margin: 50px 0px;
+}
 .choi-body {
-  padding-top: 70px;
+ /*  padding-top: 70px; */
   padding-bottom: 30px;
   font-family: 'SUITE-Regular' ;
 }
@@ -76,7 +86,7 @@ button a:hover{
 </style>
 </head>
 <jsp:include page="../include/header.jsp"></jsp:include>
-<body>
+<body class = "choi-body">
 <%
 	int num = Integer.parseInt(request.getParameter("num"));
 	
@@ -116,8 +126,10 @@ button a:hover{
 				<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" value ="submit">수정</button>
 				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList" >삭제</button>
 			</div>
+		</div>
 	
 </form>	
 <script src="../js/boardlist.js"></script>
 </body>
 </html>
+<jsp:include page="../include/footer.jsp"></jsp:include>

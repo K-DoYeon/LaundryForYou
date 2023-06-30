@@ -46,6 +46,7 @@ reviewlist = rdao.getReviewList();
 	ReservationDAO rsdao = new ReservationDAO();
 	int resnum = Integer.parseInt(request.getParameter("resnum"));
 	
+
 %>
 <%
 	uid = null;
@@ -270,14 +271,18 @@ i.fa-heart:hover{
 					<td style="text-align: left;"><%=list.get(i).getUid() %></td>  
 					<td style = "text-align : center;"><%= list.get(i).getReplyContent() %></td>
 					<td style = "text-align: right;"><%=list.get(i).getWdate().substring(0,11) %>
-					<a href = "#" type="button" class="re-btn" id="re-review<%= i %>">대댓글</a>
+				
+				 <%
+				 	if(level == 99){
+				 %>
+					<%-- <a href = "#" type="button" class="re-btn" id="re-review<%= i %>">대댓글</a> --%>
 					<a onclick = "return confirm('정말로 삭제하시겠습니까?')" href="reviewCommentDelete.jsp?num=<%=bean.getNum()%>&bbsId=<%=list.get(i).getBbsId() %>" class="btn-del">삭제</a>
 					</td>
-
+				<% } %>
 				</tr>
-				 <% } %>
+				
 			</tbody>
-			
+			 <% } %>	
  </table >
 		   
 			
