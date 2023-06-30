@@ -13,16 +13,31 @@
 .container-myre p {
 	text-align: right;
 }
-.reviewList-myre {
-	margin-top: 25px;
-}
-.reviewList-myre table {
-	border-collapse: collapse;
-}
-.reviewListTitle-myre {
-	border-bottom: 1px solid #000;
-}
-.reviewListTitle-myre th {
-	width: 800px;
+.tableHeader-myre {
+	display: flex;
+	margin-top: 30px;
+	border-bottom: 2px solid #000;
 	padding-bottom: 10px;
+}
+.tableHeader-myre h4 {
+	margin: 0;
+	width: 30%;
+	text-align: center;
+}
+.tableHeader-myre h4.resnum-myre,
+p.resnum-myre {
+	width: 125px;
+}
+input {
+	border: none;
+	outline: none;
+}
+.reviewForm-myre {
+	display: flex;
+	margin-bottom: 20px;
+}
+.producName-myre {
+	display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
