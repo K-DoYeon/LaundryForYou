@@ -125,5 +125,6 @@ button a{
 			
 		</div>
 	</article>
+	<jsp:include page="../include/footer.jsp" />
 </body>
 </html>

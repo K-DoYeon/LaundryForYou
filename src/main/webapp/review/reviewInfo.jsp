@@ -288,6 +288,6 @@ i.fa-heart:hover{
 			
 </div>	
 </article>
-
+<jsp:include page="../include/footer.jsp" />
 </body>
 </html>

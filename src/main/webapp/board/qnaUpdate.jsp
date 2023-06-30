@@ -124,12 +124,12 @@ button a:hover{
 			<div class ="choi-qna">
 			<input type="hidden" name="num" value="<%=bean.getNum() %>" />
 				<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" value ="submit">수정</button>
-				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList" >삭제</button>
+				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList" onclick="location.href='boardlist.jsp'">목록</button>
 			</div>
 		</div>
 	
+<jsp:include page="../include/footer.jsp"></jsp:include>
 </form>	
 <script src="../js/boardlist.js"></script>
 </body>
 </html>
-<jsp:include page="../include/footer.jsp"></jsp:include>
