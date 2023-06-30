@@ -135,6 +135,8 @@
    color: #58A3BC;
     font-size: 32px;
     margin-top: -30px;
+    display: flex;
+    align-items: center;
 }
 
 /***** STAMP *****/
@@ -314,4 +316,10 @@
 
 .info-container:hover{
 	display: block;
+}
+
+#info-box{
+	font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
 }

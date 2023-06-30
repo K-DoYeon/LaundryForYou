@@ -62,7 +62,7 @@
          %>
            <div class="vip-my info-pop-up">
             <a class="Title-my">
-               <span class="info-box">회원등급</span>
+               <span id="info-box">회원등급</span>
             </a>
             <img alt="vip" src="../img/vip.png" class="vipImg-my">
             <p>
@@ -74,12 +74,12 @@
          <div class="info-container">
 		  <div class="message-container">
 		    <div class="message-box">
-		      <p><b>VIP 회원 혜택</b> &nbsp;<a href="../reservation/reservation.jsp" class="font14">지금 예약하러가기 ></a></p>
+		      <p><b>VIP 회원 혜택</b> &nbsp;<a href="../reservation/reservation.jsp" class="font14">지금 예약하러 가기 ></a></p>
 		      <p><i class="ri-arrow-right-s-fill"></i>예약마다 무제한으로 10% 할인</p>
-		      <p><i class="ri-arrow-right-s-fill"></i>세탁 시 안심행굼 무료</p>
-		      <p>VIP회원을 유지하려면 ?<br>
-		      예약 누적 금액이 <b>50만원 이상</b>이면 VIP회원입니다. <br>
-		      VIP회원이 되어서 매 예약마다 혜택을 받아보세요.</p>
+		      <p><i class="ri-arrow-right-s-fill"></i>세탁 시 안심 헹굼 무료</p>
+		      <p>VIP 회원을 유지하려면 ?<br>
+		      예약 누적 금액이 <b>50만 원 이상</b>이면 VIP 회원입니다. <br>
+		      VIP 회원이 되어서 매 예약마다 혜택을 받아보세요.</p>
 		    </div>
 		  </div>
 		</div>
@@ -89,7 +89,7 @@
        
          <div class="vip-my info-pop-up">
             <a class="Title-my">
-               <span class="info-box">회원등급</span>
+               <span id="info-box">회원등급</span>
             </a>
             <img alt="normal" src="../img/normal.png" class="vipImg-my">
             <p>
@@ -101,12 +101,12 @@
          <div class="info-container">
 		  <div class="message-container">
 		    <div class="message-box">
-		      <p><b>일반 회원 혜택</b> &nbsp;<a href="../reservation/reservation.jsp" class="font14">지금 예약하러가기 ></a></p>
+		      <p><b>일반 회원 혜택</b> &nbsp;<a href="../reservation/reservation.jsp" class="font14">지금 예약하러 가기 ></a></p>
 		      <p><i class="ri-arrow-right-s-fill"></i>매년 생일마다 할인쿠폰 제공</p>
-		      <p><i class="ri-arrow-right-s-fill"></i>스템프를 모으면 무료배송 쿠폰 제공</p>
-		      <p>VIP회원이 되려면 ?<br>
-		      예약 누적 금액이 <b>50만원 이상</b>이면 VIP회원으로 승급됩니다. <br>
-		      VIP회원이 되어서 매 예약마다 혜택을 받아보세요.</p>
+		      <p><i class="ri-arrow-right-s-fill"></i>스탬프를 모으면 무료배송 쿠폰 제공</p>
+		      <p>VIP 회원이 되려면 ?<br>
+		      예약 누적 금액이 <b>50만 원 이상</b>이면 VIP 회원으로 승급됩니다. <br>
+		      VIP 회원이 되어서 매 예약마다 혜택을 받아보세요.</p>
 		    </div>
 		  </div>
 		</div>
@@ -165,8 +165,8 @@
 	      		<p class="size18">VIP회원</p>
 	      		</div>
 	      		<div class="level-flex-col">
-	      			<p><b>혜택 하나!</b> 예약마다 무제한으로 <span class="color-blue">10% 할인혜택</span> 받아보세요.</p>
-	      			<p><b>혜택 둘!</b> 세탁과정에 <span class="color-blue">안심행굼</span>을 무료로 해드려요.</p>
+	      			<p><b>혜택 하나!</b> 예약마다 무제한으로 <span class="color-blue">10% 할인 혜택</span>받아보세요.</p>
+	      			<p><b>혜택 둘!</b> 세탁 과정에 <span class="color-blue">안심 헹굼</span>을 무료로 해드려요.</p>
 	      		</div>
 	      	</div>
 	    </div>  	
@@ -174,7 +174,7 @@
       		<img src="../img/question-mark.png">
       		<p class="ml10">회원 등급을 올리려면?</p>
       		<div class="ml20">
-      			<p>예약 누적 금액이 <b>50만원 이상</b>이면 일반회원에서 VIP회원으로 승급됩니다. VIP회원이 되어서 매 예약마다 혜택을 받아보세요.</p>
+      			<p>예약 누적 금액이 <b>50만 원 이상</b>이면 일반회원에서 VIP 회원으로 승급됩니다. VIP 회원이 되어서 매 예약마다 혜택을 받아보세요.</p>
       		</div>
       	</div>
       </div>
