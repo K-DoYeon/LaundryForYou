@@ -43,6 +43,7 @@
    border-top-right-radius: 10px;
    border-bottom-right-radius: 10px;
    padding: 30px;
+   position: relative;
 }
 .userImgTop-my {
    display: flex;
@@ -162,7 +163,7 @@
    display: flex;
    align-items: center;
    overflow: hidden;
-   margin: 30px 0 100px;
+   margin: 30px 0 50px;
 }
 .reviewTitle-my {
    font-size: 30px;
@@ -170,4 +171,147 @@
 }
 .bubbleImg-my {
    width: 145px;
+}
+
+
+/* customer level */
+
+.customer-level{
+	height: 250px;
+	background: #F7F7F7;
+	border-radius: 20px;
+}
+
+.customer-level>p{
+	font-size: 30px;
+    font-weight: 900;
+    margin: 0;
+    padding: 27px 40px;
+}
+
+.level-flex-row{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	
+}
+
+.level-flex-col{
+	display: flex;
+	flex-direction: column;
+	margin-left: 20px;
+}
+
+.level-flex-col>p{
+	line-height: 30px;
+}
+
+
+.mt80{
+	margin-top: 80px;
+}
+
+.ml10{
+	margin-left: 10px;
+	font-size: 18px;
+}
+
+.ml20{
+	margin-left: 20px;
+}
+
+.ml100{
+	margin-left: 100px;
+}
+
+.h100{
+	height: 100px;
+}
+.font14{
+	font-size: 14px;
+}
+
+.size18{
+	font-size: 18px;
+	margin-top: -15px;
+}
+
+.item-center{
+	align-items: center;
+	margin-right: 10px;
+}
+
+.color-blue{
+	color: #58A3BC;
+	font-weight: bold;
+}
+
+
+
+/*hover시 안내문 나옴 info-pop-up*/
+.info-container {
+  position: absolute;
+  top: 360px;
+  right: 200px;
+  display: none;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.message-container {
+  flex-shrink: 1;
+  height: 220px;
+  width: 440px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 5%;
+  position: relative;
+}
+
+.message-container::before {
+    content: "";
+    top: -32px;
+    right: 90px;
+    border: 1em solid transparent;
+    border-bottom: 1em solid #000;
+    z-index: 0;
+    position: absolute;
+}
+
+.message-box {
+  position: relative;
+  width: 440px;
+  height: 220px;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  border-radius: 15px;
+  padding: 1.8em;
+}
+
+.message-box p {
+  font-size: 18px;
+  color: white;
+}
+
+.message-box p:first-child {
+ 	margin-bottom: 20px;
+ 	font-size: 20px;
+}
+.message-box p:first-child>a {
+ 	color: #fff;
+}
+.message-box p:last-child {
+ 	margin-top: 20px;
+	font-size: 14px;
+}
+
+.info-pop-up:hover ~ .info-container{
+	display: block;
+}
+
+.info-container:hover{
+	display: block;
 }
