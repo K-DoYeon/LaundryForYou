@@ -8,8 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import board.BoardBean;
-import reservation.ReservationBean;
 
 public class ReviewDAO {
 	   Connection con; // 데이터베이스에 접근하도록 설정
