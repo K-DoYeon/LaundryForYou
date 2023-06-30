@@ -43,8 +43,8 @@ reviewlist = rdao.getReviewList();
 	boolean lresult = ldao.countLike(loginid, subject);
 	System.out.println(lresult);
 	
- 	ReservationDAO rsdao = new ReservationDAO();
-	int resnum = (Integer)session.getAttribute("resnum"); 
+	ReservationDAO rsdao = new ReservationDAO();
+	int resnum = Integer.parseInt(request.getParameter("resnum"));
 	
 
 %>
@@ -159,7 +159,7 @@ i.fa-heart:hover{
                   <label for="reg_num"><%=bean.getNum() %> /</label>
                   <label for="reg_id"><%=bean.getUid() %></label>
                   <input type="hidden" name="upass" value="<%=bean.getUpass() %>" />
-                   <input type="hidden" name="upass" value="<%=resnum%>" /> 
+                  <input type="hidden" name="resnum" value="<%=resnum%>" />
                </div>
                <div>
                   <label for="reg_wdate"><%=bean.getWdate() %> /</label>
