@@ -56,7 +56,7 @@
 					<%
 						if(level == 99){
 					%>
-						<a class="user-header" href="#">
+						<a class="user-header">
 							<img class="userImg-header" src="../img/<%=img %>">
 							<span><%=uid%></span>
 						</a>
