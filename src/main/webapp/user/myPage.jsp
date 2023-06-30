@@ -60,24 +60,56 @@
          <%
             if (totalReservationPrice >= 500000) {
          %>
-           <div class="vip-my">
+           <div class="vip-my info-pop-up">
             <a class="Title-my">
-               <h2>회원등급</h2>
+               <span id="info-box">회원등급</span>
             </a>
             <img alt="vip" src="../img/vip.png" class="vipImg-my">
-            <p><span class="point-my">VIP</span>회원</p>
+            <p>
+            	<span class="point-my">VIP</span>회원
+            	<img src="../img/mini-question.png">
+            </p>
          </div>
+         
+         <div class="info-container">
+		  <div class="message-container">
+		    <div class="message-box">
+		      <p><b>VIP 회원 혜택</b> &nbsp;<a href="../reservation/reservation.jsp" class="font14">지금 예약하러 가기 ></a></p>
+		      <p><i class="ri-arrow-right-s-fill"></i>예약마다 무제한으로 10% 할인</p>
+		      <p><i class="ri-arrow-right-s-fill"></i>세탁 시 안심 헹굼 무료</p>
+		      <p>VIP 회원을 유지하려면 ?<br>
+		      예약 누적 금액이 <b>50만 원 이상</b>이면 VIP 회원입니다. <br>
+		      VIP 회원이 되어서 매 예약마다 혜택을 받아보세요.</p>
+		    </div>
+		  </div>
+		</div>
          <%
             } else {
          %>
        
-         <div class="vip-my">
+         <div class="vip-my info-pop-up">
             <a class="Title-my">
-               <h2>회원등급</h2>
+               <span id="info-box">회원등급</span>
             </a>
             <img alt="normal" src="../img/normal.png" class="vipImg-my">
-            <p><span class="point-my">일반</span>회원</p>
+            <p>
+            	<span class="point-my">일반</span>회원
+            	<img src="../img/mini-question.png">
+            </p>
          </div>
+         
+         <div class="info-container">
+		  <div class="message-container">
+		    <div class="message-box">
+		      <p><b>일반 회원 혜택</b> &nbsp;<a href="../reservation/reservation.jsp" class="font14">지금 예약하러 가기 ></a></p>
+		      <p><i class="ri-arrow-right-s-fill"></i>매년 생일마다 할인쿠폰 제공</p>
+		      <p><i class="ri-arrow-right-s-fill"></i>스탬프를 모으면 무료배송 쿠폰 제공</p>
+		      <p>VIP 회원이 되려면 ?<br>
+		      예약 누적 금액이 <b>50만 원 이상</b>이면 VIP 회원으로 승급됩니다. <br>
+		      VIP 회원이 되어서 매 예약마다 혜택을 받아보세요.</p>
+		    </div>
+		  </div>
+		</div>
          <%
             }
          %>
@@ -111,6 +143,40 @@
       
       <div class="banner-my">
          <img alt="banner" src="../img/banner.png" class="bannerImg-my">
+      </div>
+      
+      <div class="customer-level">
+      	<p>회원 등급</p>
+      	
+      	<div class="level-flex-row">
+	      	<div class="level-flex-row ml100 h100">
+	      		<div class="level-flex-col item-center">
+	      		<img src="../img/normal.png">
+	      		<p class="size18">일반회원</p>
+	      		</div>
+	      		<div class="level-flex-col">
+	      			<p><b>혜택 하나!</b> 매년 생일마다 <span class="color-blue">할인쿠폰</span> 챙겨드릴게요.</p>
+	      			<p><b>혜택 둘!</b> 스탬프를 모아 <span class="color-blue">무료배송 쿠폰</span>으로 바꿔보세요.</p>
+	      		</div>
+	      	</div>
+	      	<div class="level-flex-row ml100 h100">
+	      		<div class="level-flex-col item-center">
+	      		<img src="../img/vip.png">
+	      		<p class="size18">VIP회원</p>
+	      		</div>
+	      		<div class="level-flex-col">
+	      			<p><b>혜택 하나!</b> 예약마다 무제한으로 <span class="color-blue">10% 할인 혜택</span>받아보세요.</p>
+	      			<p><b>혜택 둘!</b> 세탁 과정에 <span class="color-blue">안심 헹굼</span>을 무료로 해드려요.</p>
+	      		</div>
+	      	</div>
+	    </div>  	
+      	<div class="level-flex-row mt80 ml100">
+      		<img src="../img/question-mark.png">
+      		<p class="ml10">회원 등급을 올리려면?</p>
+      		<div class="ml20">
+      			<p>예약 누적 금액이 <b>50만 원 이상</b>이면 일반회원에서 VIP 회원으로 승급됩니다. VIP 회원이 되어서 매 예약마다 혜택을 받아보세요.</p>
+      		</div>
+      	</div>
       </div>
       
    </div>
