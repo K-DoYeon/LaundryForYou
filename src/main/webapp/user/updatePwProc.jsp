@@ -11,6 +11,7 @@
 		
 		boolean flag = udao.changePass(uid, newpass);
 		if(flag) {
+			session.setAttribute("upass", newpass);
 %>
 	<script>
 		alert("비밀번호가 정상적으로 변경되었습니다.");
