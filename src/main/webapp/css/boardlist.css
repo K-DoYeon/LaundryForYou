@@ -75,7 +75,6 @@ li{
 }
 .do-search{
 	text-align: right;
-	font-family: 'IMHyemin';
 }
 .srch select, input{
 	padding: 10px;
@@ -297,7 +296,7 @@ li{
 	top: 0;
 	right: 0;
 	border-radius: 10px;
-	font-family: 'IMHyemin';
+	font-family: 'SUITE Variable';
 	font-size: 16px;
 }
 .write-button button:hover{
