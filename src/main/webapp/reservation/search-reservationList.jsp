@@ -6,6 +6,11 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 %> 
+<style>
+	.gnb-header, .welcome-header{
+		margin: 0;
+	}
+</style>
 
 <jsp:useBean id="bean" class="reservation.ReservationBean" scope="page" />
 <jsp:useBean id="rdao" class="reservation.ReservationDAO" scope="page" />
