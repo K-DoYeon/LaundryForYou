@@ -102,6 +102,28 @@ public class UserDAO {
 	}
 	
 	
+	// 멤버 수정
+	public int updateAddr(int level, int num) {
+		int flag = 0;
+		getCon();
+		try {
+			String sql = "update user set level=? where num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, level);
+			pstmt.setInt(2, num);
+			
+			flag = pstmt.executeUpdate();
+			
+			con.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return flag;
+	}
+	
+	
 
 	
 	// select

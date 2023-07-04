@@ -64,6 +64,7 @@
 					<th>전화번호</th>
 					<th>이메일</th>
 					<th>회원등급</th>
+					<th>회원지역</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -107,18 +108,57 @@ for(int i=0; i < size; i++){
 				case 1:
 					selected2 = "selected";
 					break;
-				case 99:
-					selected3 = "selected";
-					break;
 
-				
 				}
+				
 			%>
 			<select name="vip" class="vip" onchange="memLevel(this, <%=vip %>, <%=num %>);">
 				<option value="0" <%=selected1 %> >일반회원</option>
 				<option value="1" <%=selected2 %> >VIP회원</option>
-				<option value="2" <%=selected3 %> >관리자</option>
 			</select>
+			<%
+				 
+				
+				}
+			%>
+		</td>
+		
+		
+		
+		
+		
+		<td>
+			<%
+				if (level == 99) {
+			%>
+			
+			<span class="badge bg-primary px-4 py-2">관리자</span>
+			
+			<%
+				} else {	
+			
+				String selected1 = "", selected2 = "", selected3 = "", selected4 = "", selected5 = "";
+				switch (level) {
+				case 0:
+					selected1 = "selected";
+					break;
+				case 1:
+					selected2 = "selected";
+					break;
+				case 99:
+					selected3 = "selected";
+				
+				}
+			%>
+			<select name="level" class="level" onchange="memAddr(this, <%=level %>, <%=num %>);">
+				<option value="0" <%=selected1 %> >타지역</option>
+				<option value="1" <%=selected2 %> >서울지역</option>
+				<option value="99" <%=selected3 %> >관리자</option>
+			</select>
+			<%
+				  
+				}
+			%> 
 		</td>
 		
 		
@@ -126,11 +166,12 @@ for(int i=0; i < size; i++){
 		
 	
 	</tr>
-<%
-				}
-}
-%>
-			</tbody>
+	
+	<%
+		}
+
+	%>
+		</tbody>
 			
 		</table>
 	</div> <!-- /row -->
@@ -155,6 +196,7 @@ for(int i=0; i < size; i++){
 			<%
 				}
 				
+				
 				// 다음페이지
 				if (endNum < totalPage) {
 					int nextPage = endNum + 1;
@@ -162,6 +204,8 @@ for(int i=0; i < size; i++){
 				} else {
 					out.print("<li class=\"page-item\"><a class=\"page-link text-muted\" href=\"javascript:void(0)\">다음</a></li>");
 				}
+				
+				
 			%>
 		</ul>
 	</div>
