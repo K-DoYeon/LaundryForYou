@@ -32,42 +32,48 @@ public class ReviewDAO {
 	      }
 	   }
 	   
-		/*
-		 * //게시들 데베로 저장되는 메소드 public void insertReview(ReviewBean bean, String uid,
-		 * String upass, String subject, String content, String img) { getCon(); try {
-		 * String sql =
-		 * "insert into review values(num, ?, ?, ?, ?, ?, sysdate(), 0, 0, 0)"; pstmt =
-		 * con.prepareStatement(sql);
-		 * 
-		 * pstmt.setString(1, uid); pstmt.setString(2, upass); pstmt.setString(3,
-		 * subject); pstmt.setString(4, content); pstmt.setString(5, img);
-		 * System.out.println(pstmt); pstmt.executeUpdate();
-		 * 
-		 * 
-		 * System.out.println("데베연결성공"); } catch (Exception e) { e.printStackTrace();
-		 * System.out.println("데베연결실패"); } }
-		 */
+
+		 //게시들 데베로 저장되는 메소드 
+		 public void insertReview(String uid, String upass, String subject, String content, String img, int resnum) { 
+			 getCon(); 
+			 try {
+				 String sql = "insert into review values(num, ?, ?, ?, ?, ?, sysdate(), 0, 0, 0, ?)";
+				 pstmt = con.prepareStatement(sql);
+		 
+				 pstmt.setString(1, uid); 
+				 pstmt.setString(2, upass); 
+				 pstmt.setString(3, subject); 
+				 pstmt.setString(4, content); 
+				 pstmt.setString(5, img);
+				 pstmt.setInt(6, resnum);
+				 
+				 System.out.println(pstmt); 
+				 
+				 pstmt.executeUpdate();
+		  
+		  
+			  System.out.println("게시글데베연결성공"); 
+			  } catch (Exception e) {
+				  e.printStackTrace();
+			  System.out.println("게시글데베연결실패"); 
+			  } 
+				 }
+
 	   
-	   public void insertReview(ReviewBean bean) {
-		   getCon();
-		   
-		   try {
-			   
-			   String sql = "insert into review values(num,?,?,?,?,0,sysdate(),0,0,0,?)";
-			   pstmt = con.prepareStatement(sql);
-			   pstmt.setString(1, bean.getUid());
-			   pstmt.setString(2, bean.getUpass());
-			   pstmt.setString(3, bean.getSubject());
-			   pstmt.setString(4, bean.getContent());
-			   pstmt.setInt(5, bean.getResnum());
-			   
-			   pstmt.executeUpdate();
-			   System.out.println("리뷰 글쓰기 데베 연결 성공");
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("리뷰 글쓰기 데베 연결 실패");
-		}
-	   }
+		/*
+		 * public void insertReview(ReviewBean bean) { getCon();
+		 * 
+		 * try {
+		 * 
+		 * String sql = "insert into review values(num,?,?,?,?,0,sysdate(),0,0,0,?)";
+		 * pstmt = con.prepareStatement(sql); pstmt.setString(1, bean.getUid());
+		 * pstmt.setString(2, bean.getUpass()); pstmt.setString(3, bean.getSubject());
+		 * pstmt.setString(4, bean.getContent()); pstmt.setInt(5, bean.getResnum());
+		 * 
+		 * pstmt.executeUpdate(); System.out.println("리뷰 글쓰기 데베 연결 성공"); } catch
+		 * (Exception e) { e.printStackTrace(); System.out.println("리뷰 글쓰기 데베 연결 실패"); }
+		 * }
+		 */
 	   
 	 //게시글 삭제
 	   public int deleteReview(int num, String upass) {

@@ -88,7 +88,7 @@ button a{
 	<article>
 		<div class="container">
 			<h2 class = "text-center">Review</h2>
-			<form action="reviewWriteProc.jsp" id = "form" name = "form" method="post">  <!-- encType = "multipart/form-data"> -->
+			<form action="reviewWriteProc.jsp" id = "form" name = "form" method="post" encType = "multipart/form-data"> 
 				<input type="hidden" name="resnum" value="<%=resnum%>" />
 				<div class="mb-3 mt-4">
 					<label for="title">제목</label>
@@ -118,6 +118,7 @@ button a{
 					<input type = "hidden" name = "readcount" id="readcount" />
 					<input type = "hidden" name = "replycount" id="replycount"/>
 					<input type = "hidden" name = "like" id="like" />
+					<input type = "hidden" name = "resnum" id="resnum" />
 				
 				<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" value ="submit">저장</button>
 				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList"><a href = "review.jsp">목록</a></button>
