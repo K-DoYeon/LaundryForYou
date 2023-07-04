@@ -170,7 +170,7 @@ i.fa-heart:hover{
 				<div class="mb-3 mt-4 review">
 					<label for="content">내용</label>
 					<div class = "mb-3 mt-4 review-img">
-					<img src = "../imgs/<%=bean.getImg()%>" alt = "">
+					<img src = "../upload/<%=bean.getImg()%>" alt = "">
             	    <textarea class="form-control mt-3" rows="5" name="content" id="content" readonly><%=bean.getContent() %></textarea>
             	    </div>
 				</div>
