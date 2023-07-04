@@ -19,7 +19,7 @@ public class ReservationBean {
 	private int care;
 	private int totalprice;
 	private int condition;
-	
+	private int resnum;
 	
 	public int getNum() {
 		return num;
@@ -130,4 +130,12 @@ public class ReservationBean {
 	public void setCondition(int condition) {
 		this.condition = condition;
 	}
+	public int getResnum() {
+		return resnum;
+	}
+	public void setResnum(int resnum) {
+		this.resnum = resnum;
+	}
+	
+	
 }

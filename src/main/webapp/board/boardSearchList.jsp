@@ -17,6 +17,33 @@
 <jsp:include page="../include/header.jsp"></jsp:include>
 </head>
 <body>
+
+<div class="do-list-title">
+	<h1>게시판</h1>
+</div>
+<div class="top-tab">
+	<ul class="tab">
+		<a href="#" id="tab-QA" class="active n" data-idx="#QA"><li>Q&A</li></a>
+	</ul>
+</div>
+<div class="cha-container">
+<div class="do-search active">
+		<form name=form action="boardSearchList.jsp" method="post">
+			<div class="srch">
+				<select class="select-no" name="searchField">
+					<option value=subject>제목</option>
+					<option value=content>내용</option>
+					<option value=writer>작성자</option>
+				</select>
+				<input onmouseover="this.focus()" type="search" id="srch-no" placeholder="검색어를 입력하세요" class="srch_btn" name="searchText">
+				<div onclick="srchDataCheck()">
+	                검색	           	
+	            </div>
+				
+			</div>
+		</form>
+	</div>
+</div>
 <%	BoardDAO bbsDAO = new BoardDAO();
     ArrayList<BoardBean> list = bbsDAO.getSearch(request.getParameter("searchField"), request.getParameter("searchText"));
 
@@ -54,6 +81,7 @@
 			String formattedBigWdate = sdfBigOutput.format(wdate); // 변경된 형식으로 날짜를 문자열로 변환
 %>
 <div class="do-container">
+
  	<div class="active" id="QA">
       <div class="faq">
       	<div class="do-title">
@@ -66,7 +94,7 @@
 		
 		<div>
         	<p class="faq-text"><%=bean.getContent() %></p>
-			<p class="faq-plus"><a href="#">더보기..</a></p>
+			<p class="faq-plus"><a href="qnaBoard.jsp?num=<%= bean.getNum()%>">더보기..</a></p>
 		</div>
         <button class="faq-toggle">
           <i class="fas fa-chevron-down"></i>
@@ -90,17 +118,29 @@
               <%
                 if (startPage > 1) {
               %>
-                <a href="boardSearchList.jsp?pageNum=<%= startPage - 1 %>&searchField=<%= request.getParameter("searchField") %>&searchText=<%= request.getParameter("searchText") %>" id="a-prev">이전</a>
+                <a href="boardSearchList.jsp?pageNum=<%= startPage - 1 %>&searchField=<%= request.getParameter("searchField") %>&searchText=<%= request.getParameter("searchText") %>" id="a-prev">이전
+                <span class="prv"><i class="fa-solid fa-angle-left"></i></span>
+                </a>
+                
               <%
                 }
+              %>
+              <div class="number">
+              <%
                 for (int i = startPage; i <= endPage; i++) {
               %>
-                <a href="boardSearchList.jsp?pageNum=<%= i %>&searchField=<%= request.getParameter("searchField") %>&searchText=<%= request.getParameter("searchText") %>" id="a-now"><%= i %></a>
+                <a class="number" href="boardSearchList.jsp?pageNum=<%= i %>&searchField=<%= request.getParameter("searchField") %>&searchText=<%= request.getParameter("searchText") %>" id="a-now"><span><%= i %></span></a>
+                
               <%
                 }
+              %>
+              </div>
+              <%
                 if (endPage < pageCount) {
               %>
-                <a href="boardSearchList.jsp?pageNum=<%= endPage + 1 %>&searchField=<%= request.getParameter("searchField") %>&searchText=<%= request.getParameter("searchText") %>" id="a-next">다음</a>
+                <a href="boardSearchList.jsp?pageNum=<%= endPage + 1 %>&searchField=<%= request.getParameter("searchField") %>&searchText=<%= request.getParameter("searchText") %>" id="a-next">다음
+                <span class="nxt"><i class="fa-solid fa-angle-right"></i></span>
+                </a>
               <%
                 }
               %>
@@ -115,3 +155,4 @@
     <script src="../js/boardlist.js"></script>
 </body>
 </html>
+<jsp:include page="../include/footer.jsp"></jsp:include>

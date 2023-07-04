@@ -5,6 +5,11 @@
 
 <jsp:useBean id="bean" class="reservation.ReservationBean" scope="page" />
 <jsp:useBean id="rdao" class="reservation.ReservationDAO" scope="page" />
+<style>
+	.gnb-header, .welcome-header{
+		margin: 0;
+	}
+</style>
 <%
 	int listNum = 10; // 한 페이지당 보여줄 목록 수
 	int pageNum = 15; // 한 블럭당 보여줄 페이지 수	
@@ -179,3 +184,4 @@
 
 <script src="../js/reservationlist.js"></script>
 
+<jsp:include page="../include/footer.jsp"></jsp:include>

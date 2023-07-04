@@ -25,13 +25,13 @@
 	String uname = request.getParameter("uname");
 	String uemail = request.getParameter("uemail");
 	String tel = request.getParameter("tel");
-	Integer postcode = (Integer) session.getAttribute("postcode");
+	int postcode = Integer.parseInt(request.getParameter("postcode"));
 	String addr = request.getParameter("addr");
 	String detailaddr = request.getParameter("detailaddr");
-	Integer birth = (Integer) session.getAttribute("birth");
-	int level = udao.userLevel(ubean.getUid());
-	int vip = udao.userVip(ubean.getUid());
-	String gender = udao.userGender(ubean.getUid());
+	int birth = Integer.parseInt(request.getParameter("birth"));
+	int level = udao.userLevel(uid);
+	int vip = udao.userVip(uid);
+	String gender = udao.userGender(uid);
 	
 	if(udao.login(uid, upass) == 1) {
 		

@@ -338,3 +338,5 @@ String formattedBigWdate = sdfBigOutput.format(wdate); // 변경된 형식으로
 
 </body>
 </html>
+
+<jsp:include page="../include/footer.jsp"></jsp:include>

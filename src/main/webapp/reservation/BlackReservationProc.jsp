@@ -25,15 +25,15 @@
 	String uid = (String) session.getAttribute("uid");
 	
 	int mynum = rdao.insert(bean);
-	rdao.vipLevel(uid);
+	/* rdao.vipLevel(uid);
 	
 	
-	int totalprice = rdao.Total(uid, mynum);
+	 int totalprice = rdao.Total(uid, mynum);
 	session.setAttribute("totalprice", totalprice);
 	boolean flag = rdao.vipLevel(uid);
 	if(flag) {
 		session.setAttribute("vip", 1);
-	}
+	} */
 	
 	response.sendRedirect("MyReservation.jsp");
 

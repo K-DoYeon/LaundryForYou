@@ -158,7 +158,7 @@ CommentBean be = dao.getOneUpdateComment(commentid);
             </div>
             
             <div class ="choi-qna">
-            <input type="submit" id="cmtCnt-btn" value="수정">
+            <input type="submit" class="btn btn-sm choi-qna-btn" id="cmtCnt-btn" value="수정">
             <!-- <button type="submit" class="btn btn-sm choi-qna-btn" id="btnSave">등록</button> -->
          </div>    
     </form>

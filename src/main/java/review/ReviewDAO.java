@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import board.BoardBean;
 
 public class ReviewDAO {
 	   Connection con; // 데이터베이스에 접근하도록 설정
@@ -53,13 +52,14 @@ public class ReviewDAO {
 		   getCon();
 		   
 		   try {
-			
-			   String sql = "insert into review values(num,?,?,?,?,0,sysdate(),0,0,0)";
+			   
+			   String sql = "insert into review values(num,?,?,?,?,0,sysdate(),0,0,0,?)";
 			   pstmt = con.prepareStatement(sql);
 			   pstmt.setString(1, bean.getUid());
 			   pstmt.setString(2, bean.getUpass());
 			   pstmt.setString(3, bean.getSubject());
 			   pstmt.setString(4, bean.getContent());
+			   pstmt.setInt(5, bean.getResnum());
 			   
 			   pstmt.executeUpdate();
 			   System.out.println("리뷰 글쓰기 데베 연결 성공");
@@ -228,6 +228,7 @@ public class ReviewDAO {
 					bean.setContent(rs.getString(5));
 					bean.setWdate(rs.getString(7));
 					bean.setLike_this(rs.getInt(10));
+					bean.setResnum(rs.getInt(11));
 					// bean.setReadCount(rs.getInt(5));
 					// bean.setReplyCount(rs.getInt(6));
 					
@@ -291,6 +292,7 @@ public class ReviewDAO {
 					  bean.setReadCount(rs.getInt(8));
 					  bean.setReplyCount(rs.getInt(9)); 
 					  bean.setLike_this(rs.getInt(10));
+					  bean.setResnum(rs.getInt(11));
 					  } 
 				  System.out.println("게시글 읽기 연결 성공"); }
 			  catch (Exception e) { 
@@ -559,6 +561,49 @@ public class ReviewDAO {
 				}
 			}
 		
-	
+			
+			/***** MyReivew *****/
+			
+			public int userReview(int resnum) {
+				getCon();
+				int userReview = 0;
+				
+				try {
+					String sql = "select count(*) from review where resnum = ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, resnum);
+					rs = pstmt.executeQuery();
+					
+					if (rs.next()) {
+						userReview = rs.getInt(1);
+					}
+					System.out.println(pstmt);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+				return userReview;
+			}
+			
+			public int reNum(int resnum) {
+				getCon();
+				int reNum = 0;
+				
+				try {
+					String sql = "select num from review where resnum = ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, resnum);
+					rs = pstmt.executeQuery();
+					
+					if (rs.next()) {
+						reNum = rs.getInt(1);
+					}
+					System.out.println(pstmt);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+				return reNum;
+			}
 	}
 

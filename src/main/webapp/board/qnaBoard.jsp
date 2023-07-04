@@ -49,8 +49,10 @@
     font-weight: 400;
     font-style: normal;
 }
+.gnb-header, .welcome-header{
+		margin: 0;
+	}
 .choi-body {
-  padding-top: 70px;
   padding-bottom: 30px;
   font-family: 'SUITE-Regular';
 }
@@ -129,6 +131,7 @@ CommentBean cmt = new CommentBean();
             </div>      
             
          <div class ="choi-qna">
+         	<button type="button" class="btn btn-sm choi-qna-btn" id="btnList" onclick="location.href='boardlist.jsp'">목록</button>
             <button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" value ="submit" onclick="location.href='qnaUpdate.jsp?num=<%=bean.getNum() %>'">수정</button> 
             <button type="button" class="btn btn-sm choi-qna-btn" id="btnList" onclick="location.href='qnaDelete.jsp?num=<%=bean.getNum() %>'">삭제</button>
          </div>               
@@ -221,3 +224,5 @@ CommentBean cmt = new CommentBean();
     <script src="../js/boardlist.js"></script>
 </body>
 </html>
+
+<jsp:include page="../include/footer.jsp"></jsp:include>

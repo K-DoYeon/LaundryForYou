@@ -552,6 +552,7 @@ public class UserDAO {
 				} else {
 					flag = false;
 				}			
+				System.out.println(pstmt);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -592,6 +593,18 @@ public class UserDAO {
 				e.printStackTrace();
 			}
 			return flag; //DB 오류 
+		}
+		
+		public void updateVIP(String uid) {
+			try {
+				getCon();
+				String sql = "update user set vip = 1 where uid = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, uid);
+				pstmt.executeUpdate();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		

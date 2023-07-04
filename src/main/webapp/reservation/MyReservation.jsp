@@ -54,13 +54,23 @@
 
 <link rel="stylesheet" href="../css/bootstrap.css" />
 <style>
-	input[type=text],input[type=number] {
+	.gnb-header, .welcome-header{
+		margin: 0;
+	}
+	input[type=text]{
 		border: 0;
 		outline: none;
-		width: 59px;
-	
+		width: 31px;
+		padding-left: 10px;
 	}
-	
+	input[type=number] {
+		border: 0;
+		outline: none;
+		width: 88px;
+		margin-left: -8px;
+		text-align: center;
+	}
+
 	td {
 		width: 100px;
 	}
@@ -124,7 +134,7 @@ for(int i=0; i < size; i++){
       <td><input type="text" name="shirt" value="<%=shirt %>" readonly/>개 </td>
       <td><input type="text" name="dry" value="<%=dry %>" readonly/>개 </td>
       <td><input type="text" name="care" value="<%=care %>" readonly/>개 </td>
-      <td><input type="text" name="totalprice" value="<%=totalprice %>" readonly/>원 </td>
+      <td><input type="number" name="totalprice" value="<%=totalprice %>" readonly/>원</td>
 
         <td><button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='DetailReservation.jsp?num=<%=num %>'">상세보기</button></td>
       <td>
@@ -149,7 +159,7 @@ for(int i=0; i < size; i++){
       	} else {
       %>
      
-      <button type="submit" class="btn btn-outline-secondary btn-sm">결제하기</button>
+      <button type="submit" class="btn btn-outline-secondary btn-sm" onclick="alert('KB국민과 카카오뱅크는 결제가 불가합니다.')">결제하기</button>
 	  <%
       	}
       %>

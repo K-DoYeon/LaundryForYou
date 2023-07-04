@@ -6,7 +6,7 @@
 	<div class="footer-container">
 	
 		<div class="footer-left">
-			<p class="footer-p1">세탁의민족 고객만족센터<p>
+			<p class="footer-p1">세탁의당신 고객만족센터<p>
 			<p class="footer-p2">1644-0000 <span>월~일요일 오전 7시 - 오후 6시</span></p>
 			<div class="footer-ask">
 				<div class="ask-one">
@@ -40,7 +40,7 @@
 		
 		<div class="footer-right">
 			<div class="right-span">
-				<span>세탁의민족 소개</span>&nbsp;&nbsp;
+				<span>세탁의 당신 소개</span>&nbsp;&nbsp;
 				<span>투자정보</span>&nbsp;&nbsp;
 				<span>인재채용</span>&nbsp;&nbsp;
 				<span>이용약관</span>&nbsp;&nbsp;
@@ -48,7 +48,7 @@
 				<span>이용안내</span>
 			</div>
 			<div class="footer-info">
-				<p>법인명: 세탁의 당신 ㅣ 사업자등록번호: 000-00-0000 <span>사업자정보확인</span><br>
+				<p>법인명: 세탁의당신 ㅣ 사업자등록번호: 000-00-0000 <span>사업자정보확인</span><br>
 					개인정보보호책임자: XXTX ㅣ 주소: 경기도 김포시 김포한강4로 125<br>
 					문의: <span>문의하기</span> ㅣ 제휴문의: business@laundryofyou.com<br>
 					채용문의: recruit@laundryofyou.com<br>

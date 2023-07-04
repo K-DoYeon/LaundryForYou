@@ -7,21 +7,42 @@
 	margin: 0 auto;
 	align-items: center;
 }
+.tab{
+	height: 41px;
+	margin-top: 50px;
+	border-bottom: 1px solid #aaa;
+}
 .tab h1{
 	display: inline-block;
 }
 .tab h1:first-child{
-	margin-left: 30px;
+	background: #9cd2de;
+	color: #000; 
+	margin: 0 0 0 100px;
+	border:1px solid #aaa; 
+	border-bottom: 2px solid #fff;
 }
-.tab h1:nth-child(2){
-	padding: 0px 10px;
+#tab-cost{
+	padding: 0px 20px ;
+}
+.tab h1:last-child{
+	background: #9cd2de;
+	color: #000;
+	margin: 0px;
+	margin-left: -5px;
+	border:1px solid #aaa; 
+	border-bottom: 2px solid #fff;
 }
 .n{
-	color: #000;
+	color: #fff;
+	padding: 0px 50px ;
 }
 .active.n{
-	color: #F4D160;
+	background: #fff;
+	color: #000;
+	/*color: #F4D160;*/
 }
+
 .service-content{
 	margin-top: 25px;
 }

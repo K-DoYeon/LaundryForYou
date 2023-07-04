@@ -23,7 +23,7 @@
 			</div>
 			<div class="stapm-userpage">
 				<a href="myPage.jsp" class="stamp-mypage">마이페이지</a> <br>
-				<a href="myPage.jsp" class="stamp-coupon">무료배송 쿠폰 : 0개</a>
+				<a href="myPage.jsp" class="stamp-coupon">무료배송 쿠폰 : <%= reviewCount / 5 %>개</a>
 			</div>
 		</div>
 		
@@ -58,7 +58,7 @@
 				<div class="stamp-info-flex">
 					<img src="../img/writing.png">
 					<p>세탁의 당신을 이용하고 <span class="stamp-bold">리뷰</span>를 작성해보세요! 
-						<a href="#" class="stamp-go">리뷰 작성하러 가기 <i class="ri-arrow-right-s-line"></i></a></p>
+						<a href="../review/MyReview.jsp" class="stamp-go">리뷰 작성하러 가기 <i class="ri-arrow-right-s-line"></i></a></p>
 				</div>
 				<div class="stamp-info-flex">
 					<img src="../img/delivery.png">
@@ -71,7 +71,7 @@
 				<div class="stamp-info-flex">
 					<img src="../img/question.png">
 					<p>궁금한점이 있다면 <span class="stamp-bold">QnA게시판</span>에 문의해주세요.
-					<a href="#" class="stamp-go">문의하러 가기 <i class="ri-arrow-right-s-line"></i></a></p>
+					<a href="../board/boardlist.jsp" class="stamp-go">문의하러 가기 <i class="ri-arrow-right-s-line"></i></a></p>
 				</div>
 			</div>
 		</div>
@@ -79,5 +79,4 @@
 	
 	
 	
-</body>
-</html>
+<jsp:include page="../include/footer.jsp"></jsp:include>

@@ -42,45 +42,60 @@ public class ReservationDAO {
 	
 	
 	// 회원가입 메소드
-		public int insert(ReservationBean bean) {
-			int mynum = 0;
-			
-			getCon();
-			try {
-				
-				String sql = "insert into reservation values (num, ?, ? ,? ,?, ?, ?, ?, ?, 0, sysdate(), ?, ?, ?, ?, ?, ?, 0)";
-				pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-				pstmt.setString(1, bean.getUid());
-				pstmt.setString(2, bean.getUname());
-				pstmt.setString(3, bean.getTel());
-				pstmt.setInt(4, bean.getPostcode());
-				pstmt.setString(5, bean.getAddr());
-				pstmt.setString(6, bean.getDetailaddr());
-				pstmt.setString(7, bean.getComment());
-				pstmt.setString(8, bean.getSelectdate());
-				pstmt.setInt(9, bean.getDaily());
-				pstmt.setInt(10, bean.getBlanket());
-				pstmt.setInt(11, bean.getShirt());
-				pstmt.setInt(12, bean.getDry());
-				pstmt.setInt(13, bean.getCare());
-				pstmt.setInt(14, bean.getTotalprice());
-				pstmt.executeUpdate();
-				rs = pstmt.getGeneratedKeys();
-				
-				if(rs.next()) {
-					mynum = rs.getInt(1);
-					System.out.println(mynum);
-				}
-				
-				System.out.println(pstmt);
-				
-				con.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return mynum;
-		}
-		
+	@SuppressWarnings("unused")
+	public int insert(ReservationBean bean) {
+	    int mynum = 0;
+	    getCon();
+	    try {
+	        String getMaxNumQuery = "SELECT MAX(num) FROM reservation";
+	        String setNewNumQuery = "SET @new_num = (SELECT MAX(num) + 1 FROM reservation)";
+	        String insertQuery = "INSERT INTO reservation VALUES (@new_num, ?, ?, ?, ?, ?, ?, ?, ?, 0, SYSDATE(), ?, ?, ?, ?, ?, ?, 0, @new_num)";
+
+	        // Step 1: 최대값 조회
+	        Statement getMaxNumStatement = con.createStatement();
+	        ResultSet maxNumResult = getMaxNumStatement.executeQuery(getMaxNumQuery);
+	        int maxNum = 0;
+	        if (maxNumResult.next()) {
+	            maxNum = maxNumResult.getInt(1);
+	        }
+
+	        // Step 2: 변수에 값 저장
+	        Statement setNewNumStatement = con.createStatement();
+	        setNewNumStatement.executeUpdate(setNewNumQuery);
+
+	        // Step 3: 새로운 행 추가
+	        pstmt = con.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
+	        pstmt.setString(1, bean.getUid());
+	        pstmt.setString(2, bean.getUname());
+	        pstmt.setString(3, bean.getTel());
+	        pstmt.setInt(4, bean.getPostcode());
+	        pstmt.setString(5, bean.getAddr());
+	        pstmt.setString(6, bean.getDetailaddr());
+	        pstmt.setString(7, bean.getComment());
+	        pstmt.setString(8, bean.getSelectdate());
+	        pstmt.setInt(9, bean.getDaily());
+	        pstmt.setInt(10, bean.getBlanket());
+	        pstmt.setInt(11, bean.getShirt());
+	        pstmt.setInt(12, bean.getDry());
+	        pstmt.setInt(13, bean.getCare());
+	        pstmt.setInt(14, bean.getTotalprice());
+	        pstmt.executeUpdate();
+	        rs = pstmt.getGeneratedKeys();
+
+	        if (rs.next()) {
+	            mynum = rs.getInt(1);
+	            System.out.println(mynum);
+	        }
+
+	        System.out.println(pstmt);
+
+	        con.close();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return mynum;
+	}
+
 		
 		// 페이징 메소드, 제한된 갯수 불러옴
 		public Vector<ReservationBean> getSelect(int limitNum, int listNum) {
@@ -113,6 +128,7 @@ public class ReservationDAO {
 					rbean.setCare(rs.getInt("care"));
 					rbean.setTotalprice(rs.getInt("totalprice"));
 					rbean.setCondition(rs.getInt("condition"));
+					rbean.setResnum(rs.getInt("resnum"));
 					
 					data.add(rbean);
 				}
@@ -215,6 +231,7 @@ public class ReservationDAO {
 					res.setCare(rs.getInt("care"));
 					res.setTotalprice(rs.getInt("totalprice"));
 					res.setCondition(rs.getInt("condition"));
+					res.setResnum(rs.getInt("resnum"));
 				}
 				con.close();
 			} catch (Exception e) {
@@ -316,6 +333,7 @@ public class ReservationDAO {
 					rbean.setCare(rs.getInt("care"));
 					rbean.setTotalprice(rs.getInt("totalprice"));
 					rbean.setCondition(rs.getInt("condition"));
+					rbean.setResnum(rs.getInt("resnum"));
 
 	                data.add(rbean);
 	            }
@@ -376,6 +394,7 @@ public class ReservationDAO {
 	                int care = rs.getInt("care");
 	                int totalprice = rs.getInt("totalprice");
 
+
 	                // Create a ReservationBean object and set the retrieved values
 	                reservation = new ReservationBean();
 	                reservation.setNum(num);
@@ -390,6 +409,8 @@ public class ReservationDAO {
 	                reservation.setDry(dry);
 	                reservation.setCare(care);
 	                reservation.setTotalprice(totalprice);
+
+	                
 	            }
 	        } catch (SQLException e) {
 	            e.printStackTrace();
@@ -457,6 +478,7 @@ public class ReservationDAO {
 					bean.setCare(rs.getInt(16));
 					bean.setTotalprice(rs.getInt(17));
 					bean.setCondition(rs.getInt(18));
+					bean.setResnum(rs.getInt(19));
 					
 					
 					search.add(bean);
@@ -494,8 +516,74 @@ public class ReservationDAO {
 	    
 	 
 	    
+	    /***** My ReviewList *****/
 	    
-	    
+
+		
+		
+		public Vector<ReservationBean> myReviewList(String uid, int limitNum, int listNum) {
+	        Vector<ReservationBean> data = new Vector<>();
+	        getCon();
+	        try {
+	            String sql = "select * from reservation where uid = ? and `condition` = 1 order by num desc limit ?, ?";
+	            pstmt = con.prepareStatement(sql);
+	            pstmt.setString(1, uid);
+	            pstmt.setInt(2, limitNum);
+	            pstmt.setInt(3, listNum);
+	            
+	            System.out.println(pstmt);
+	            rs = pstmt.executeQuery();
+
+	            while (rs.next()) {
+	                ReservationBean rbean = new ReservationBean();
+	                rbean.setNum(rs.getInt("num"));
+					rbean.setUid(rs.getString("uid"));
+					rbean.setUname(rs.getString("uname"));
+					rbean.setTel(rs.getString("tel"));
+					rbean.setPostcode(rs.getInt("postcode"));
+					rbean.setAddr(rs.getString("addr"));
+					rbean.setDetailaddr(rs.getString("detailaddr"));
+					rbean.setComment(rs.getString("comment"));
+					rbean.setSelectdate(rs.getString("selectdate"));
+					rbean.setCount(rs.getInt("count"));
+					rbean.setWdate(rs.getString("wdate"));
+					rbean.setDaily(rs.getInt("daily"));
+					rbean.setBlanket(rs.getInt("blanket"));
+					rbean.setShirt(rs.getInt("shirt"));
+					rbean.setDry(rs.getInt("dry"));
+					rbean.setCare(rs.getInt("care"));
+					rbean.setTotalprice(rs.getInt("totalprice"));
+					rbean.setCondition(rs.getInt("condition"));
+					rbean.setResnum(rs.getInt("resnum"));
+
+	                data.add(rbean);
+	            }
+	            con.close();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        return data;
+	    }
+		
+		public int myReviewCount(String uid) {
+	        int count = 0;
+	        getCon();
+	        try {
+	            String sql = "select count(*) as count from reservation where uid = ? and `condition` = 1";
+	            pstmt = con.prepareStatement(sql);
+	            pstmt.setString(1, uid);
+	            System.out.println(pstmt);
+	            rs = pstmt.executeQuery();
+
+	            if (rs.next()) {
+	                count = rs.getInt("count");
+	            }
+	            con.close();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        return count;
+	    }
 	  
 	}
 		

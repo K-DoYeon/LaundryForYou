@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import ="review.ReviewBean, review.ReviewDAO, review.RCommentBean, likey.LikeyDAO, likey.LikeyDTO" %>
+<%@ page import ="review.ReviewBean, review.ReviewDAO, review.RCommentBean, likey.LikeyDAO, likey.LikeyDTO, reservation.ReservationDAO" %>
 <%@ page import="java.util.*"%>
 <%@ page import = "java.io.*" %>
+
 <%
 ReviewDAO rdao = new ReviewDAO();
 ArrayList<ReviewBean> reviewlist = null;
@@ -13,16 +14,7 @@ reviewlist = rdao.getReviewList();
 <head>
 <meta charset="UTF-8">
 <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script>
-	$(document).on('click', '#btnSave', function(e){
-		e.preventDefault();	
-		$("#form").submit();
-	});
 
-	
-
-</script>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" 
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" 
@@ -43,11 +35,18 @@ reviewlist = rdao.getReviewList();
 	String subject = bean.getSubject();
 	String uid = bean.getUid();
 	String loginid = (String) session.getAttribute("uid");
-	int level = (Integer)session.getAttribute("level");
-	
+	int level = 0;
+	if(loginid != null){
+	level = (Integer)session.getAttribute("level");
+	}
 	LikeyDAO ldao = new LikeyDAO();
 	boolean lresult = ldao.countLike(loginid, subject);
 	System.out.println(lresult);
+	
+	ReservationDAO rsdao = new ReservationDAO();
+	int resnum = Integer.parseInt(request.getParameter("resnum"));
+	
+
 %>
 <%
 	uid = null;
@@ -137,6 +136,11 @@ i.fa-heart:hover{
 	color: #fe3434;
 	transition: all 300ms;
 }
+.re-btn{
+	border : none;
+	cursor : pointer;
+}
+
 </style>
 </head>
 <body>
@@ -155,6 +159,7 @@ i.fa-heart:hover{
                   <label for="reg_num"><%=bean.getNum() %> /</label>
                   <label for="reg_id"><%=bean.getUid() %></label>
                   <input type="hidden" name="upass" value="<%=bean.getUpass() %>" />
+                  <input type="hidden" name="resnum" value="<%=resnum%>" />
                </div>
                <div>
                   <label for="reg_wdate"><%=bean.getWdate() %> /</label>
@@ -177,15 +182,13 @@ i.fa-heart:hover{
 					<input type = "hidden" name = "readcount" id="readcount" />
 					<input type = "hidden" name = "replycount" id="replycount"/>
 					<input type = "hidden" name = "like" id="like" />
-				<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" onclick="location.href='reviewUpdate.jsp?num=<%=bean.getNum() %>'">수정</button>
-				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList" onclick="location.href='reviewDelete.jsp?num=<%=bean.getNum() %>'">삭제</button>
+				<button type="button" class="btn btn-sm choi-qna-btn" onclick="location.href='reviewUpdate.jsp?num=<%=bean.getNum() %>'">수정</button>
+				<button type="button" class="btn btn-sm choi-qna-btn" onclick="location.href='reviewDelete.jsp?num=<%=bean.getNum() %>'">삭제</button>
 				<%
 				if(level == 99){
 				%>
 				<a type="button" class="btn btn-sm choi-qna-btn" id="btnList" onclick="return confirm('관리자 권한으로 삭제하시겠습니까?')" href="adminDelete.jsp?num=<%=bean.getNum() %>">관리자 권한으로 삭제</a>
 				<%
-				}else{
-					
 				}
 				%>
 				<%
@@ -231,8 +234,8 @@ i.fa-heart:hover{
 			if(uid==null){
 		%>
 			<div class ="choi-qna">
-				<button type="submit" class="btn btn-sm choi-qna-btn mt-2" >
-				<a onclick = "return confirm('로그인 후 이용하실 수 있습니다.')" href="../user/login.jsp">등록</a></button>
+				<button type="submit" class="btn btn-sm choi-qna-btn mt-2" ></button>
+				<a onclick = "return confirm('로그인 후 이용하실 수 있습니다.')" href="../user/login.jsp">등록</a>
 		    </div>
 		<% }else{ %>
 			<div class ="choi-qna">
@@ -268,18 +271,23 @@ i.fa-heart:hover{
 					<td style="text-align: left;"><%=list.get(i).getUid() %></td>  
 					<td style = "text-align : center;"><%= list.get(i).getReplyContent() %></td>
 					<td style = "text-align: right;"><%=list.get(i).getWdate().substring(0,11) %>
-					<a href="reviewReComment.jsp?num=<%=bean.getNum() %>&ref=<%=rbean.getRef()%>&bbsId=<%=rbean.getBbsId() %>&replyAvailable=<%=rbean.getReplyAvailable() %>" class="btn ">대댓글</a>
+				
+				 <%
+				 	if(level == 99){
+				 %>
+					<%-- <a href = "#" type="button" class="re-btn" id="re-review<%= i %>">대댓글</a> --%>
 					<a onclick = "return confirm('정말로 삭제하시겠습니까?')" href="reviewCommentDelete.jsp?num=<%=bean.getNum()%>&bbsId=<%=list.get(i).getBbsId() %>" class="btn-del">삭제</a>
 					</td>
-					
 				<% } %>
 				</tr>
 				
 			</tbody>
-	</table>				
+			 <% } %>	
+ </table >
+		   
 			
-	</div>
-		
-	</article>
+</div>	
+</article>
+<jsp:include page="../include/footer.jsp" />
 </body>
 </html>

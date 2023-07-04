@@ -11,6 +11,8 @@ public class ReviewBean {
 	private int readCount;
 	private int replyCount;
 	private int like_this;
+	private int resnum;
+	
 	
 	public int getNum() {
 		return num;
@@ -72,6 +74,14 @@ public class ReviewBean {
 	public void setLike_this(int like_this) {
 		this.like_this = like_this;
 	}
+	public int getResnum() {
+		return resnum;
+	}
+	public void setResnum(int resnum) {
+		this.resnum = resnum;
+	}
+
+	
 	
 	
 	

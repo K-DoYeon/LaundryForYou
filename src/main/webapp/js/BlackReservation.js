@@ -15,10 +15,12 @@ function dailyMinus(){
 		shirtsum = document.getElementById("shirtSumprice"),
 		drysum = document.getElementById("drySumprice"),
 		caresum = document.getElementById("careSumprice"),
-		total = document.getElementById("total");
+		total = document.getElementById("total"),
+		sale = document.getElementById("sale");
 		
 	total.value = parseInt(dailysum.value) + parseInt(blanketsum.value) + 
 				parseInt(shirtsum.value) + parseInt(drysum.value) + parseInt(caresum.value);
+	sale.value = total.value * 0.9;
 }
 function dailyPlus(){
 		
@@ -36,10 +38,12 @@ function dailyPlus(){
 		shirtsum = document.getElementById("shirtSumprice"),
 		drysum = document.getElementById("drySumprice"),
 		caresum = document.getElementById("careSumprice"),
-		total = document.getElementById("total");
+		total = document.getElementById("total"),
+		sale = document.getElementById("sale");
 		
 	total.value = parseInt(dailysum.value) + parseInt(blanketsum.value) + 
 				parseInt(shirtsum.value) + parseInt(drysum.value) + parseInt(caresum.value);
+	sale.value = total.value * 0.9;
 }
 
 function blanketMinus(){
@@ -59,10 +63,12 @@ function blanketMinus(){
 		shirtsum = document.getElementById("shirtSumprice"),
 		drysum = document.getElementById("drySumprice"),
 		caresum = document.getElementById("careSumprice"),
-		total = document.getElementById("total");
+		total = document.getElementById("total"),
+		sale = document.getElementById("sale");
 		
 	total.value = parseInt(dailysum.value) + parseInt(blanketsum.value) + 
 				parseInt(shirtsum.value) + parseInt(drysum.value) + parseInt(caresum.value);
+	sale.value = total.value * 0.9;
 }
 function blanketPlus(){
 		
@@ -80,10 +86,12 @@ function blanketPlus(){
 		shirtsum = document.getElementById("shirtSumprice"),
 		drysum = document.getElementById("drySumprice"),
 		caresum = document.getElementById("careSumprice"),
-		total = document.getElementById("total");
+		total = document.getElementById("total"),
+		sale = document.getElementById("sale");
 		
 	total.value = parseInt(dailysum.value) + parseInt(blanketsum.value) + 
 				parseInt(shirtsum.value) + parseInt(drysum.value) + parseInt(caresum.value);
+	sale.value = total.value * 0.9;
 }
 
 function shirtMinus(){
@@ -103,10 +111,12 @@ function shirtMinus(){
 		shirtsum = document.getElementById("shirtSumprice"),
 		drysum = document.getElementById("drySumprice"),
 		caresum = document.getElementById("careSumprice"),
-		total = document.getElementById("total");
+		total = document.getElementById("total"),
+		sale = document.getElementById("sale");
 		
 	total.value = parseInt(dailysum.value) + parseInt(blanketsum.value) + 
 				parseInt(shirtsum.value) + parseInt(drysum.value) + parseInt(caresum.value);
+	sale.value = total.value * 0.9;
 }
 function shirtPlus(){
 		
@@ -124,10 +134,12 @@ function shirtPlus(){
 		shirtsum = document.getElementById("shirtSumprice"),
 		drysum = document.getElementById("drySumprice"),
 		caresum = document.getElementById("careSumprice"),
-		total = document.getElementById("total");
+		total = document.getElementById("total"),
+		sale = document.getElementById("sale");
 		
 	total.value = parseInt(dailysum.value) + parseInt(blanketsum.value) + 
 				parseInt(shirtsum.value) + parseInt(drysum.value) + parseInt(caresum.value);
+	sale.value = total.value * 0.9;
 }
 
 
@@ -148,10 +160,12 @@ function dryMinus(){
 		shirtsum = document.getElementById("shirtSumprice"),
 		drysum = document.getElementById("drySumprice"),
 		caresum = document.getElementById("careSumprice"),
-		total = document.getElementById("total");
+		total = document.getElementById("total"),
+		sale = document.getElementById("sale");
 		
 	total.value = parseInt(dailysum.value) + parseInt(blanketsum.value) + 
 				parseInt(shirtsum.value) + parseInt(drysum.value) + parseInt(caresum.value);
+	sale.value = total.value * 0.9;
 }
 function dryPlus(){
 		
@@ -169,10 +183,12 @@ function dryPlus(){
 	shirtsum = document.getElementById("shirtSumprice"),
 	drysum = document.getElementById("drySumprice"),
 	caresum = document.getElementById("careSumprice"),
-	total = document.getElementById("total");
+	total = document.getElementById("total"),
+	sale = document.getElementById("sale");
 		
 	total.value = parseInt(dailysum.value) + parseInt(blanketsum.value) + 
 				parseInt(shirtsum.value) + parseInt(drysum.value) + parseInt(caresum.value);
+	sale.value = total.value * 0.9;
 }
 
 function careMinus(){
@@ -192,10 +208,12 @@ function careMinus(){
 		shirtsum = document.getElementById("shirtSumprice"),
 		drysum = document.getElementById("drySumprice"),
 		caresum = document.getElementById("careSumprice"),
-		total = document.getElementById("total");
+		total = document.getElementById("total"),
+		sale = document.getElementById("sale");
 		
 	total.value = parseInt(dailysum.value) + parseInt(blanketsum.value) + 
 				parseInt(shirtsum.value) + parseInt(drysum.value) + parseInt(caresum.value);
+	sale.value = total.value * 0.9;
 }
 function carePlus(){
 		
@@ -214,9 +232,11 @@ function carePlus(){
 		shirtsum = document.getElementById("shirtSumprice"),
 		drysum = document.getElementById("drySumprice"),
 		caresum = document.getElementById("careSumprice"),
-		total = document.getElementById("total");
+		total = document.getElementById("total"),
+		sale = document.getElementById("sale");
 		
 	total.value = parseInt(dailysum.value) + parseInt(blanketsum.value) + 
 				parseInt(shirtsum.value) + parseInt(drysum.value) + parseInt(caresum.value);
+	sale.value = total.value * 0.9;
 		
 }

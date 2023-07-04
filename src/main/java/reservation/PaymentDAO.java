@@ -79,13 +79,13 @@ public class PaymentDAO {
 			getCon();
 			int totalReservationPrice = 0;
 			try {
-				String sql = "select sum(totalprice) as totalprice from pay where uid = ?";
+				String sql = "select sum(totalprice) as price from reservation where `uid` = ? and `condition` = 1";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, uid);
 				rs = pstmt.executeQuery();
 				
 				if (rs.next()) {
-					totalReservationPrice = rs.getInt("totalprice");
+					totalReservationPrice = rs.getInt("price");
 				}
 			} catch (Exception e) {
 				e.printStackTrace();

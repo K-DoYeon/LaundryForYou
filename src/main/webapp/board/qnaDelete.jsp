@@ -108,7 +108,7 @@ button a:hover{
 			<div class ="choi-qna">
 			<input type="hidden" name="num" value="<%=bean.getNum() %>" />
 			<input type="hidden" name="upass" value="<%=bean.getUpass() %>" />
-				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList" >수정</button>
+				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList" onclick="location.href='boardlist.jsp'">목록</button>
 				<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" value="submit">삭제</button>
 			</div>
 	
