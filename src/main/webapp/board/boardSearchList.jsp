@@ -155,3 +155,4 @@
     <script src="../js/boardlist.js"></script>
 </body>
 </html>
+<jsp:include page="../include/footer.jsp"></jsp:include>

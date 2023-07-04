@@ -22,6 +22,15 @@
 .search-submit:hover{
 	background: #8ac4d0;
 }
+.list-all{
+   border-radius: 5px; 
+   background: #58A3BC;
+   width: 80px;
+   line-height: 40px;
+   color: white;
+   text-align: center;
+   margin-left: 5px;
+}
 
 .w100{
 	width: 100px;

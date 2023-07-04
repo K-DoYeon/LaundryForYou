@@ -7,7 +7,7 @@ function id_search() {
     return;
   }
 
-  if (form.tel.value.length != 10) {
+  if (form.tel.value.length != 11) {
     alert("휴대폰 번호를 정확하게 입력해주세요.");
     return;
   }
@@ -57,7 +57,7 @@ function pw_search(){
     return;
   }
 
-  if (form.tel.value.length != 10) {
+  if (form.tel.value.length != 11) {
     alert("휴대폰 번호를 정확하게 입력해주세요.");
     return;
   }

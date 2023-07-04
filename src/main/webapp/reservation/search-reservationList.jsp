@@ -84,7 +84,8 @@
                 <option value="num">예약번호</option>
              </select>
              <input type="text" id="search-input" class="form-control w200" placeholder="검색어를 입력하세요." name="searchText" maxlength="20">
-             <button type="submit" class="search-submit"> 검색 </button>   
+             <button type="submit" class="search-submit"> 검색 </button>
+             <a href="reservationList.jsp" class="list-all">전체목록</a> 
           </div>
        </form>
     </div>
@@ -211,4 +212,4 @@
 </div>
 
 <script src="../js/reservationlist.js"></script>
-
+<jsp:include page="../include/footer.jsp"></jsp:include>

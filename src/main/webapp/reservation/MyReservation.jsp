@@ -159,7 +159,7 @@ for(int i=0; i < size; i++){
       	} else {
       %>
      
-      <button type="submit" class="btn btn-outline-secondary btn-sm">결제하기</button>
+      <button type="submit" class="btn btn-outline-secondary btn-sm" onclick="alert('KB국민과 카카오뱅크는 결제가 불가합니다.')">결제하기</button>
 	  <%
       	}
       %>
