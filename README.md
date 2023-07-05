@@ -40,7 +40,7 @@ JSP + Servlet기반으로 한 세탁 서비스 웹 사이트
 - 홍정원 : <https://github.com/jeoungwonhong>
 
 ## 📌 주요 기능
-- 로그인 회원가입
+- 로그인, 회원가입
 - 게시판
 - 결제 API
 - 사진 등록
