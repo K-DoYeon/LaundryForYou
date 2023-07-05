@@ -92,5 +92,6 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="../js/idcheck.js"></script>
 <script src="../js/register.js"></script>
+<jsp:include page="../include/footer.jsp" />
 </body>
 </html>

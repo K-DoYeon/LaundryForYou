@@ -84,5 +84,6 @@
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 	<script src="../js/userInfo.js"></script>
+	<jsp:include page="../include/footer.jsp" />
 </body>
 </html>

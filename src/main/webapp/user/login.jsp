@@ -51,5 +51,6 @@
 	</div>
 	
 	<script src="../js/idfind.js"></script>
+	<jsp:include page="../include/footer.jsp" />
 </body>
 </html>
