@@ -67,10 +67,14 @@ reviewlist = rdao.getReviewList();
     font-weight: 400;
     font-style: normal;
 }
+.gnb-header, .welcome-header{
+	margin: 0;
+}
 body {
-  padding-top: 70px;
-  padding-bottom: 30px;
   font-family:  'SUITE-Regular';
+}
+article{
+	margin: 50px 0px;
 }
 .container{
 	margin-top : 50px;
