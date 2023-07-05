@@ -43,7 +43,7 @@ JSP + Servlet기반으로 한 세탁 서비스 웹 사이트
 - 로그인, 회원가입
 - 게시판
 - 결제 API
-- 사진 등록
+- 후기 사진 업로드
 - AWS DB공유 , AWS 배포 <http://3.38.94.79:8080/LaundryForYou/main/main.jsp>
 - 포트폴리오 <notion>
 ![main](https://github.com/K-DoYeon/LaundryForYou/assets/124326065/246f5de4-79ea-4a23-8c86-b6ae4b8af8c9)
