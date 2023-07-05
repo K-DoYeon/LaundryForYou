@@ -28,9 +28,9 @@ reviewlist = rdao.getReviewList();
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" 
 	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" 
 	crossorigin="anonymous" />
+<jsp:include page="../include/header.jsp"></jsp:include>
 
 
-<title>후기 삭제</title>
 <%
 	int num = Integer.parseInt(request.getParameter("num").trim());
 
@@ -106,7 +106,7 @@ input:read-only {
 </style>
 </head>
 <body>
-<jsp:include page="../include/header.jsp"></jsp:include>
+
 
 <article>
 		<div class="container">

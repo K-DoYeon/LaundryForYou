@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>서비스 안내</title>
+
 </head>
 <jsp:include page="../include/header.jsp"></jsp:include>
 <link rel="stylesheet" href="../css/service.css">

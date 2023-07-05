@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+
 </head>
 <jsp:useBean id="bean" class = "review.RCommentBean" scope = "page"/>
 <jsp:setProperty property="*" name="bean"/>

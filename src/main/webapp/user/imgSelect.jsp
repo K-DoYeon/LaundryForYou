@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>이미지 선택</title>
+
 <link rel="stylesheet" href="../css/imgSelect.css">
 </head>
 <body>

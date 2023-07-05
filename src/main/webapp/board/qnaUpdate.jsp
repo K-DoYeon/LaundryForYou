@@ -13,7 +13,7 @@
 	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" 
 	crossorigin="anonymous" />
 
-<title>Q&A Update</title>
+
 <script>
 	$(document).on('click', '#btnSave', function(e){
 		e.preventDefault();	

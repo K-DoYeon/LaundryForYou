@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>세탁의 당신</title>
+<link rel="icon" href="../img/bubble.png">
 </head>
 <body>
 	<%

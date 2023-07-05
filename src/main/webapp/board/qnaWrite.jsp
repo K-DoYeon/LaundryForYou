@@ -24,7 +24,7 @@
 	crossorigin="anonymous" />
 
 
-<title>Q&A Write</title>
+
 
 <style>
 @font-face {

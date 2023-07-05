@@ -24,7 +24,6 @@
 	crossorigin="anonymous" />
 
 
-<title>Review Write</title>
 
 <style>
 @font-face {

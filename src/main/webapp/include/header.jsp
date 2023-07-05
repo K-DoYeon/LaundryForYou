@@ -9,13 +9,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>세탁의 당신</title>
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUITE/fonts/variable/woff2/SUITE-Variable.css" rel="stylesheet">
 <link rel="stylesheet" href="../css/header.css">
 
 <link rel="stylesheet" href="../css/main.css">
 <link rel="stylesheet" href="../css/footer.css">
+<link rel="icon" href="../img/bubble.png">
 </head>
 <body>
 	<%
