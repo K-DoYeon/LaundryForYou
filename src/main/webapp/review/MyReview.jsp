@@ -63,7 +63,7 @@
 						int userReview = redao.userReview(resnum);
 						int reNum = redao.reNum(resnum);
 				%>
-					<form action="MyReviewProc.jsp" method="post" class="reviewForm-myre">
+					<form method="post" class="reviewForm-myre">
 						<p class="resnum-myre"><input type="text" name="resnum" value="<%= rbean.getResnum() %>" readonly /></p>
 						<div class="producName-myre">
 							<p>세탁의 당신 : 세탁배송</p>
