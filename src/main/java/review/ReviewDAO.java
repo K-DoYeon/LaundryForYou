@@ -575,10 +575,10 @@ public class ReviewDAO {
 				int userReview = 0;
 				
 				try {
-					String sql = "select count(*) from review where resnum = ?";
+					String sql = "select count(*) from review where resnum = ?	";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setInt(1, resnum);
-					rs = pstmt.executeQuery();
+					rs = pstmt.executeQuery();	
 					
 					if (rs.next()) {
 						userReview = rs.getInt(1);
