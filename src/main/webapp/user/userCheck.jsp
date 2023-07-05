@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>본인확인</title>
+
 <link rel="stylesheet" href="../css/userCheck.css">
 </head>
 <body>

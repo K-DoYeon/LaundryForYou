@@ -7,9 +7,9 @@
     request.setCharacterEncoding("UTF-8");
 %>
 
-<!DOCTYPE html>
-<html>
+
 <link rel="stylesheet" href="../css/boardqna.css">
+
 <head>
 <meta charset="UTF-8">
 <!-- jQuery -->
@@ -19,8 +19,8 @@
    href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" 
    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" 
    crossorigin="anonymous" />
+<jsp:include page="/include/header.jsp" />
 
-<title>Q&A Board</title>
 
 <%
 
@@ -105,7 +105,7 @@ CommentBean cmt = new CommentBean();
 
 %>
 
-<jsp:include page="/include/header.jsp" />
+
    <article>
    
       <div class="container" role="main">

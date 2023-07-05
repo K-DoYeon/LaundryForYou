@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 <style>
 @font-face {
     font-family: 'IM_Hyemin-Bold';

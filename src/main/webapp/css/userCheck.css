@@ -1,9 +1,5 @@
 @charset "UTF-8";
-@import url('https://webfontworld.github.io/TheJamsil/TheJamsil.css');
-@import url('https://webfontworld.github.io/dgb/IMHyemin.css');
 body {
-	box-sizing: border-box;	
-	font-family: 'SUITE Variable', 'IMHyemin', 'TheJamsil', sans-serif;
 	margin: 0;
 }
 a, a:hover {
@@ -33,7 +29,7 @@ a, a:hover {
     align-items: center;
 }
 .title-userch {
-	width: 80px;
+	width: 100px;
 }
 input[type="password"],
 input[type="text"] {

@@ -22,7 +22,7 @@ reviewlist = rdao.getReviewList();
 	crossorigin="anonymous" />
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<title>Review Page</title>
+<jsp:include page="../include/header.jsp"></jsp:include>
 <%
 	int num = Integer.parseInt(request.getParameter("num").trim());
 
@@ -111,9 +111,10 @@ button a:hover{
 	resize : none;
 }
 .review-img img{
-	width : 100%;
+	/* width : 100%; */
 	height : auto;
 	margin : 0 auto;
+	display: block;
 	padding : 0 auto;
 }
 input:read-only {
@@ -148,7 +149,7 @@ i.fa-heart:hover{
 </style>
 </head>
 <body>
-<jsp:include page="../include/header.jsp"></jsp:include>
+
 
 	<article>
 		<div class="container">

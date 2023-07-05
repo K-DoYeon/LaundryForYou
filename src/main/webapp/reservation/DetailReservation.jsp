@@ -5,7 +5,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Reservation Details</title>
     <link rel="stylesheet" href="../css/DetailReservation.css" />
 </head>
 <body>

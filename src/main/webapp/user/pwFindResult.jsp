@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>비밀번호 찾기</title>
+
 <link rel="stylesheet" href="../css/idfind.css">
 </head>
 <body>

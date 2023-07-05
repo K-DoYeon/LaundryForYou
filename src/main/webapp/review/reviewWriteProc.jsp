@@ -13,7 +13,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+
 </head>
 <body>
 
@@ -31,7 +31,7 @@
 	String realFolder = "";
    String saveFolder = "images";   //사진을 저장할 경로
    String encType = "utf-8";   //변환형식
-   int maxSize = 3*1024*1024; //3MB로 파일 크기 제한
+   int maxSize = 3*680*680; //3MB로 파일 크기 제한
    
    ServletContext context = this.getServletContext();   //절대경로 얻기
    //realFolder = context.getRealPath(saveFolder);   //savefolder 절대 경로를 얻음
