@@ -1,0 +1,123 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'NEXON Lv1 Gothic OTF';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+	font-family: 'NEXON Lv1 Gothic OTF';
+}
+
+.com-banner{
+	width: 100%;
+	height: 200px;
+	background-image: url("../img/company.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 100% 35%;
+}
+
+.com-intro{
+	font-size: 40px;
+    text-align: center;
+    margin: 80px auto 100px;
+    font-weight: 700;
+}
+
+.about-us{
+	width: 1000px;
+	height: 300px;
+	margin: 100px auto 50px;
+	display: flex;
+	flex-direction: row;
+}
+
+.about-right{
+	width: 250px;
+	height: 250px;
+	background-image: url("../img/meeting-room.jpg");
+	border-radius: 50%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 100% 100%;
+}
+
+.about-left{
+	width: 600px;
+	height: 250px;
+	margin-right: 120px;
+}
+
+.about-left>span{
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 20px;
+}
+
+.about-left-box{
+	width: 600px;
+	height: 200px;
+	margin-top: 20px;
+	background: rgba(138,196,208,0.3);
+	border-radius: 5px;
+}	
+
+.about-left-box p:first-child{
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 40px;
+	text-align: center;
+	padding-top: 40px;
+}
+
+.left-box{
+	text-align: center;
+	margin-top: 20px;
+	font-size: 18px;
+    line-height: 26px;
+}
+
+.vision-p{
+	width: 1000px;
+    margin: 0 auto;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.vision{
+	width: 1000px;
+	height: 200px;
+	margin: 0 auto;
+	margin-bottom: 50px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	
+}
+
+.vision>div{
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	background: rgba(250,229,124,0.5);
+	text-align: center;
+}
+
+.vision>div p:last-child{
+	font-size: 20px;
+	color: #28527A;
+    font-weight: bold;
+}
+
+.vision>div p:first-child{
+	margin-top: 75px;
+	margin-bottom: 8px;
+	font-weight: 700;
+	font-size: 14px;
+	color: #28527A;
+}
