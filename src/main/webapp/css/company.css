@@ -121,3 +121,76 @@ body{
 	font-size: 14px;
 	color: #28527A;
 }
+
+
+/***** orgChart *****/
+.orgChart-com {
+	width: 1000px;
+	margin: 130px auto 80px;
+}
+.orgChart-com p {
+	text-transform: uppercase;
+	font-size: 20px;
+	font-weight: 700;
+}
+.orgChartImg-com {
+	display: flex;
+	width: inherit;
+	margin-top: 30px;
+	justify-content: center;
+}
+.orgChartImg-com img {
+	width: 70%;
+}
+
+/***** idCard *****/
+.intro-com {
+	width: 1000px;
+	margin: 0 auto;
+	margin-top: 130px;
+}
+.introBox-com {
+	display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.introBox-com img {
+	width: 250px;
+}
+.introEmployee-com {
+	width: 500px;
+}
+.keyWord-com {
+	margin-bottom: 10px;
+}
+.keyWord-com span {
+	color: #28527a;
+	font-weight: 700;
+	font-size: 24px;
+	margin-right: 10px;
+}
+.aboutEmployee-com {
+	font-size: 24px;
+}
+.aboutEmployee-com span {
+	font-size: 32px;
+	font-weight: 700;
+}
+.aboutEmployee-com {
+	margin-bottom: 26px;
+}
+.workHistory-com span {
+	font-weight: 700;
+	color: #28527a;
+}
+.workHistory-com {
+	line-height: 24px;
+	margin-bottom: 26px;
+}
+.portfolio-com a {
+	margin-right: 10px;
+}
+.portfolio-com i {
+	font-size: 32px;
+}
