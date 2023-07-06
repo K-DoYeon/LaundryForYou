@@ -49,20 +49,33 @@
 			<img alt="idCard" src="../img/k-do.png">
 			<div class="introEmployee-com">
 				<div class="keyWord-com">
-					<span>#KEYWORD</span> <span>#0000</span>
+					<span>#ISTJ</span> <span>#도전적인</span>
 				</div>
 				<p class="aboutEmployee-com">
 					<span>김도연</span> &nbsp;/&nbsp; CEO
 				</p>
 				<div class="workHistory-com">
-					<span>작업내용</span>은 여기 적어주세요옹!!!
-					<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!
+					<span>- 예약</span> <br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 예약 달력 Datetimepicker API<br />
+					
+					<span>- 문의 게시판</span> <br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 전체 게시글 목록 조회 & 페이징 기능 구현 <br />
+					&nbsp;&nbsp;&nbsp;&nbsp; Q&A 관리자만 댓글 쓰기 수정 삭제 구현 <br />
+					
+					<span>- 결제</span> <br />
+					&nbsp;&nbsp;&nbsp;&nbsp; I'mport API로 이니시스 결제 구현<br />
+					
+					<span>- 마이 페이지</span> <br/>
+					&nbsp;&nbsp;&nbsp;&nbsp; 측정된 누적결제 금액 이상 해당시 회원 등급 상승<br />
+					
+					<span>- 서비스 페이지</span> <br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 서비스 페이지 디자인 및 프론트 작업 <br />
 				</div>
 				<div class="portfolio-com">
 					<a href="https://github.com/K-DoYeon" target=”_blank”>
 						<i class="ri-github-fill"></i>
 					</a>
-					<a href="mailto://">
+					<a href="mailto://loveworud9@gmail.com">
 						<i class="ri-mail-send-fill"></i>
 					</a>
 				</div>

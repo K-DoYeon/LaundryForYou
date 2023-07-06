@@ -38,6 +38,7 @@
 					<li><a href="../review/review.jsp">후기게시판</a></li>
 					<li><a href="../main/service.jsp">서비스안내</a></li>
 					<li><a href="../main/BlackLaundry.jsp">명품관</a></li>
+					<li><a href="../main/company.jsp">회사소개</a></li>
 				</ul>
 
 				<%
