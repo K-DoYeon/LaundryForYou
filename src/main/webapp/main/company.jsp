@@ -148,7 +148,7 @@
 					<span>#KEYWORD</span> <span>#0000</span>
 				</div>
 				<p class="aboutEmployee-com">
-					<span>전여경</span> &nbsp;/&nbsp; CEO
+					<span>전여경</span> &nbsp;/&nbsp; 주임
 				</p>
 				<div class="workHistory-com">
 					<span>작업내용</span>은 여기 적어주세요옹!!!
@@ -169,20 +169,35 @@
 			<img alt="idCard" src="../img/k-woo.png">
 			<div class="introEmployee-com">
 				<div class="keyWord-com">
-					<span>#KEYWORD</span> <span>#0000</span>
+					<span>#ESTJ</span> <span>#열쩡열쩡!!</span>
 				</div>
 				<p class="aboutEmployee-com">
 					<span>강우성</span> &nbsp;/&nbsp; 사원
 				</p>
 				<div class="workHistory-com">
-					<span>작업내용</span>은 여기 적어주세요옹!!!
-					<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!
-				</div>
+					<span>- 마이페이지</span> <br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 예약목록 확인 페이지 프론트 작업 및 기능 구현<br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 리뷰 개수에 따른 스탬프 증정 기능 구현 <br />
+					
+					<span>- 관리자 페이지</span> <br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 전체 회원 목록 조회 기능 구현 <br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 회원 등급 변경 기능 구현 <br />
+					
+					<span>- 회원가입</span> <br />
+					&nbsp;&nbsp;&nbsp;&nbsp;회원가입 기능 구현<br />
+					
+					<span>- 배송 지역 검색</span> <br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;검색 페이지 디자인 및 프론트 작업<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;다음 주소 API를 이용한 샛별배송 확인 기능 <br />
+					
+					<span>- 명품관 페이지</span> <br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 명품관 페이지 디자인 및 프론트 작업 <br />
+					</div>
 				<div class="portfolio-com">
 					<a href="https://github.com/rkddntjd7" target=”_blank”>
 						<i class="ri-github-fill"></i>
 					</a>
-					<a href="mailto://">
+					<a href="mailto://rkddntjd7@naver.com">
 						<i class="ri-mail-send-fill"></i>
 					</a>
 				</div>
