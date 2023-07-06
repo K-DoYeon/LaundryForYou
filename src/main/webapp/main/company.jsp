@@ -158,20 +158,41 @@
 			<img alt="idCard" src="../img/j-yk.png">
 			<div class="introEmployee-com">
 				<div class="keyWord-com">
-					<span>#KEYWORD</span> <span>#0000</span>
+					<span>#ISTJ</span> <span>#근면성실</span>
 				</div>
 				<p class="aboutEmployee-com">
 					<span>전여경</span> &nbsp;/&nbsp; 주임
 				</p>
 				<div class="workHistory-com">
-					<span>작업내용</span>은 여기 적어주세요옹!!!
-					<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!
+					<span>- 메인</span> <br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 메인 페이지 구현 및 배너 슬라이드 구현<br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 실시간 리뷰 후기 구현 및 리뷰 슬라이드 구현 <br />
+					
+					<span>- 마이 페이지</span> <br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 회원 등급 디자인<br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 호버시 회원 등급 안내 디자인 <br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 스탬프 세부 안내 페이지 구현 <br />
+					
+					<span>- 로그인</span> <br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 아이디 중복확인 기능 구현<br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 아이디, 비밀번호 찾기 기능 구현 <br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 쿠키로 아이디 기억하기 기능 구현 <br />
+					
+					<span>- 관리자 페이지</span> <br/>
+					&nbsp;&nbsp;&nbsp;&nbsp; 예약관리 기능 구현<br />
+					
+					<span>- 예약</span> <br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 예약 기능 구현 <br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 예약시 VIP 할인 기능 구현 <br />
+					
+					<span>- 회사소개</span> <br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 회사소개 페이지 상단 디자인 <br />
 				</div>
 				<div class="portfolio-com">
 					<a href="https://github.com/Jeon00000" target=”_blank”>
 						<i class="ri-github-fill"></i>
 					</a>
-					<a href="mailto://">
+					<a href="mailto://jeonyk731@gmail.com">
 						<i class="ri-mail-send-fill"></i>
 					</a>
 				</div>
@@ -205,7 +226,7 @@
 					
 					<span>- 명품관 페이지</span> <br />
 					&nbsp;&nbsp;&nbsp;&nbsp; 명품관 페이지 디자인 및 프론트 작업 <br />
-					</div>
+				</div>
 				<div class="portfolio-com">
 					<a href="https://github.com/rkddntjd7" target=”_blank”>
 						<i class="ri-github-fill"></i>
