@@ -86,14 +86,33 @@
 			<img alt="idCard" src="../img/h-jw.png">
 			<div class="introEmployee-com">
 				<div class="keyWord-com">
-					<span>#KEYWORD</span> <span>#0000</span>
+					<span>#INTP</span> <span>#끈기있는</span>
 				</div>
 				<p class="aboutEmployee-com">
 					<span>홍정원</span> &nbsp;/&nbsp; 팀장
 				</p>
 				<div class="workHistory-com">
-					<span>작업내용</span>은 여기 적어주세요옹!!!
-					<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!
+					<span>- 예약</span> <br/>
+					&nbsp;&nbsp;&nbsp;&nbsp; 예약 기능 구현<br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 예약시 VIP 할인 기능 구현<br />
+					
+					<span>- 로그인</span> <br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 로그인 페이지 디자인 및 기능 구현<br />
+					
+					<span>- 회원가입</span> <br/>
+					&nbsp;&nbsp;&nbsp;&nbsp; 회원가입 페이지 디자인 및 프론트 작업 <br />
+					
+					<span>- 마이페이지</span> <br/>
+					&nbsp;&nbsp;&nbsp;&nbsp; 마이페이지 디자인 및 프론트 작업<br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 비밀번호 수정 페이지 기능 구현<br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 회원정보 수정 페이지 기능 구현<br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 후기관리 페이지 기능 구현<br />
+					
+					<span>- 회사소개</span> <br/>
+					&nbsp;&nbsp;&nbsp;&nbsp; 회사소개 페이지 조직도 & 회사소개 디자인 및 프론트 작업 <br />
+					
+					<span>- 사원증</span> <br/>
+					&nbsp;&nbsp;&nbsp;&nbsp; Figma를 이용한 사원증 제작<br />
 				</div>
 				<div class="portfolio-com">
 					<a href="https://github.com/jeoungwonhong" target=”_blank”>
