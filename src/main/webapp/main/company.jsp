@@ -129,14 +129,23 @@
 			<img alt="idCard" src="../img/c-null.png">
 			<div class="introEmployee-com">
 				<div class="keyWord-com">
-					<span>#KEYWORD</span> <span>#0000</span>
+					<span>#INTJ</span> <span>#긍정적인</span>
 				</div>
 				<p class="aboutEmployee-com">
 					<span>최누리</span> &nbsp;/&nbsp; 과장
 				</p>
 				<div class="workHistory-com">
-					<span>작업내용</span>은 여기 적어주세요옹!!!
-					<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!
+					<span>- 문의 게시판</span> <br/>
+					&nbsp;&nbsp;&nbsp;&nbsp; 게시판 읽기, 쓰기 프론트 작업 및 기능 구현<br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 게시판 수정 및 삭제 구현<br />
+					<span>- 리뷰 게시판</span> <br/>
+					&nbsp;&nbsp;&nbsp;&nbsp; 리뷰 게시판 읽기, 쓰기 구현<br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 이미지 업로드 기능 구현<br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 댓글 기능 구현<br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 구매 완료된 고객들만 리뷰 게시글 쓰도록 기능 구현<br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 관리자만 게시글 및 댓글 삭제 기능 구현<br />
+					<span>- 예약</span> <br/>
+					&nbsp;&nbsp;&nbsp;&nbsp; 예약시 VIP 할인 기능 구현<br />
 				</div>
 				<div class="portfolio-com">
 					<a href="https://github.com/chlsnfl" target=”_blank”>
