@@ -111,7 +111,7 @@ button a{
 				</div>			
 				<div class="mb-3 mt-4 review">
 					<label for="content">내용</label>
-					<textarea class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요"  ></textarea>
+					<textarea class="form-control" rows="5" name="content" id="content" placeholder="100자 이내의 내용을 입력해 주세요" maxlength="100"  ></textarea>
 					<input type = "file" name = "img" id = "img" class = "img mt-4"/>
 				</div>
 				<!--1. int 값들과 level input type hidden으로 해서 넣기 

@@ -151,7 +151,7 @@
 					<a href="https://github.com/chlsnfl" target=”_blank”>
 						<i class="ri-github-fill"></i>
 					</a>
-					<a href="mailto://">
+					<a href="mailto://cnr1108@naver.com">
 						<i class="ri-mail-send-fill"></i>
 					</a>
 				</div>

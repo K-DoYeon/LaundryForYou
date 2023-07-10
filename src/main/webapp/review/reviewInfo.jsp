@@ -111,7 +111,7 @@ button a:hover{
 	resize : none;
 }
 .review-img img{
-	/* width : 100%; */
+	width : 400px;
 	height : auto;
 	margin : 0 auto;
 	display: block;
