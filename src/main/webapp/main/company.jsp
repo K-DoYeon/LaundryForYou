@@ -162,20 +162,27 @@
 			<img alt="idCard" src="../img/c-mj.png">
 			<div class="introEmployee-com">
 				<div class="keyWord-com">
-					<span>#KEYWORD</span> <span>#0000</span>
+					<span>#ISTP</span> <span>#활기찬</span>
 				</div>
 				<p class="aboutEmployee-com">
 					<span>차명진</span> &nbsp;/&nbsp; 대리
 				</p>
 				<div class="workHistory-com">
-					<span>작업내용</span>은 여기 적어주세요옹!!!
-					<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!<span>작업내용</span>은 여기 적어주세요옹!!!
+					<span>- 문의 게시판</span> <br/>
+					&nbsp;&nbsp;&nbsp;&nbsp; 게시판 검색(제목, 내용, 작성자) 및 검색 후 페이징 처리<br />
+					<span>- 리뷰 게시판</span> <br/>
+					&nbsp;&nbsp;&nbsp;&nbsp; 리뷰 게시판 프론트 작업<br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 글 수정 및 삭제 기능 구현<br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 게시글 좋아요 및 좋아요 취소 기능 구현<br />
+					<span>- 마이페이지</span> <br/>
+					&nbsp;&nbsp;&nbsp;&nbsp; 스탬프 5개 이상 모을 시 쿠폰 부여 기능 구현<br />
+					&nbsp;&nbsp;&nbsp;&nbsp; 결제 금액이 일정금액 도달 시 회원 승급 기능 구현<br />
 				</div>
 				<div class="portfolio-com">
 					<a href="https://github.com/myeongjin123" target=”_blank”>
 						<i class="ri-github-fill"></i>
 					</a>
-					<a href="mailto://">
+					<a href="mailto://audwls12568@naver.com">
 						<i class="ri-mail-send-fill"></i>
 					</a>
 				</div>
