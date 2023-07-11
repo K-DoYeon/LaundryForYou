@@ -176,6 +176,7 @@ public class ReviewDAO {
 					bean.setSubject(rs.getString(4));
 					bean.setContent(rs.getString(5));
 					bean.setWdate(rs.getString(7));
+					//bean.setResnum(rs.getInt(11));
 					// bean.setReadCount(rs.getInt(5));
 					// bean.setReplyCount(rs.getInt(6));
 					// 패키징 한 데이터를 백터에 저장

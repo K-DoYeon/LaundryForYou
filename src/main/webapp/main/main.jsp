@@ -123,7 +123,7 @@
 		                <div class="review-for">
 		                	<img src="<%= imagePath %>" alt="">
 		                    <span><%=bean.getUid() %> 님</span>
-		                    <span class="review-subject"><a href="../review/reviewInfo.jsp?num=<%=bean.getNum()%>"><%=bean.getSubject() %></a></span>
+		                    <span class="review-subject"><a href="../review/reviewInfo.jsp?num=<%=bean.getNum()%>&resnum=<%=bean.getResnum()%>"><%=bean.getSubject() %></a></span>
 		                    <span><%=bean.getWdate().substring(0, 10) %></span>
 		                </div>
 		               </div>
