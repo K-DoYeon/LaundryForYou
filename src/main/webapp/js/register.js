@@ -1,3 +1,5 @@
+
+
 function Postcode() {
         new daum.Postcode({
             oncomplete: function(data) {
@@ -34,6 +36,18 @@ function Postcode() {
 
 }
 
+
+function checkPasswordMatch() {
+  	const upass = document.getElementById("password");
+	const upassch = document.getElementById("upassch");
+  
+  if(upass.value != upassch.value){
+		alert("비밀번호가 다릅니다. 비밀번호를 다시 확인하세요.");
+		upassch.value="";
+		upassch.focus();
+		return;
+	}
+}
 
 
 $('#allcheck-regi').on('click', function(){
