@@ -149,11 +149,46 @@
     </div>
     <!-- slide -->
     
+    <div class="main-popup">
+    <img src="../img/main-x.png">
+    	<p>
+    		<span class="font-main">' 세탁의</span><span class="font-main color-blue"> 당신</span><span class="font-main"> '</span> 사이트는 <br>
+    		포트폴리오 용으로 제작되었습니다.<br> 회원가입 시 개인정보가 저장될 수 있으니 <br><span class="color-red">실제 정보를 절대 입력하지 마십시오.</span>
+    	</p>
+    	<a href="#" class="main-close-button">하루 동안 닫기</a>
+    </div>
 </div>
 	
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../js/main-slide.js"></script>
 
+
+<script>
+const closeMainPopupButton = document.querySelector('.main-close-button');
+const mainPopup = document.querySelector('.main-popup');
+
+closeMainPopupButton.addEventListener('click', function(event) {
+  event.preventDefault();
+  mainPopup.style.display = 'none';
+
+  // 1분 동안 팝업을 숨기기 위해 sessionStorage 설정
+  const expires = new Date();
+  expirationDate.setDate(expirationDate.getDate() + 1); // 현재 날짜에 1일을 더함
+  sessionStorage.setItem('popupClosed', expires.toISOString());
+});
+
+// 페이지 로드 시 sessionStorage 확인하여 팝업 상태 설정
+function checkPopupStatus() {
+  const popupClosed = sessionStorage.getItem('popupClosed');
+  if (popupClosed && new Date() <= new Date(popupClosed)) {
+    mainPopup.style.display = 'none';
+  }
+}
+
+// 페이지 로드 시 팝업 sessionStorage 확인
+checkPopupStatus();
+
+</script>
 
 
 <jsp:include page="../include/footer.jsp"></jsp:include>

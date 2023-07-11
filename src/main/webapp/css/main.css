@@ -22,7 +22,7 @@ p{
 }
 
 .banner-inside{
-	width: 1250px;
+	width: 1200px;
 	height: 350px;
 	margin: 0 auto;
 	display: flex;
@@ -345,3 +345,60 @@ i.ri-arrow-right-s-line.sBannerBtn-main {
         cursor: pointer;
     }
 
+
+
+/* main-popup */
+.main-popup{
+	width: 400px;
+	height: 300px;
+	background: #fff;
+	position: fixed;
+	top: 150px;
+	left: 50%;
+	transform: translateX(-50%);
+	border-radius: 5px;
+	z-index: 100;
+	box-shadow: 1px 1px 15px 3px #555555;
+	border: 5px solid #8ac4d0;
+	
+}
+
+.main-popup p{
+	text-align: center;
+	position: absolute;
+	top: 120px;
+	left: 80px;
+	line-height: 25px;
+}
+
+.main-popup img{
+	position: absolute;
+	top: 10px;
+	left: 150px;
+}
+
+.font-main{
+	font-family: "TheJamsil";
+}
+
+.color-blue{
+	color: #58a3bc;
+}
+
+.color-red{
+	color: #d41313;
+	font-weight: bold;
+}
+
+.main-close-button {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #ccc;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+	transform: translateX(-50%);
+  }
