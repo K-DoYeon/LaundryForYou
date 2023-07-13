@@ -78,7 +78,7 @@
 					</div>
 					<div class="checkGroup-regi">
 						<input type="checkbox" class="checkVal-regi" value="check02" required/>
-						<span class="check-regi">만 14세 이상입니다. <span class="es-regi">(필수)</span></span>
+						<span class="check-regi">이 정보는 포트폴리오용으로 사용되지 않습니다.(필수)</span></span>
 					</div>
 				</div>
 			</div>

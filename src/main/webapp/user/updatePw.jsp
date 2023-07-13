@@ -1,3 +1,4 @@
+<%@page import="user.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="user.UserBean"%>
@@ -7,10 +8,26 @@
 <div class="container-upPw">
 		<h1 class="title-upPw">비밀번호 변경</h1>
 		<form action="updatePwProc.jsp" method="post" name="updatePwForm">
+			<%
+				UserDAO udao = new UserDAO();
+			    String uid = (String) session.getAttribute("uid");
+			    String testpw = udao.testpw();
+				if(uid == "test"){
+			%>
+			<div class="Box-upPw">
+				<label class="Title-upPw">현재 비밀번호</label>
+				<input type="password" id="upass" name="upass" value="<%= testpw %>" required />
+			</div>
+			<%
+				}else{
+			%>
 			<div class="Box-upPw">
 				<label class="Title-upPw">현재 비밀번호</label>
 				<input type="password" id="upass" name="upass" maxlength="16" placeholder="현재 비밀번호를 입력해주세요" required />
 			</div>
+			<%
+				}
+			%>
 			<div class="Box-upPw">
 				<label class="Title-upPw">비밀번호 변경</label>
 				<input type="password" id="newpass" name="newpass" maxlength="16" placeholder="변경될 비밀번호를 입력해주세요" required />

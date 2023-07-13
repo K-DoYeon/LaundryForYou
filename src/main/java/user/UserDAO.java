@@ -607,5 +607,22 @@ public class UserDAO {
 			}
 		}
 		
+		public String testpw() {
+			String testpw = null;
+			try {
+				getCon();
+				String sql = "select upass from user where uid = 'test'";
+				pstmt = con.prepareStatement(sql);
+				
+				rs = pstmt.executeQuery(); 
+				System.out.println(pstmt);
+				if(rs.next()) {
+					testpw = rs.getString("upass");
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return testpw;
+		}
 		
 }//userDAO
