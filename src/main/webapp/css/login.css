@@ -73,3 +73,6 @@ a.register-login {
     text-align: center;
     line-height: 56px;
 }
+input.ptbt-login {
+	margin-bottom: 10px;
+}
