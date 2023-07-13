@@ -350,7 +350,7 @@ i.ri-arrow-right-s-line.sBannerBtn-main {
 /* main-popup */
 .main-popup{
 	width: 400px;
-	height: 300px;
+	height: 500px;
 	background: #fff;
 	position: fixed;
 	top: 150px;
@@ -367,14 +367,14 @@ i.ri-arrow-right-s-line.sBannerBtn-main {
 	text-align: center;
 	position: absolute;
 	top: 120px;
-	left: 80px;
+	left: 75px;
 	line-height: 25px;
 }
 
 .main-popup img{
 	position: absolute;
 	top: 10px;
-	left: 150px;
+	left: 145px;
 }
 
 .font-main{
@@ -401,4 +401,10 @@ i.ri-arrow-right-s-line.sBannerBtn-main {
     bottom: 25px;
     left: 50%;
 	transform: translateX(-50%);
+  }
+  
+  .main-version{
+  	position: absolute;
+  	top: 260px;
+  	left: 85px;
   }

@@ -155,6 +155,15 @@
     		<span class="font-main">' 세탁의</span><span class="font-main color-blue"> 당신</span><span class="font-main"> '</span> 사이트는 <br>
     		포트폴리오 용으로 제작되었습니다.<br> 회원가입 시 개인정보가 저장될 수 있으니 <br><span class="color-red">실제 정보를 절대 입력하지 마십시오.</span>
     	</p>
+    	<span class="main-version">
+		  	<b>개발 환경</b><br>
+			- Window<br>
+			- Java 11<br>
+			- JDK: 11<br>
+			- IDE: Eclipse (2023-03)<br>
+			- Server: Apache Tomcat(v9.0)<br>
+			- Database: Mysql (8.0.33)
+    	</span>
     	<a href="#" class="main-close-button">한 시간 동안 닫기</a>
     </div>
 </div>
