@@ -546,6 +546,20 @@ public class BoardDAO {
 				}
 				return result;
 			}
+			
+			//관리자 권한으로 게시글 삭제
+			public int deleteReview(int num) {
+				getCon();
+				String SQL = "delete from board where num = ?";
+				try {
+					PreparedStatement pstmt = con.prepareStatement(SQL);
+					pstmt.setInt(1, num);
+					return pstmt.executeUpdate();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				return -1; // 데이터베이스 오류
+			}
 }
 
 
