@@ -154,8 +154,11 @@ String formattedBigWdate = sdfBigOutput.format(wdate); // 변경된 형식으로
 			<div class="number">
 		<%
 			for(int i = startPage; i <= endPage; i++){
+				String act = "";
+				if(currentPage == i)
+					act = "active";
 		%>
-			<a class="number" href="boardlist.jsp?pageNum=<%= i %>"><span><%= i %></span></a>
+			<a class="number" href="boardlist.jsp?pageNum=<%= i %>"><span class="<%=act%>"><%= i %></span></a>
 		<%
 			}
 		%>

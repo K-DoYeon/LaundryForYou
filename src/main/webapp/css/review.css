@@ -181,3 +181,6 @@ section.notice {
 .number span:hover{
 	background: #8AC4D0;
 }
+a.number span.active{
+	background: #8AC4D0;
+}

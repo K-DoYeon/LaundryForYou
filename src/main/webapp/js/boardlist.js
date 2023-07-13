@@ -18,6 +18,7 @@ $(function(){
 		e.preventDefault();
 		location.reload();
 	});
+	
 });
 
 const toggles = document.querySelectorAll(".faq-toggle");

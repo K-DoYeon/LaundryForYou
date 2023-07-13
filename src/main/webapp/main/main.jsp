@@ -181,7 +181,7 @@
     mainPopup.style.display = 'none';
 
     // 1분 동안 팝업을 숨기기 위해 sessionStorage 설정
-    const expirationTime = Date.now() + 360000; 
+    const expirationTime = Date.now() + 3600000; 
     sessionStorage.setItem('popupClosedExpiration', expirationTime);
   });
 
