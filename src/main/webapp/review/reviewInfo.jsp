@@ -192,7 +192,7 @@ i.fa-heart:hover{
 				<%
 				if(level == 99){
 				%>
-				<a type="button" class="btn btn-sm choi-qna-btn" id="btnList" onclick="return confirm('관리자 권한으로 삭제하시겠습니까?')" href="adminDelete.jsp?num=<%=bean.getNum() %>">관리자 권한으로 삭제</a>
+				<a class="btn btn-sm choi-qna-btn" id="btnList" onclick="return confirm('관리자 권한으로 삭제하시겠습니까?')" href="adminDelete.jsp?num=<%=bean.getNum() %>">관리자 권한으로 삭제</a>
 				<%
 				}
 				%>
