@@ -36,7 +36,7 @@
 			
 			<div class="select-regi">
 				<label class="selectName-regi">휴대폰</label>
-				<input type="text" name="tel" class="selectVal-regi" placeholder="숫자만 입력해주세요" pattern="\d{10,11}" title="숫자로 이루어진 10~11자리" required />
+				<input type="text" name="tel" class="selectVal-regi" placeholder="숫자만 입력해주세요" pattern="\d{11}" title="숫자로 이루어진 11자리" required />
 			</div>
 			
 			<div class="select-regi">
@@ -48,7 +48,7 @@
 			<div class="select-regi addr-regi">
 				<label class="selectName-regi addrName-regi">주소</label>
 				<div class="selectValBox-regi">
-					<input type="text" name="addr" class="selectVal-regi addrVal-regi" id="address" readonly />
+					<input onclick="Postcode();" type="text" name="addr" class="selectVal-regi addrVal-regi" id="address" placeholder="우편번호 찾기를 통해 작성해주세요" required/>
 					<input type="text" name="detailaddr" class="selectVal-regi" id="detailaddr" placeholder="상세주소를 입력해주세요" required />
 				</div>
 			</div>
