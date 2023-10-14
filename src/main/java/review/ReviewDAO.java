@@ -18,9 +18,12 @@ public class ReviewDAO {
 	   public void getCon() {
 	      try {
 	         
-	         String id = "root";
-	         String password = "!+La:m6V;t";
-	         String url = "jdbc:mysql://3.35.8.147/laundry";
+//	         String id = "root";
+//	         String password = "!+La:m6V;t";
+//	         String url = "jdbc:mysql://3.35.8.147/laundry";
+	    	  String id = "postl";
+	          String password = "0601";
+	          String url = "jdbc:mysql://43.202.192.64/laundry";
 	         
 	         Class.forName("com.mysql.cj.jdbc.Driver");
 	         con = DriverManager.getConnection(url, id, password);
